@@ -3,7 +3,7 @@
 
     <!--Home-->
     <string name="home">Home</string>
-    <string name="explore">Explore</string>
+    <string name="cart">Marketplace</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="account">Account</string>
     <string name="avrgSessionText">Average Session</string>
@@ -34,12 +34,15 @@
     <string name="businessProduct2">Fertiliser - Artificial</string>
     <string name="addProductsBtn">Add Products</string>
 
+    <!---Browse Category-->
+    <string name="browseCategory">Browse Category</string>
+    <string name="searchCategory">Search</string>
+    <string name="fruits">Fruits</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="plants">plants</string>
+    <string name="medicinalLeafs">Medicinal Leaves</string>
 
-    <!--Add Products Page-->
-    <string name="AddProducts">Add Products</string>
-    <string name="publishBtn">Publish</string>
-
-    <!---Browse Sellers-->
-    <string name="browseSellers">Browse Sellers</string>
+    <!--Browse Items-->
+    <string name="results">3 results</string>
 
 </resources>
