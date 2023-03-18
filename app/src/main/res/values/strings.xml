@@ -63,6 +63,9 @@
     <!--Browse Items-->
     <string name="results">3 results</string>
 
+    <!-- Browse category items -->
+    <string name="itemsCount">44 Results</string>
+    <string name="ratings">4.5 Ratings</string>
 
     <!--Garden Items/Orders/Pick Ups-->
     <string name="items">Items</string>
@@ -74,6 +77,4 @@
     <string name="item1Description">Grown with organic fertilisers</string>
     <string name="approveBtn">Approve</string>
     <string name="rejectBtn">Reject</string>
-
-
 </resources>
