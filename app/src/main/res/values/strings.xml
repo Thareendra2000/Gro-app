@@ -36,11 +36,16 @@
 
     <!---Browse Category-->
     <string name="browseCategory">Browse Category</string>
-    <string name="searchCategory">Search</string>
+    <string name="searchCategory">Fruits, vegetables, etc</string>
     <string name="fruits">Fruits</string>
     <string name="vegetables">Vegetables</string>
-    <string name="plants">plants</string>
-    <string name="medicinalLeafs">Medicinal Leaves</string>
+    <string name="indoorPlants">Indoor Plants</string>
+    <string name="medicinalLeafs">Herbs</string>
+    <string name="succulents">Succulents</string>
+    <string name="shadePlants">Shade Plants</string>
+    <string name="cacti">Cacti</string>
+    <string name="fruitTrees">Fruit Trees</string>
+    <string name="plants">Plants</string>
 
     <!--Browse Items-->
     <string name="results">3 results</string>
