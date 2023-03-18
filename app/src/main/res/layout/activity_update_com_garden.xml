@@ -272,7 +272,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLinearLayout" />
 
-    <!--bottom nav Bar-->
+
 
     <LinearLayout
         android:id="@+id/addProductsBtnLayout"
@@ -308,7 +308,7 @@
         </Button>
 
     </LinearLayout>
-
+    <!--bottom nav Bar-->
     <LinearLayout
         android:id="@+id/BottomNavBar"
         android:layout_width="match_parent"
