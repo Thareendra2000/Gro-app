@@ -63,9 +63,6 @@
     <!--Browse Items-->
     <string name="results">3 results</string>
 
-    <!-- Browse category items -->
-    <string name="itemsCount">44 Results</string>
-    <string name="ratings">4.5 Ratings</string>
 
     <!--Garden Items/Orders/Pick Ups-->
     <string name="items">Items</string>
@@ -75,6 +72,17 @@
     <string name="item1Price">90 LKR/kg</string>
     <string name="item1BestBefore">26/03/2023</string>
     <string name="item1Description">Grown with organic fertilisers</string>
+
+    <string name="item2Name">Tomato</string>
+    <string name="item2Price">120 LKR/kg</string>
+    <string name="item2BestBefore">23/03/2023</string>
+    <string name="item2Description">Grown with organic fertilisers</string>
+
     <string name="approveBtn">Approve</string>
     <string name="rejectBtn">Reject</string>
+    <string name="editBtn">Edit</string>
+    <string name="deleteBtn">Delete</string>
+    <string name="addItem">New Item</string>
+
+
 </resources>
