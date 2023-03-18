@@ -62,7 +62,8 @@
 
     <!--Browse Items-->
     <string name="results">3 results</string>
-
+    <string name="itemsCount">44 Results</string>
+    <string name="ratings">4.5 Ratings</string>
 
     <!--Garden Items/Orders/Pick Ups-->
     <string name="items">Items</string>
@@ -83,6 +84,7 @@
     <string name="editBtn">Edit</string>
     <string name="deleteBtn">Delete</string>
     <string name="addItem">New Item</string>
+
 
 
 </resources>
