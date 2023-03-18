@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">GroApp</string>
+
+    <!--Add Business Page-->
+    <string name="addBusiness">Add Your Business</string>
+    <string name="businessName">Business Name</string>
+    <string name="businessNameEx">Hakuna Plants Nursery</string>
+    <string name="businessOwner">Business Owner</string>
+    <string name="businessOwnerEx">Sanji Samson</string>
+    <string name="businessLocation">Location</string>
+    <string name="businessLocationEx">Pittugala, Malabe</string>
+    <string name="businessContactNo">Contact Number</string>
+    <string name="businessContactNoEx">071 234 5678</string>
+    <string name="businessEmail">Email</string>
+    <string name="businessEmailEx">hakuna@hotmail.com</string>
+    <string name="businessProducts">Products</string>
+    <string name="businessProduct1">Fertiliser - Organic</string>
+    <string name="businessProduct2">Fertiliser - Artificial</string>
+    <string name="publishBtn">Publish</string>
+</resources>
