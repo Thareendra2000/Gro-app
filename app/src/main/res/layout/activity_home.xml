@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:background="@color/backgroundWhite">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -169,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/filledbutton"
+                android:background="@drawable/cardbackground"
                 android:orientation="vertical"
                 android:padding="@dimen/eightdp">
 
@@ -196,7 +197,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/fourdp"
                 android:layout_weight="1"
-                android:background="@drawable/filledbutton"
+                android:background="@drawable/cardbackground"
                 android:orientation="vertical"
                 android:padding="@dimen/eightdp">
 
@@ -216,6 +217,108 @@
                     android:textColor="@color/backgroundWhite"
                     android:textSize="24sp" />
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/sixteenDP"
+            android:paddingLeft="@dimen/fourdp"
+            android:paddingRight="@dimen/fourdp"
+            android:background="@drawable/cardbackground"
+            android:layout_marginTop="@dimen/eightdp"
+            android:layout_marginBottom="@dimen/fourdp"
+            android:backgroundTint="@color/lessDarkGreen">
+
+            <TextView
+                android:id="@+id/nearbyGardenText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nearbyGardens"
+                android:textColor="@color/darkGreen"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/fourdp"/>
+
+            <LinearLayout
+                android:id="@+id/gardencard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fourdp"
+                android:layout_marginBottom="@dimen/fourdp"
+                android:background="@drawable/cardbackground"
+                android:orientation="vertical"
+                android:padding="@dimen/sixteenDP">
+                <TextView
+                    android:id="@+id/GardenName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gardenName"
+                    android:textColor="@color/backgroundWhite"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/gardenLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gardenLocation"
+                    android:textColor="@color/backgroundWhite"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gardencard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fourdp"
+                android:background="@drawable/cardbackground"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/fourdp"
+                android:padding="@dimen/sixteenDP">
+                <TextView
+                    android:id="@+id/GardenName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gardenName"
+                    android:textColor="@color/backgroundWhite"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/gardenLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gardenLocation"
+                    android:textColor="@color/backgroundWhite"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gardencard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fourdp"
+                android:background="@drawable/cardbackground"
+                android:orientation="vertical"
+                android:padding="@dimen/sixteenDP">
+                <TextView
+                    android:id="@+id/GardenName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gardenName"
+                    android:textColor="@color/backgroundWhite"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/gardenLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gardenLocation"
+                    android:textColor="@color/backgroundWhite"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
 
         </LinearLayout>
 

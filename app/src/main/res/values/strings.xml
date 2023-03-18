@@ -10,6 +10,10 @@
     <string name="avrgSessionEx">2h 34m /day</string>
     <string name="goalText">Session Goal</string>
     <string name="goalEx">3h /day</string>
+    <string name="nearbyGardens">Nearby Gardens</string>
+    <string name="gardenName">Pittugala Community Garden</string>
+    <string name="gardenLocation">Pittugala, Malabe</string>
+
 
     <!--Add Business Page-->
     <string name="addBusiness">Add Your Business</string>
