@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">GroApp</string>
+
+    <!--Home-->
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="account">Account</string>
+    <string name="avrgSessionText">Average Session</string>
+    <string name="avrgSessionEx">2h 34m /day</string>
+    <string name="goalText">Session Goal</string>
+    <string name="goalEx">3h /day</string>
+    <string name="nearbyGardens">Nearby Gardens</string>
+    <string name="homeG1ardenName">Pittugala Community Garden</string>
+    <string name="gardenLocation">Pittugala, Malabe</string>
+
+    <!--Add Business Page-->
+    <string name="addBusiness">Add Your Business</string>
+    <string name="businessName">Business Name</string>
+    <string name="businessNameEx">Hakuna Plants Nursery</string>
+    <string name="businessOwner">Business Owner</string>
+    <string name="businessOwnerEx" translatable="false">Sanji Samson</string>
+    <string name="businessLocation">Location</string>
+    <string name="businessLocationEx" translatable="false">Pittugala, Malabe</string>
+    <string name="businessContactNo">Contact Number</string>
+    <string name="businessContactNoEx" translatable="false">071 234 5678</string>
+    <string name="businessEmail">Email</string>
+    <string name="businessEmailEx" translatable="false">hakuna@hotmail.com</string>
+    <string name="businessDescription">Description</string>
+    <string name="businessDescriptionEx">Add your Business Description Here</string>
+    <string name="businessProducts">Products</string>
+    <string name="businessProduct1">Fertiliser - Organic</string>
+    <string name="businessProduct2">Fertiliser - Artificial</string>
+    <string name="addProductsBtn">Add Products</string>
+
+
+    <!--Add Products Page-->
+    <string name="AddProducts">Add Products</string>
+    <string name="publishBtn">Publish</string>
+
+
+    <!--Add Community Garden-->
+    <string name="addGarden">Add a Garden</string>
+    <string name="gardenName">Garden name</string>
+    <string name="gardenNameEx">Chandler\'s garden</string>
+    <string name="cgAddress">Address</string>
+    <string name="cgAddressEx">Negombo Road, kalugamuwa</string>
+    <string name="cgArea">Area(acre)</string>
+    <string name="cgAreaEx">2</string>
+    <string name="cgLocationLink">Add Location Link</string>
+    <string name="cgLocationLinkEx"></string>
+    <string name="cgPhoneNumber">Phone Number</string>
+    <string name="cgPhoneNumberEx">0765288617</string>
+    <string name="cgDescription">Description</string>
+    <string name="cgDescriptionEx">Add a description here..</string>
+    <string name="cgbtnAdd">Submit</string>
+    <string name="cgbtnCancel">Cancel</string>
+
+    <!--Update Community Garden-->
+    <string name="updateGarden">Update Garden Details</string>
+    <string name="cgUpdatebtn">Update</string>
+    <string name="cgResetbtn">Reset</string>
+
+</resources>

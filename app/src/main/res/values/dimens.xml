@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="twodp">2dp</dimen>
+    <dimen name="fourdp">8dp</dimen>
+    <dimen name="eightdp">4dp</dimen>
+    <dimen name="eighteenDP">18dp</dimen>
+    <dimen name="twentyDP">20dp</dimen>
+    <dimen name="twentyfourDP">24dp</dimen>
+    <dimen name="thirtyDP">30dp</dimen>
+    <dimen name="thirtytwoDP">32dp</dimen>
+    <dimen name="thirtysixDP">36dp</dimen>
+</resources>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:bottomLeftRadius="30dp"
+        android:bottomRightRadius="30dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:topLeftRadius="30dp"
+        android:topRightRadius="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="124dp">
+
+        <TextView
+            android:id="@+id/cgAddTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="Add a community garden"
+            android:textAlignment="center"
+            android:textSize="26sp" />
+
+        <EditText
+            android:id="@+id/edtGardenName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name of the garden"/>
+
+        <LinearLayout
+            android:id="@+id/hjg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtDistance"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="48dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Distance" />
+
+            <TextView
+                android:id="@+id/edtAwayFrom"
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Away From"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtCity"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="48dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="City" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtGardenAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Address" />
+
+        <EditText
+            android:id="@+id/edtArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Area" />
+
+        <EditText
+            android:id="@+id/edtLocationLink"
+            android:layout_width="392dp"
+            android:layout_height="wrap_content"
+            android:height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Location Link for the garden" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Button" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
