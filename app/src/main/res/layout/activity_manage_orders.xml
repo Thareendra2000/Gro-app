@@ -231,7 +231,7 @@ tools:context=".ManageItemsActivity">
         <!--Item details & controls-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1">
 
@@ -239,10 +239,10 @@ tools:context=".ManageItemsActivity">
             <LinearLayout
                 android:id="@+id/ItemCardDetails"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fourdp"
                 android:layout_weight="7"
-                android:layout_margin="@dimen/fourdp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/itemName"
@@ -250,13 +250,14 @@ tools:context=".ManageItemsActivity">
                     android:layout_height="wrap_content"
                     android:text="@string/item1Name"
                     android:textColor="@color/darkGreen"
-                    android:textSize="16sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/itemDescription"
+                    android:id="@+id/itemQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/item1Description"
+                    android:text="@string/item1OrderQnty"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
 
@@ -269,10 +270,10 @@ tools:context=".ManageItemsActivity">
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/itemBestBefore"
+                    android:id="@+id/itemTotalPrice"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/item1BestBefore"
+                    android:layout_height="wrap_content"
+                    android:text="@string/item1TotalPrice"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
             </LinearLayout>

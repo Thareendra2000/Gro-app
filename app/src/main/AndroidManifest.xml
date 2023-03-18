@@ -12,10 +12,11 @@
         android:theme="@style/Theme.GroApp"
         tools:targetApi="31">
         <activity
+            android:name=".ManagePickUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".ManageOrdersActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ManageItemsActivity"
             android:exported="true">
@@ -27,17 +28,13 @@
         </activity>
         <activity
             android:name=".BrowseItemsActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".BrowseCategoryActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".BrowseSellersActivity"
             android:exported="false" />
@@ -46,9 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

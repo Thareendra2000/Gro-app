@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundWhite"
-    tools:context=".ManageOrdersActivity">
+    tools:context=".ManageOrdersActivity"
+    android:background="@color/backgroundWhite">
 
     <!--Bottom NavBar-->
     <LinearLayout
@@ -165,9 +165,9 @@
             android:layout_weight="1"
             android:background="@drawable/buttonborder"
             android:text="@string/items"
-            android:textAllCaps="false"
-            android:textColor="@color/lessDarkGreen"
-            app:backgroundTint="@color/darkGreen" />
+            android:textColor="@color/darkGreen"
+            app:backgroundTint="@color/backgroundWhite"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="wrap_content"
@@ -176,9 +176,9 @@
             android:layout_weight="1"
             android:background="@drawable/buttonborder"
             android:text="@string/orders"
-            android:textAllCaps="false"
             android:textColor="@color/darkGreen"
-            app:backgroundTint="@color/backgroundWhite" />
+            app:backgroundTint="@color/backgroundWhite"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="wrap_content"
@@ -187,67 +187,14 @@
             android:layout_weight="1"
             android:background="@drawable/buttonborder"
             android:text="@string/pickup"
-            android:textAllCaps="false"
-            android:textColor="@color/darkGreen"
-            app:backgroundTint="@color/backgroundWhite" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        android:padding="@dimen/eightdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SwappingButtonsLayout">
-
-        <TextView
-            android:id="@+id/itemDescription"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/chooseCategory"
-            android:textAlignment="center"
-            android:textColor="@color/darkGreen"
-            android:padding="@dimen/eightdp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="4"
-            android:background="@drawable/card_bg_unfilled"
-            android:padding="@dimen/eightdp">
-            <TextView
-                android:id="@+id/itemDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/vegetables"
-                android:textAlignment="center"
-                android:textColor="@color/darkGreen"
-                android:textSize="18sp"
-                android:layout_weight="1"/>
-            <ImageView
-                android:id="@+id/backImg"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/baseline_keyboard_arrow_down_24" />
-
-        </LinearLayout>
-
+            android:textColor="@color/lessDarkGreen"
+            app:backgroundTint="@color/darkGreen"
+            android:textAllCaps="false"/>
     </LinearLayout>
 
     <!--Items-->
     <LinearLayout
-        android:id="@+id/itemsLayout"
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -256,7 +203,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/SwappingButtonsLayout">
 
         <!--Single Item Card-->
         <LinearLayout
@@ -304,13 +251,13 @@
                         android:text="@string/item1Name"
                         android:textColor="@color/darkGreen"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/itemDescription"
+                        android:id="@+id/itemQuantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/item1Description"
+                        android:text="@string/item1OrderQnty"
                         android:textColor="@color/darkGreen"
                         android:textSize="16sp" />
 
@@ -323,10 +270,10 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/itemBestBefore"
+                        android:id="@+id/itemTotalPrice"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/item1BestBefore"
+                        android:layout_height="wrap_content"
+                        android:text="@string/item1TotalPrice"
                         android:textColor="@color/darkGreen"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -345,10 +292,10 @@
                         android:layout_margin="@dimen/fourdp"
                         android:layout_weight="1"
                         android:background="@drawable/aprove_button"
-                        android:text="@string/editBtn"
-                        android:textAllCaps="false"
+                        android:text="@string/completeOrder"
                         android:textColor="@color/backgroundWhite"
-                        app:backgroundTint="@color/approveGreen" />
+                        app:backgroundTint="@color/approveGreen"
+                        android:textAllCaps="false"/>
 
                     <Button
                         android:layout_width="wrap_content"
@@ -356,10 +303,10 @@
                         android:layout_margin="@dimen/fourdp"
                         android:layout_weight="1"
                         android:background="@drawable/red_button"
-                        android:text="@string/deleteBtn"
-                        android:textAllCaps="false"
+                        android:text="@string/PutBackStocl"
                         android:textColor="@color/backgroundWhite"
-                        app:backgroundTint="@color/rejectRed" />
+                        app:backgroundTint="@color/rejectRed"
+                        android:textAllCaps="false"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -369,6 +316,7 @@
             android:id="@+id/ItemCardWithApproveRejectButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fourdp"
             android:background="@drawable/card_bg_unfilled"
             android:orientation="horizontal"
             android:paddingTop="@dimen/fourdp"
@@ -409,13 +357,13 @@
                         android:text="@string/item2Name"
                         android:textColor="@color/darkGreen"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/itemDescription"
+                        android:id="@+id/itemQuantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/item2Description"
+                        android:text="@string/item2OrderQnty"
                         android:textColor="@color/darkGreen"
                         android:textSize="16sp" />
 
@@ -428,10 +376,10 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/itemBestBefore"
+                        android:id="@+id/itemTotalPrice"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/item2BestBefore"
+                        android:layout_height="wrap_content"
+                        android:text="@string/item2TotalPrice"
                         android:textColor="@color/darkGreen"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -450,10 +398,10 @@
                         android:layout_margin="@dimen/fourdp"
                         android:layout_weight="1"
                         android:background="@drawable/aprove_button"
-                        android:text="@string/editBtn"
-                        android:textAllCaps="false"
+                        android:text="@string/completeOrder"
                         android:textColor="@color/backgroundWhite"
-                        app:backgroundTint="@color/approveGreen" />
+                        app:backgroundTint="@color/approveGreen"
+                        android:textAllCaps="false"/>
 
                     <Button
                         android:layout_width="wrap_content"
@@ -461,51 +409,16 @@
                         android:layout_margin="@dimen/fourdp"
                         android:layout_weight="1"
                         android:background="@drawable/red_button"
-                        android:text="@string/deleteBtn"
-                        android:textAllCaps="false"
+                        android:text="@string/PutBackStocl"
                         android:textColor="@color/backgroundWhite"
-                        app:backgroundTint="@color/rejectRed" />
+                        app:backgroundTint="@color/rejectRed"
+                        android:textAllCaps="false"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemsLayout">
 
     </LinearLayout>
 
-    <!--Add New Item Button-->
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="@dimen/eightdp"
-        android:background="@drawable/buttonborder"
-        android:orientation="horizontal"
-        android:padding="@dimen/eightdp"
-        app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
-        app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:id="@+id/plusImg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="@dimen/fourdp"
-            app:srcCompat="@drawable/baseline_add_24" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,11 +47,25 @@
     <string name="fruitTrees">Fruit Trees</string>
     <string name="plants">Plants</string>
 
+    <!--Item Names-->
+    <string name="guava">Guava</string>
+
+    <!--Item Prices-->
+    <string name="guavePrice">LKR: 100.00</string>
+
+    <!--Item Add to Cart Values-->
+    <string name="add">+</string>
+    <string name="remove">-</string>
+    <string name="initialValue">1</string>
+    <string name="addToCart">Add 1 to Cart * LKR: 100.00</string>
+    <string name="hintSpecial">Add a note (extra packaging, no bag, etc.)</string>
+
     <!--Browse Items-->
     <string name="results">3 results</string>
 
 
     <!--Garden Items/Orders/Pick Ups-->
+    <string name="chooseCategory">Choose Category</string>
     <string name="items">Items</string>
     <string name="orders">Orders</string>
     <string name="pickup">Pick Ups</string>
@@ -59,17 +73,23 @@
     <string name="item1Price">90 LKR/kg</string>
     <string name="item1BestBefore">26/03/2023</string>
     <string name="item1Description">Grown with organic fertilisers</string>
+    <string name="item1OrderQnty">10 kgs</string>
+    <string name="item1TotalPrice">900 LKR</string>
 
     <string name="item2Name">Tomato</string>
     <string name="item2Price">120 LKR/kg</string>
     <string name="item2BestBefore">23/03/2023</string>
     <string name="item2Description">Grown with organic fertilisers</string>
+    <string name="item2OrderQnty">8 kgs</string>
+    <string name="item2TotalPrice">960 LKR</string>
 
-    <string name="approveBtn">Approve</string>
+    <string name="approveBtn">Confirm</string>
     <string name="rejectBtn">Reject</string>
     <string name="editBtn">Edit</string>
     <string name="deleteBtn">Delete</string>
     <string name="addItem">New Item</string>
+    <string name="completeOrder">Completed</string>
+    <string name="PutBackStocl">Put Back</string>
 
 
 </resources>
