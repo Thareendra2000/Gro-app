@@ -5,5 +5,5 @@
         android:radius="20dp">
     </corners>
     <solid
-        android:color="@color/darkGreen"/>
+        android:color="@color/approveGreen"/>
 </shape>

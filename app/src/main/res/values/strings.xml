@@ -63,4 +63,17 @@
     <!--Browse Items-->
     <string name="results">3 results</string>
 
+
+    <!--Garden Items/Orders/Pick Ups-->
+    <string name="items">Items</string>
+    <string name="orders">Orders</string>
+    <string name="pickup">Pick Ups</string>
+    <string name="item1Name">Potato</string>
+    <string name="item1Price">90 LKR/kg</string>
+    <string name="item1BestBefore">26/03/2023</string>
+    <string name="item1Description">Grown with organic fertilisers</string>
+    <string name="approveBtn">Approve</string>
+    <string name="rejectBtn">Reject</string>
+
+
 </resources>

@@ -11,5 +11,7 @@
     <color name="darkGreen">#283618</color>
     <color name="lessDarkGreen">#DADADA</color>
     <color name="backgroundWhite">#F1F1F1</color>
+    <color name="approveGreen">#6a994e</color>
+    <color name="rejectRed">#bc4749</color>
 
 </resources>
