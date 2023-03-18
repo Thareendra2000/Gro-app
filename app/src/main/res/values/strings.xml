@@ -46,6 +46,19 @@
     <string name="cacti">Cacti</string>
     <string name="fruitTrees">Fruit Trees</string>
     <string name="plants">Plants</string>
+    
+    <!--Item Names-->
+    <string name="guava">Guava</string>
+
+    <!--Item Prices-->
+    <string name="guavePrice">LKR: 100.00</string>
+
+    <!--Item Add to Cart Values-->
+    <string name="add">+</string>
+    <string name="remove">-</string>
+    <string name="initialValue">1</string>
+    <string name="addToCart">Add 1 to Cart * LKR: 100.00</string>
+    <string name="hintSpecial">Add a note (extra packaging, no bag, etc.)</string>
 
     <!--Browse Items-->
     <string name="results">3 results</string>
