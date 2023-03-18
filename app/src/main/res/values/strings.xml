@@ -13,8 +13,11 @@
     <string name="businessContactNoEx">071 234 5678</string>
     <string name="businessEmail">Email</string>
     <string name="businessEmailEx">hakuna@hotmail.com</string>
+    <string name="businessDescription">Description</string>
+    <string name="businessDescriptionEx">Add your Business Description Here</string>
     <string name="businessProducts">Products</string>
     <string name="businessProduct1">Fertiliser - Organic</string>
     <string name="businessProduct2">Fertiliser - Artificial</string>
+    <string name="addProductsBtn">Add Products</string>
     <string name="publishBtn">Publish</string>
 </resources>
