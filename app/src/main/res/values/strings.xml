@@ -62,7 +62,8 @@
 
     <!--Browse Items-->
     <string name="results">3 results</string>
-
+    <string name="itemsCount">44 Results</string>
+    <string name="ratings">4.5 Ratings</string>
 
     <!--Garden Items/Orders/Pick Ups-->
     <string name="chooseCategory">Choose Category</string>
@@ -90,6 +91,7 @@
     <string name="addItem">New Item</string>
     <string name="completeOrder">Completed</string>
     <string name="PutBackStocl">Put Back</string>
+
 
 
 </resources>
