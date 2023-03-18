@@ -7,6 +7,4 @@
     </corners>
     <solid
         android:color="@color/darkGreen"/>
-
-
 </shape>
