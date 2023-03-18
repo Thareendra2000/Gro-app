@@ -36,19 +36,32 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/border"
-        android:orientation="vertical"
-        android:padding="5dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/fourdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addYourBusiness">
 
         <EditText
             android:id="@+id/businessName"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="48dp"
             android:inputType="textPersonName"
             android:text="@string/businessNameEx"
             android:textColor="@color/darkGreen"
             android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/baseline_add_24" />
+        </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
