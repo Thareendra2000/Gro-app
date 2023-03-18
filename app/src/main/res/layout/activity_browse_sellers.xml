@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BrowseSellersActivity">
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/browseSellersTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/browseSellers"
+        android:textColor="@color/darkGreen"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/browseSellersTitle">
+
+        <LinearLayout
+            android:id="@+id/dummyData01"
+            android:layout_marginBottom="@dimen/fourdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/buttonborder"
+            android:padding="@dimen/fourdp">
+            <TextView
+                android:id="@+id/businessName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/businessNameEx"
+                android:textColor="@color/darkGreen"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/businessOwner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/businessOwnerEx"
+                android:textColor="@color/darkGreen"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/businessLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/businessLocationEx"
+                android:textColor="@color/darkGreen"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dummyData02"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/buttonborder"
+            android:padding="@dimen/fourdp"
+            android:layout_marginBottom="@dimen/fourdp">
+            <TextView
+                android:id="@+id/businessName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/businessNameEx"
+                android:textColor="@color/darkGreen"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/businessOwner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/businessOwnerEx"
+                android:textColor="@color/darkGreen"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/businessLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/businessLocationEx"
+                android:textColor="@color/darkGreen"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

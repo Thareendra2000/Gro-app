@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name" translatable="false">GroApp</string>
 
+    <!--Home-->
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="account">Account</string>
+    <string name="avrgSessionText">Average Session</string>
+    <string name="avrgSessionEx">2h 34m /day</string>
+    <string name="goalText">Session Goal</string>
+    <string name="goalEx">3h /day</string>
+
     <!--Add Business Page-->
     <string name="addBusiness">Add Your Business</string>
     <string name="businessName">Business Name</string>
@@ -24,5 +34,8 @@
     <!--Add Products Page-->
     <string name="AddProducts">Add Products</string>
     <string name="publishBtn">Publish</string>
+
+    <!---Browse Sellers-->
+    <string name="browseSellers">Browse Sellers</string>
 
 </resources>
