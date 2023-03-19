@@ -260,7 +260,7 @@
                 android:id="@+id/cartText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cart"
+                android:text="@string/market"
                 android:textAlignment="center"
                 android:textColor="@color/darkGreen"
                 android:textSize="12sp" />
