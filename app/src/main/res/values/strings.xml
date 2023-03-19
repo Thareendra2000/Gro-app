@@ -3,7 +3,8 @@
 
     <!--Home-->
     <string name="home">Home</string>
-    <string name="cart">Marketplace</string>
+    <string name="cart">My Cart</string>
+    <string name="market">Market Place</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="account">Account</string>
     <string name="avrgSessionText">Average Session</string>
@@ -13,6 +14,10 @@
     <string name="nearbyGardens">Nearby Gardens</string>
     <string name="gardenName">Pittugala Community Garden</string>
     <string name="gardenLocation">Pittugala, Malabe</string>
+
+    <string name="pickUpsOwner">Peter Parker</string>
+    <string name="pickUpsAddress">Malabe Road, Kaduwela</string>
+    <string name="pickUpsContact">0763322132</string>
 
 
     <!--Add Business Page-->
@@ -68,8 +73,9 @@
     <!--Garden Items/Orders/Pick Ups-->
     <string name="chooseCategory">Choose Category</string>
     <string name="items">Items</string>
-    <string name="orders">Orders</string>
+    <string name="completed">Completed</string>
     <string name="pickup">Pick Ups</string>
+    <string name="pending">Pending</string>
     <string name="item1Name">Potato</string>
     <string name="item1Price">90 LKR/kg</string>
     <string name="item1Unit">kilograms</string>
