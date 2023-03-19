@@ -12,7 +12,7 @@
         android:theme="@style/Theme.GroApp"
         tools:targetApi="31">
         <activity
-            android:name=".RateItemActivity"
+            android:name=".CartPendingActivity"
             android:exported="true">
 
             <intent-filter>
@@ -21,6 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CartCompletedActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".RateItemActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".EditDeleteItemActivity"
             android:exported="false" />
@@ -35,8 +42,7 @@
             android:exported="true" />
         <activity
             android:name=".ManageItemsActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".BrowseItemsActivity"
             android:exported="true" />
