@@ -120,7 +120,7 @@
                 android:background="@drawable/filledbutton"
                 android:orientation="horizontal"
                 android:padding="5dp"
-                app:layout_constraintBottom_toStartOf="@id/ForgotPasswordText"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/passwordBoxLayout"
