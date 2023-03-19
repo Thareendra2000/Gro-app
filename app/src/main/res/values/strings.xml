@@ -20,12 +20,10 @@
     <string name="addProductsBtn">Add Products</string>
 
 
-
-
     <!--Home-->
     <string name="home">Home</string>
     <string name="cart">My Cart</string>
-    <string name="market">Market Place</string>
+    <string name="market">Market</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="account">Account</string>
     <string name="avrgSessionText">Average Session</string>
@@ -39,7 +37,6 @@
     <string name="pickUpsOwner">Peter Parker</string>
     <string name="pickUpsAddress">Malabe Road, Kaduwela</string>
     <string name="pickUpsContact">0763322132</string>
-
 
 
     <!---Browse Category-->
@@ -141,5 +138,14 @@
     <!-- Notifications -->
     <string name="notification">Notifications</string>
     <string name="markAllAsRead">Mark All As Read</string>
+
+    <!--Login-->
+    <string name="login">Log in</string>
+    <string name="email">Email</string>
+    <string name="emailEx">example@email.com</string>
+    <string name="password">Password</string>
+    <string name="passwordEx">********</string>
+    <string name="createAccount">Don\'t have an account? Sign Up</string>
+    <string name="forgotPassword">Forgot Passsword?</string>
 
 </resources>
