@@ -61,4 +61,18 @@
     <string name="cgUpdatebtn">Update</string>
     <string name="cgResetbtn">Reset</string>
 
+    <!--A Community Garden-->
+    <string name="sharebtn">Share</string>
+    <string name="volunteerbtn">Volunteer</string>
+    <string name="Locationlink">Location Link</string>
+    <string name="DescriptionEx">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in sem diam. Suspendisse sit amet elit lectus. In et cursus mi, vel sollicitudin dui. Vestibulum pulvinar molestie vestibulum. Donec sit amet cursus elit. Sed et sagittis augue, sed ornare nisl. Nunc risus metus, dapibus ut fringilla vel, varius sit amet nisi.</string>
+    <!--community garden List-->
+    <string name="cgListSearch">Search</string>
+    <string name="cgListArea">1.4 acre</string>
+    
+    <!--    Analytics-->
+    <string name="aTitle">Analytics</string>
+    <string name="aNoOfGardens">Total No of Gardens</string>
+    <string name="aNoOfVolunteers">Total No of Volunteers</string>
+    <string name=""
 </resources>
