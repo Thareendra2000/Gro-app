@@ -69,10 +69,9 @@
     <!--community garden List-->
     <string name="cgListSearch">Search</string>
     <string name="cgListArea">1.4 acre</string>
-    
+
     <!--    Analytics-->
     <string name="aTitle">Analytics</string>
     <string name="aNoOfGardens">Total No of Gardens</string>
     <string name="aNoOfVolunteers">Total No of Volunteers</string>
-    <string name=""
 </resources>
