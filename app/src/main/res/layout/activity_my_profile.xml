@@ -166,7 +166,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/thirtysixDP"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
@@ -175,6 +175,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AccountDPLayout"
         app:layout_constraintVertical_bias="0.5">
+
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/twelveDP"
+            android:layout_weight="1"
+            android:text="@string/NameEx"
+            android:textAlignment="center"
+            android:textColor="@color/darkGreen"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/twelveDP"
+            android:layout_weight="1"
+            android:text="@string/emailEx"
+            android:textAlignment="center"
+            android:textColor="@color/darkGreen"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/twelveDP"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/darkGreen"
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
