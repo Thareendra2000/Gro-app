@@ -12,9 +12,11 @@
         android:theme="@style/Theme.GroApp"
         tools:targetApi="31">
         <activity
+            android:name=".MyProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +31,7 @@
             android:exported="false" />
         <activity
             android:name=".MarketPlaceAddItemToCartActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MarketPlaceActivity"
             android:exported="false" />

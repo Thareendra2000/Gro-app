@@ -143,6 +143,7 @@
             android:textColor="@color/darkGreen"
             android:textSize="24sp" />
     </LinearLayout>
+
     <!-- Results -->
     <LinearLayout
         android:id="@+id/SwappingButtonsLayout"
