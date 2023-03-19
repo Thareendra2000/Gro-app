@@ -61,9 +61,14 @@
     <!--Item Add to Cart Values-->
     <string name="add">+</string>
     <string name="remove">-</string>
+    <string name="delete">Delete</string>
+    <string name="checkout">Checkout</string>
     <string name="initialValue">1</string>
     <string name="addToCart">Add 1 to Cart * LKR: 100.00</string>
     <string name="hintSpecial">Add a note (extra packaging, no bag, etc.)</string>
+    <string name="orderSuccessHeading">Order placed successfully!</string>
+    <string name="orderSuccessContent">You will be notified pick up details once the owner approved the order...</string>
+    <string name="orderSuccessGoBack">Explore More</string>
 
     <!--Browse Items-->
     <string name="results">3 results</string>
