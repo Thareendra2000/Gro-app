@@ -12,10 +12,22 @@
         android:theme="@style/Theme.GroApp"
         tools:targetApi="31">
         <activity
-            android:name=".NotificationActivity"
+            android:name=".ScreenshotShortcutActivity"
             android:exported="false" />
         <activity
-            android:name=".CartPendingActivity"
+            android:name=".MarketPlaceAddItemToCartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarketPlaceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarketBrowseGardenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarketBrowseCategoryItemsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartPickUpsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,8 +36,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CartCompletedActivity"
+            android:name=".CartPendingCheckoutSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartPendingCheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartPendingActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".CartCompletedActivity"
+            android:exported="true" />
         <activity
             android:name=".RateItemActivity"
             android:exported="true" />
@@ -45,19 +69,7 @@
             android:name=".ManageItemsActivity"
             android:exported="true" />
         <activity
-            android:name=".BrowseItemsActivity"
-            android:exported="true" />
-        <activity
             android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BrowseCategoryActivity"
-            android:exported="true" />
-        <activity
-            android:name=".BrowseSellersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
