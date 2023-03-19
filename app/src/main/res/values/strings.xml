@@ -72,9 +72,11 @@
     <string name="pickup">Pick Ups</string>
     <string name="item1Name">Potato</string>
     <string name="item1Price">90 LKR/kg</string>
+    <string name="item1Unit">kilograms</string>
     <string name="item1BestBefore">26/03/2023</string>
     <string name="item1Description">Grown with organic fertilisers</string>
     <string name="item1OrderQnty">10 kgs</string>
+    <string name="item1Qnty">12 kgs</string>
     <string name="item1TotalPrice">900 LKR</string>
 
     <string name="item2Name">Tomato</string>
@@ -92,6 +94,20 @@
     <string name="completeOrder">Completed</string>
     <string name="PutBackStocl">Put Back</string>
 
+    <!--Add Item-->
+    <string name="itemName">Item Name</string>
+    <string name="category">Category</string>
+    <string name="photo">Image</string>
+    <string name="unit">Unit</string>
+    <string name="unitPrice">Unit Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="bestBefore">Best Before</string>
+    <string name="description">Description</string>
 
+    <string name="addtoTheStock">Add item to the Stock</string>
+    <string name="deleteItem">Delete</string>
+    <string name="updateItem">Update</string>
+    <string name="uploadMedia">Add Media</string>
+    <string name="editMedia">Edit Media</string>
 
 </resources>
