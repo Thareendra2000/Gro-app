@@ -145,7 +145,15 @@
     <string name="emailEx">example@email.com</string>
     <string name="password">Password</string>
     <string name="passwordEx">********</string>
-    <string name="createAccount">Don\'t have an account? Sign Up</string>
+    <string name="createAccount">Don\'t have an account? Sign up</string>
     <string name="forgotPassword">Forgot Passsword?</string>
+
+
+    <!--Sign Up-->
+    <string name="signUp">Sign up</string>
+    <string name="loginAccount">Already have an account? Log in</string>
+    <string name="Name">Name</string>
+    <string name="NameEx">Peter Parker</string>
+    <string name="confirmPassword">Re-Type Password</string>
 
 </resources>
