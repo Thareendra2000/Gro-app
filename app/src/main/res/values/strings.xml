@@ -135,4 +135,8 @@
     <string name="rated">Rated</string>
 
 
+    <!-- Notifications -->
+    <string name="notification">Notifications</string>
+    <string name="markAllAsRead">Mark All As Read</string>
+
 </resources>
