@@ -237,7 +237,7 @@
                 <LinearLayout
                     android:id="@+id/ItemCardDetails"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="7"
                     android:layout_margin="@dimen/fourdp">
@@ -275,13 +275,23 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
-                <!--Approve Reject Btns-->
+                <!--rate Btns-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_margin="@dimen/fourdp"
-                    android:layout_weight="1"/>
+                    android:layout_marginBottom="@dimen/fourdp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/thirtysixDP"
+                        android:background="@drawable/buttonborder"
+                        android:text="@string/rateBtn"
+                        android:textAllCaps="false"
+                        android:textColor="@color/darkGreen"
+                        app:backgroundTint="@color/lessDarkGreen" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

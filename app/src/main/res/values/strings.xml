@@ -84,10 +84,18 @@
     <string name="item1OrderQnty">10 kgs</string>
     <string name="item1Qnty">12 kgs</string>
     <string name="item1TotalPrice">900 LKR</string>
+    <string name="item1OrderedOn">17/03/2023</string>
+    <string name="item1OrderConfirmed">17/03/2023</string>
+    <string name="item1OrderPickedUp">18/03/2023</string>
+
+    <string name="OrderedOn">Order Placed On</string>
+    <string name="OrderConfirmed">Order Confirmed On</string>
+    <string name="rderPickedUp">Order Picked Up On</string>
+    <string name="orderQnty">Order Quantity</string>
 
     <string name="item2Name">Tomato</string>
     <string name="item2Price">120 LKR/kg</string>
-    <string name="item2BestBefore">23/03/2023</string>
+    <string name="item2BestBefore">3/03/2023</string>
     <string name="item2Description">Grown with organic fertilisers</string>
     <string name="item2OrderQnty">8 kgs</string>
     <string name="item2TotalPrice">960 LKR</string>
@@ -115,5 +123,11 @@
     <string name="updateItem">Update</string>
     <string name="uploadMedia">Add Media</string>
     <string name="editMedia">Edit Media</string>
+
+    <!--Completed Orders-->
+    <string name="rateBtn">Rate</string>
+    <string name="rateItem">Rate Order</string>
+    <string name="rated">Rated</string>
+
 
 </resources>
