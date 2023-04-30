@@ -12,6 +12,15 @@
         android:theme="@style/Theme.MADProject"
         tools:targetApi="31">
         <activity
+            android:name=".DeleteGarden"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateComGarden"
+            android:exported="false" />
+        <activity
+            android:name=".MyGardens"
+            android:exported="false" />
+        <activity
             android:name=".AnalyticsPage"
             android:exported="false" />
         <activity
@@ -19,12 +28,6 @@
             android:exported="false" />
         <activity
             android:name=".AComGarden"
-            android:exported="false" />
-        <activity
-            android:name=".AddComGarden"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateComGarden"
             android:exported="false" />
         <activity
             android:name=".AddProduction"
@@ -36,7 +39,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MyGardens"
+            android:name=".AddComGarden"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

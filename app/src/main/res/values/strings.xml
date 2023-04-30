@@ -1,18 +1,12 @@
 <resources>
     <string name="app_name">GroApp</string>
 
-    <!--Home-->
+    <!--Bottom Nav Bar-->
     <string name="home">Home</string>
-    <string name="explore">Explore</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="account">Account</string>
-    <string name="avrgSessionText">Average Session</string>
-    <string name="avrgSessionEx">2h 34m /day</string>
-    <string name="goalText">Session Goal</string>
-    <string name="goalEx">3h /day</string>
-    <string name="nearbyGardens">Nearby Gardens</string>
-    <string name="homeG1ardenName">Pittugala Community Garden</string>
-    <string name="gardenLocation">Pittugala, Malabe</string>
+    <string name="market">Market</string>
+
 
     <!--Add Business Page-->
     <string name="addBusiness">Add Your Business</string>
@@ -66,6 +60,7 @@
     <string name="volunteerbtn">Volunteer</string>
     <string name="Locationlink">Location Link</string>
     <string name="DescriptionEx">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in sem diam. Suspendisse sit amet elit lectus. In et cursus mi, vel sollicitudin dui. Vestibulum pulvinar molestie vestibulum. Donec sit amet cursus elit. Sed et sagittis augue, sed ornare nisl. Nunc risus metus, dapibus ut fringilla vel, varius sit amet nisi.</string>
+
     <!--community garden List-->
     <string name="cgListSearch">Search</string>
     <string name="cgListArea">1.4 acre</string>

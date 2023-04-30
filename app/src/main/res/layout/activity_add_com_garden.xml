@@ -352,13 +352,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/explore_icon" />
+                app:srcCompat="@drawable/baseline_shopping_cart" />
 
             <TextView
                 android:id="@+id/exploreText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/explore"
+                android:text="@string/market"
                 android:textAlignment="center"
                 android:textColor="@color/darkGreen"
                 android:textSize="12sp" />
