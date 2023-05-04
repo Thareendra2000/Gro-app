@@ -17,7 +17,6 @@ import kotlinx.coroutines.runBlocking
 
 class UserRepository {
     var usersRef = FirebaseDatabase.getInstance().reference.child("users")
-
     fun getAllUsers(callback: (List<User>) -> Unit) {
         var users = mutableListOf<User>()
 
@@ -58,18 +57,30 @@ class UserRepository {
          var message : String = ""
          val response = Response(userId, result, message)
 
-         user.id = userId
-         usersRef.child(userId).setValue(user)
-            .addOnSuccessListener {
-                Log.i("Success" , "User account for ${user.email} created successfully ")
-                response.result = true
-                response.message = "User created successfully"
+        var userEmails : List<String>;
+        getAllUsers() { users ->
+            userEmails = users.map { user -> user.email }
+
+            if (!(user.email in userEmails)){
+                user.id = userId
+                usersRef.child(userId).setValue(user)
+                    .addOnSuccessListener {
+                        Log.i("Success" , "User account for ${user.email} created successfully ")
+                        response.result = true
+                        response.message = "User created successfully"
+                        callback(response)
+                    }
+                    .addOnFailureListener { err ->
+                        Log.w("Error" , err.message.toString())
+                        response.message = err.localizedMessage
+                        callback(response)
+                    }
+            }
+            else{
+                response.result = false;
+                response.message = "Already registered with this email"
                 callback(response)
             }
-            .addOnFailureListener { err ->
-                Log.w("Error" , err.message.toString())
-                response.message = err.localizedMessage
-                callback(response)
-            }
+        }
     }
 }

@@ -59,7 +59,6 @@ class LoginActivity : AppCompatActivity() {
         password = passwordBox.text.toString()
 
         var userEmails : List<String>;
-
         if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
             userRepository.getAllUsers() { users ->
                 userEmails = users.map { user -> user.email }
