@@ -3,15 +3,13 @@ package com.example.groapp.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.groapp.Model.CategoryModel
 import com.example.groapp.R
+import com.example.groapp.Model.ProductModel
 
-class CategoryAdapter(private val productList: ArrayList<CategoryModel>) :
-    RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class BrowseCategoryItemAdapter(private val productList: ArrayList<ProductModel>) :
+    RecyclerView.Adapter<BrowseCategoryItemAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
@@ -24,17 +22,16 @@ class CategoryAdapter(private val productList: ArrayList<CategoryModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.market_category_list, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_market_browse_category_items_item, parent, false)
         return ViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentEmp = productList[position]
-        holder.tvCatName.text = currentEmp.name
-        holder.tvCatDescription.text = currentEmp.description
-        Glide.with(holder.itemView.context)
-            .load(currentEmp.image)
-            .into(holder.tvCatImage)
+        val currentData = productList[position]
+        holder.tvItemName.text = currentData.name
+        holder.tvItemDescription.text = currentData.description
+        holder.tvItemPrice.text =  currentData.unit_price + " per " + currentData.unit
+        holder.tvItemBestBefore.text = currentData.best_before
     }
 
     override fun getItemCount(): Int {
@@ -42,17 +39,15 @@ class CategoryAdapter(private val productList: ArrayList<CategoryModel>) :
     }
 
     class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
-
-        val tvCatName : TextView = itemView.findViewById(R.id.tvCatName)
-        val tvCatDescription : TextView = itemView.findViewById(R.id.tvCatDescription)
-        val tvCatImage : ImageView = itemView.findViewById(R.id.tvCatImage)
+        val tvItemName : TextView = itemView.findViewById(R.id.tvItemName)
+        val tvItemDescription : TextView = itemView.findViewById(R.id.tvItemDescription)
+        val tvItemPrice : TextView = itemView.findViewById(R.id.tvItemPrice)
+        val tvItemBestBefore : TextView = itemView.findViewById(R.id.tvItemBestBefore)
 
         init {
             itemView.setOnClickListener {
                 clickListener.onItemClick(adapterPosition)
             }
         }
-
     }
-
 }

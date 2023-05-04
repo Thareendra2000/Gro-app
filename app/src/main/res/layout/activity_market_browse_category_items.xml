@@ -1,12 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- sapumal -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundWhite"
-    tools:context=".ManageItemsActivity">
+    tools:context=".MarketPlace.MarketBrowseCategoryItemsActivity">
+
+    <!--Back & Title-->
+    <LinearLayout
+        android:id="@+id/BackAndTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/catNameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:text="@string/fruits"
+            android:textColor="@color/darkGreen"
+            android:textSize="24sp" />
+    </LinearLayout>
+    <!-- Results -->
+    <LinearLayout
+        android:id="@+id/resultsButtonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
+
+
+        <Button
+            android:id="@+id/resultsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fourdp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonborder"
+            android:clickable="false"
+            android:text="@string/itemsCount"
+            android:textColor="@color/darkGreen"
+            app:backgroundTint="@color/backgroundWhite" />
+
+    </LinearLayout>
+
+    <!-- items -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBrowseItem"
+        android:layout_width="369dp"
+        android:layout_height="574dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultsButtonLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/activity_market_browse_category_items_item" />
+
+    <TextView
+        android:id="@+id/tvLoadingData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading Data....."
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--Bottom NavBar-->
     <LinearLayout
@@ -113,348 +200,6 @@
                 android:textColor="@color/darkGreen"
                 android:textSize="12sp" />
         </LinearLayout>
-
-    </LinearLayout>
-    <!--Back & Title-->
-    <LinearLayout
-        android:id="@+id/BackAndTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/backImg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
-
-        <TextView
-            android:id="@+id/catNameTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:text="@string/fruits"
-            android:textColor="@color/darkGreen"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <!-- Results -->
-    <LinearLayout
-        android:id="@+id/SwappingButtonsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fourdp"
-            android:layout_weight="1"
-            android:background="@drawable/buttonborder"
-            android:text="@string/itemsCount"
-            android:clickable="false"
-            android:textColor="@color/darkGreen"
-            app:backgroundTint="@color/backgroundWhite" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="541dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SwappingButtonsLayout">
-
-        <!--Single Item Card-->
-        <LinearLayout
-            android:id="@+id/ItemCardWithApproveRejectButton"
-            android:layout_marginBottom="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/fourdp"
-            android:paddingBottom="@dimen/fourdp"
-            android:background="@drawable/card_bg_unfilled">
-
-            <!--Item Image-->
-            <LinearLayout
-                android:id="@+id/itemImageLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/eightdp"
-                android:orientation="horizontal"
-                android:background="@drawable/card_bg_unfilled"
-                android:layout_weight="2">
-
-            </LinearLayout>
-
-            <!--Item details & controls-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
-
-                <!--Item Details-->
-                <LinearLayout
-                    android:id="@+id/ItemCardDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="7"
-                    android:layout_margin="@dimen/fourdp">
-
-                    <TextView
-                        android:id="@+id/itemName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/guava"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/item1Description"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/item1Price"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemBestBefore"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/item1BestBefore"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <!--Ratings-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/fourdp"
-                    android:layout_weight="1">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/fourdp"
-                        android:background="@drawable/aprove_button"
-                        android:textColor="@color/backgroundWhite"
-                        android:text="@string/ratings"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-        <!--Single Item Card-->
-        <LinearLayout
-            android:id="@+id/ItemCardWithApproveRejectButton"
-            android:layout_marginBottom="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/fourdp"
-            android:paddingBottom="@dimen/fourdp"
-            android:background="@drawable/card_bg_unfilled">
-
-            <!--Item Image-->
-            <LinearLayout
-                android:id="@+id/itemImageLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/eightdp"
-                android:orientation="horizontal"
-                android:background="@drawable/card_bg_unfilled"
-                android:layout_weight="2">
-
-            </LinearLayout>
-
-            <!--Item details & controls-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
-
-                <!--Item Details-->
-                <LinearLayout
-                    android:id="@+id/ItemCardDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="7"
-                    android:layout_margin="@dimen/fourdp">
-
-                    <TextView
-                        android:id="@+id/itemName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/guava"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/item1Description"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/item1Price"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemBestBefore"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/item1BestBefore"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <!--Ratings-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/fourdp"
-                    android:layout_weight="1">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/fourdp"
-                        android:background="@drawable/aprove_button"
-                        android:textColor="@color/backgroundWhite"
-                        android:text="@string/ratings"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-        <!--Single Item Card-->
-        <LinearLayout
-            android:id="@+id/ItemCardWithApproveRejectButton"
-            android:layout_marginBottom="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/fourdp"
-            android:paddingBottom="@dimen/fourdp"
-            android:background="@drawable/card_bg_unfilled">
-
-            <!--Item Image-->
-            <LinearLayout
-                android:id="@+id/itemImageLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/eightdp"
-                android:orientation="horizontal"
-                android:background="@drawable/card_bg_unfilled"
-                android:layout_weight="2">
-
-            </LinearLayout>
-
-            <!--Item details & controls-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
-
-                <!--Item Details-->
-                <LinearLayout
-                    android:id="@+id/ItemCardDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="7"
-                    android:layout_margin="@dimen/fourdp">
-
-                    <TextView
-                        android:id="@+id/itemName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/guava"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/item1Description"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/item1Price"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemBestBefore"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/item1BestBefore"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <!--Ratings-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/fourdp"
-                    android:layout_weight="1">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/fourdp"
-                        android:background="@drawable/aprove_button"
-                        android:textColor="@color/backgroundWhite"
-                        android:text="@string/ratings"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

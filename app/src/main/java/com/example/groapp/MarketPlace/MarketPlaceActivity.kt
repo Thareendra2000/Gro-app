@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.Adapter.CategoryAdapter
-import com.example.groapp.EmployeeDetailsActivity
 import com.example.groapp.Model.CategoryModel
 import com.example.groapp.R
 import com.google.firebase.database.*
@@ -43,26 +42,23 @@ class MarketPlaceActivity : AppCompatActivity() {
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 catList.clear()
-                if (snapshot.exists()){
-                    for (empSnap in snapshot.children){
+                if (snapshot.exists()) {
+                    for (empSnap in snapshot.children) {
                         val catData = empSnap.getValue(CategoryModel::class.java)
                         catList.add(catData!!)
                     }
                     val mAdapter = CategoryAdapter(catList)
                     catRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
-
-                            val intent = Intent(this@MarketPlaceActivity, MarketBrowseCategoryItemsActivity::class.java)
+                            val intent = Intent(
+                                this@MarketPlaceActivity,
+                                MarketBrowseCategoryItemsActivity::class.java
+                            )
                             intent.putExtra("catName", catList[position].name)
-//                            intent.putExtra("empId", empList[position].empId)
-//                            intent.putExtra("empName", empList[position].empName)
-//                            intent.putExtra("empAge", empList[position].empAge)
-//                            intent.putExtra("empSalary", empList[position].empSalary)
                             startActivity(intent)
                         }
-
                     })
 
                     catRecyclerView.visibility = View.VISIBLE
