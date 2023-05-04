@@ -51,6 +51,7 @@
     <string name="cacti">Cacti</string>
     <string name="fruitTrees">Fruit Trees</string>
     <string name="plants">Plants</string>
+    <string name="fruits_description">fruits description</string>
 
     <!--Item Names-->
     <string name="guava">Guava</string>

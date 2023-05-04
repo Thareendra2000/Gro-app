@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,45 +21,46 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" >
         </activity>
         <activity
             android:name=".ScreenshotShortcutActivity"
             android:exported="false" />
         <activity
-            android:name=".MarketPlaceAddItemToCartActivity"
-            android:exported="false"></activity>
+            android:name=".MarketPlace.MarketPlaceAddItemToCartActivity"
+            android:exported="false">
+        </activity>
         <activity
-            android:name=".MarketPlaceActivity"
+            android:name=".MarketPlace.MarketPlaceActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MarketPlace.MarketBrowseGardenActivity"
             android:exported="false" />
         <activity
-            android:name=".MarketBrowseGardenActivity"
+            android:name=".MarketPlace.MarketBrowseCategoryItemsActivity"
             android:exported="false" />
         <activity
-            android:name=".MarketBrowseCategoryItemsActivity"
+            android:name=".Cart.CartPickUpsActivity"
             android:exported="false" />
         <activity
-            android:name=".CartPickUpsActivity"
+            android:name=".Cart.CartPendingCheckoutSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".CartPendingCheckoutSuccessActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CartPendingCheckoutActivity"
+            android:name=".Cart.CartPendingCheckoutActivity"
             android:exported="false" />
         <activity
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".CartPendingActivity"
+            android:name=".Cart.CartPendingActivity"
             android:exported="false" />
         <activity
-            android:name=".CartCompletedActivity"
+            android:name=".Cart.CartCompletedActivity"
             android:exported="false" />
         <activity
             android:name=".RateItemActivity"
@@ -85,6 +86,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity android:name=".EmployeeDetailsActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
