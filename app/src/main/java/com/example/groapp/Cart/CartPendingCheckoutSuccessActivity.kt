@@ -1,7 +1,8 @@
-package com.example.groapp
+package com.example.groapp.Cart
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.groapp.R
 
 class CartPendingCheckoutSuccessActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
