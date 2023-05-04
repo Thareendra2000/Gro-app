@@ -132,6 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:text="@string/passwordEx"
+                    android:inputType="textPassword"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -171,6 +172,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:text="@string/passwordEx"
+                    android:inputType="textPassword"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -207,7 +209,7 @@
                 app:layout_constraintVertical_bias="0.5">
 
                 <Button
-                    android:id="@+id/addProductsBtn"
+                    android:id="@+id/signUpBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/signUp"
