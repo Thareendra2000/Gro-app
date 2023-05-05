@@ -64,7 +64,7 @@ app:cardElevation="8dp">
                     android:layout_height="wrap_content"
                     android:text="@string/item1Description"
                     android:textColor="@color/darkGreen"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvItemPrice"
@@ -72,7 +72,7 @@ app:cardElevation="8dp">
                     android:layout_height="wrap_content"
                     android:text="@string/item1Price"
                     android:textColor="@color/darkGreen"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvItemBestBefore"
@@ -104,4 +104,5 @@ app:cardElevation="8dp">
     </LinearLayout>
 
 </LinearLayout>
+
 </androidx.cardview.widget.CardView>
