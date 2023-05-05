@@ -12,21 +12,23 @@ import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 import com.google.firebase.database.*
 
-class GardenListActivity : AppCompatActivity() {
+class MyGardensActivity : AppCompatActivity() {
 
     private lateinit var gardenRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var gardenList: ArrayList<GardenModel>
     private lateinit var dbRef: DatabaseReference
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_garden_list)
+        setContentView(R.layout.activity_my_gardens)
 
-        gardenRecyclerView = findViewById(R.id.rvGarden)
+        gardenRecyclerView = findViewById(R.id.rvMyGarden)
         gardenRecyclerView.layoutManager = LinearLayoutManager(this)
         gardenRecyclerView.setHasFixedSize(true)
-        tvLoadingData = findViewById(R.id.tvLoadingData)
+        tvLoadingData = findViewById(R.id.tvMyGardensLoadingData)
 
         gardenList = arrayListOf<GardenModel>()
 
@@ -60,15 +62,15 @@ class GardenListActivity : AppCompatActivity() {
                     mAdapter.setOnItemClickListener(object : GardenAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@GardenListActivity,  GardenDetailsVolunteerViewActivity::class.java)
+                            val intent = Intent(this@MyGardensActivity,  GardenDetailsOwnerViewActivity::class.java)
 
                             //put extras
                             intent.putExtra("gardenId", gardenList[position].gardenId)
-                            intent.putExtra("gardenName", gardenList[position].name)
-                            intent.putExtra("gardenArea", gardenList[position].area)
-                            intent.putExtra("gardenAddress", gardenList[position].address)
-                            intent.putExtra("gardenDescription", gardenList[position].description)
-                            intent.putExtra("gardenPhoneNo", gardenList[position].phoneNo)
+                            intent.putExtra("name", gardenList[position].name)
+                            intent.putExtra("area", gardenList[position].area)
+                            intent.putExtra("address", gardenList[position].address)
+                            intent.putExtra("description", gardenList[position].description)
+                            intent.putExtra("phoneNo", gardenList[position].phoneNo)
                             startActivity(intent)
                         }
 
@@ -85,4 +87,4 @@ class GardenListActivity : AppCompatActivity() {
 
         })
     }
-}
+    }

@@ -113,7 +113,7 @@
                 android:layout_marginRight="150dp"/>
 
             <ImageButton
-                android:id="@+id/addGardenBtn"
+                android:id="@+id/plusBtn"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="0dp"
