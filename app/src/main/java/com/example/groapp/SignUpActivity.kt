@@ -48,7 +48,6 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun handleSignUpBtnClick() {
-
         name = nameBox.text.toString()
         email = emailBox.text.toString()
         password1 = passwordBox.text.toString()
@@ -56,17 +55,17 @@ class SignUpActivity : AppCompatActivity() {
 
         var response : Pair<Boolean, String> = validateForm()
         if(response.first){
-
-            var responseDB : Response = userRepository.createUser(User(null, name, email, password1))
-            if(responseDB.result){
-                Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show()
-                val intent = Intent(this, HomeActivity::class.java);
-                pseudoCookie.setCookieValue("logged_user_id", responseDB.id)
-                startActivity(intent);
-                finish();
-            }
-            else{
-                Toast.makeText(this, responseDB.message, Toast.LENGTH_LONG).show()
+            userRepository.createUser(User(null, name, email, password1)){ res ->
+                if(res.result){
+                    Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, HomeActivity::class.java);
+                    pseudoCookie.setCookieValue("logged_user_id", res.id)
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Toast.makeText(this, res.message, Toast.LENGTH_LONG).show()
+                }
             }
         }else{
             Toast.makeText(this, response.second, Toast.LENGTH_LONG).show()

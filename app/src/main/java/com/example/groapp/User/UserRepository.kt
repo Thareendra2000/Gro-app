@@ -4,15 +4,20 @@ import android.util.Log
 import android.widget.Toast
 import com.example.groapp.Utils.CastToObject
 import com.example.groapp.Utils.Response
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.runBlocking
 
 class UserRepository {
     var usersRef = FirebaseDatabase.getInstance().reference.child("users")
-
-    fun getAllUsers() : List<User> {
+    fun getAllUsers(callback: (List<User>) -> Unit) {
         var users = mutableListOf<User>()
 
         val usersListener = object : ValueEventListener {
@@ -22,11 +27,14 @@ class UserRepository {
                         val usersSnapshot = dataSnapshot.value as HashMap<String, HashMap<String, String>>
                         for (user in usersSnapshot) {
                             var userObj = User()
+
                             for ((key, value) in user.value)
                                 userObj = CastToObject.toUser(userObj, key, value)
-                            Log.i(user.key, "${userObj.id} - ${userObj.email} - ${userObj.password}")
+                            //Log.i(user.key, "${userObj.id} - ${userObj.email} - ${userObj.password}")
+
                             users.add(userObj)
                         }
+                        callback(users)
                     }
                     Log.i("List", users.size.toString())
 
@@ -40,33 +48,39 @@ class UserRepository {
             }
         }
         usersRef.addValueEventListener(usersListener);
-
-        return users;
     }
 
 
-    fun createUser(user : User) : Response{
+    fun createUser(user : User, callback: (Response) -> Unit)  {
         val userId = usersRef.push().key!!
         var result : Boolean = false
         var message : String = ""
-        try {
-            user.id = userId
-            usersRef.child(userId).setValue(user)
-                .addOnSuccessListener{
-                    result = true;
-                    Log.i("Success" , "User account for ${user.email} created successfully ")
-                    message = "User created successfully"
-                }
-                .addOnFailureListener { err ->
-                    message = err.localizedMessage
-                    Log.w("Error" , err.message.toString())
-                }
-        } catch (ex : Exception){
-            message = ex.localizedMessage
-            Log.w("Error" , ex.message.toString())
-        }
-        Log.i("Response" , result.toString() + " " + message)
-        return Response(userId, result, message)
-    }
+        val response = Response(userId, result, message)
 
+        var userEmails : List<String>;
+        getAllUsers() { users ->
+            userEmails = users.map { user -> user.email }
+
+            if (!(user.email in userEmails)){
+                user.id = userId
+                usersRef.child(userId).setValue(user)
+                    .addOnSuccessListener {
+                        Log.i("Success" , "User account for ${user.email} created successfully ")
+                        response.result = true
+                        response.message = "User created successfully"
+                        callback(response)
+                    }
+                    .addOnFailureListener { err ->
+                        Log.w("Error" , err.message.toString())
+                        response.message = err.localizedMessage
+                        callback(response)
+                    }
+            }
+            else{
+                response.result = false;
+                response.message = "Already registered with this email"
+                callback(response)
+            }
+        }
+    }
 }
