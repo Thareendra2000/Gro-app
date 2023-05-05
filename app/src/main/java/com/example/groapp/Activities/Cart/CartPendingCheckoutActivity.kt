@@ -200,5 +200,4 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
             }, 1000)
         }
     }
-
 }
