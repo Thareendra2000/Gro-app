@@ -32,13 +32,20 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/tvCart"
+            android:layout_width="37dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/baseline_shopping_cart_24" />
+
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             app:srcCompat="@drawable/notification_icon" />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/BottomNavBar"
         android:layout_width="match_parent"
@@ -75,6 +82,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tvMarketPlace"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -144,7 +152,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
     <LinearLayout
         android:paddingTop="@dimen/eightdp"
         android:layout_width="match_parent"

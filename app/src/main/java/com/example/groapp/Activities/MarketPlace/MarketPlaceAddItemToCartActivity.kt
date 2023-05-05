@@ -3,27 +3,26 @@ package com.example.groapp.Activities.MarketPlace
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.groapp.Models.CartModel
 import com.example.groapp.R
+import com.example.groapp.Services.NotificationService
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
 class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
     private lateinit var backImg: ImageView
+
     private lateinit var prodId: String
     private lateinit var name: String
-    private lateinit var quantity: String
-    private lateinit var unit: String
-    private lateinit var unitPrice: String
-    private lateinit var gardenName: String
-    private lateinit var description: String
-    private lateinit var category: String
-    private lateinit var bestBefore: String
+    private lateinit var unit : String
+    private var quantity: Double = 0.0
+    private var unitPrice: Double = 0.0
 
     private lateinit var tvItemName : TextView
     private lateinit var tvItemPrice : TextView
@@ -53,13 +52,9 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
         if (extras != null) {
             prodId = extras.getString("prodId").toString()
             name = extras.getString("name").toString()
-            quantity = extras.getString("quantity").toString()
+            quantity = extras.getString("quantity")?.toDouble() ?: 0.0
             unit = extras.getString("unit").toString()
-            unitPrice = extras.getString("unitPrice").toString()
-            gardenName = extras.getString("gardenName").toString()
-            description = extras.getString("description").toString()
-            category = extras.getString("category").toString()
-            bestBefore = extras.getString("bestBefore").toString()
+            unitPrice = extras.getString("unitPrice")?.toDouble() ?: 0.0
         }
 
         tvItemName = findViewById(R.id.tvItemName)
@@ -105,11 +100,11 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
 
     private fun saveCartData(){
         val amount = itemCount
-        val total = unitPrice.toDouble() * amount
-        val userId = "1"
-        val productId = prodId.toInt() - 1
+        val total = unitPrice * amount
+        val userId = "-NUeURgCQxX2vHkhfi6z"
+        val productId = prodId
         val cartId = dbRef.push().key!!
-        val cart = CartModel(cartId, userId, productId.toString(), amount.toString(), total.toString(), Date(), "Pending")
+        val cart = CartModel(cartId, userId, productId, amount.toString(), total.toString(), Date(), "Pending")
 
         dbRef.child(cartId).setValue(cart)
             .addOnCompleteListener{
@@ -118,8 +113,15 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
                 val newAvailability = (quantity.toInt() - amount).toString()
                 val productsRef = FirebaseDatabase.getInstance().getReference("products")
                 val productUpdates = mapOf("quantity" to newAvailability)
-                productsRef.child(productId.toString()).updateChildren(productUpdates)
+                productsRef.child(productId).updateChildren(productUpdates)
 
+                val notificationService = NotificationService()
+                notificationService.saveNotifications("Item added to the cart", "test item has been added to the cart")
+
+                Handler().postDelayed({
+                    val intent = Intent(this, MarketPlaceActivity::class.java)
+                    startActivity(intent)
+                }, 1000)
             }
             .addOnFailureListener{
                 error -> Toast.makeText(this, "Error ${error.message}", Toast.LENGTH_LONG).show()
