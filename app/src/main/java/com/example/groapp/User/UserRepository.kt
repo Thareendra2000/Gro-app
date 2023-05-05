@@ -52,10 +52,10 @@ class UserRepository {
 
 
     fun createUser(user : User, callback: (Response) -> Unit)  {
-         val userId = usersRef.push().key!!
-         var result : Boolean = false
-         var message : String = ""
-         val response = Response(userId, result, message)
+        val userId = usersRef.push().key!!
+        var result : Boolean = false
+        var message : String = ""
+        val response = Response(userId, result, message)
 
         var userEmails : List<String>;
         getAllUsers() { users ->

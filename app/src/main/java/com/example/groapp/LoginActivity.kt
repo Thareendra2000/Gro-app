@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.example.groapp.User.UserRepository
 import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DatabaseReference
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var createAccountTv: TextView;
@@ -98,4 +99,5 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
 }

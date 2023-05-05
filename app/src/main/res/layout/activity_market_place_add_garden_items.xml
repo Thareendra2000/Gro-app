@@ -2,10 +2,12 @@
 <!-- sapumal -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroundWhite"
+    tools:context=".MarketPlace.MarketPlaceAddItemToCartActivity"
     >
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -21,7 +23,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/backImg"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -62,7 +64,7 @@
                 android:padding="@dimen/eightdp"
                 android:layout_margin="@dimen/fourdp">
                 <TextView
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/tvItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/guava"
@@ -74,7 +76,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp">
             <LinearLayout
                 android:id="@+id/averageSessionCard"
                 android:layout_width="match_parent"
@@ -84,11 +87,20 @@
                 android:padding="@dimen/eightdp"
                 android:layout_margin="@dimen/fourdp">
                 <TextView
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/tvItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/guavePrice"
                     android:textAlignment="center"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/tvAvailability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Availability: "
+                    android:textAlignment="textStart"
                     android:textColor="@color/darkGreen"
                     android:textSize="24sp" />
             </LinearLayout>
@@ -97,31 +109,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/averageSessionCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="@dimen/eightdp"
-                android:background="@drawable/border"
-                android:layout_margin="@dimen/fourdp">
-
-                <EditText
-                    android:id="@+id/avrgSesionEx"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:hint="@string/hintSpecial"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:orientation="horizontal">
             <LinearLayout
                 android:id="@+id/averageSessionCard"
@@ -134,7 +122,7 @@
                 android:layout_margin="@dimen/fourdp">
 
                 <Button
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/btnIncrease"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/add"
@@ -143,7 +131,7 @@
                     android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/averageSessionCard"
+                android:id="@+id/tvItemCountLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -153,7 +141,7 @@
                 android:layout_margin="@dimen/fourdp">
 
                 <TextView
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/tvItemCount"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/initialValue"
@@ -172,7 +160,7 @@
                 android:layout_margin="@dimen/fourdp">
 
                 <Button
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/btnDecrease"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
                     android:text="@string/remove"
@@ -182,31 +170,15 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btnAddCart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/averageSessionCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/cardbackground"
-                android:orientation="vertical"
-                android:padding="@dimen/eightdp"
-                android:layout_margin="@dimen/fourdp">
-
-                <TextView
-                    android:id="@+id/avrgSesionEx"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/addToCart"
-                    android:textAlignment="center"
-                    android:textColor="@color/backgroundWhite"
-                    android:textSize="24sp" />
-            </LinearLayout>
-        </LinearLayout>
+            android:text="@string/addToCart"
+            android:textAlignment="center"
+            android:layout_marginTop="150dp"
+            android:textColor="@color/backgroundWhite"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
