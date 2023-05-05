@@ -4,21 +4,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.widget.*
-import com.example.groapp.Models.CategoryModel
+import androidx.appcompat.app.AlertDialog
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
-import com.example.groapp.Utils.Response
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.example.groapp.Repositories.CategoryRespository
+import com.example.groapp.Repositories.ProductRepository
+import com.example.groapp.Utils.ProductValidations
+import com.google.android.play.integrity.internal.l
+import kotlinx.coroutines.channels.ProducerScope
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddItemActivity : AppCompatActivity() {
     private lateinit var categoryBox : Spinner;
     private lateinit var productNameBox : EditText;
-    private lateinit var unitBox : EditText;
+    private lateinit var unitBox : Spinner;
     private lateinit var unitPriceBox : EditText;
     private lateinit var bestBeforeBox: EditText;
     private lateinit var descriptionBox : EditText;
@@ -33,6 +35,10 @@ class AddItemActivity : AppCompatActivity() {
     private var description : String = "";
     private var quantity : Double = 0.0;
 
+    val productRepository = ProductRepository(this@AddItemActivity);
+    val categoryRepository = CategoryRespository(this@AddItemActivity);
+    val productValidations : ProductValidations = ProductValidations();
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item)
@@ -46,94 +52,172 @@ class AddItemActivity : AppCompatActivity() {
         quantityBox = findViewById(R.id.quantity)
         addItemBtn = findViewById(R.id.addItemBtn)
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("categories")
-        var categories = mutableListOf<String>()
-
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                categories.clear()
-
-                if (snapshot.exists()) {
-                    for (snap in snapshot.children) {
-                        val catData = snap.getValue(CategoryModel::class.java)
-                        categories.add(catData!!.name!!)
-                    }
-                }
-
-                Log.i("categories" , categories.toString())
-
-                ArrayAdapter(
-                    this@AddItemActivity,
-                    android.R.layout.simple_spinner_item,
-                    categories
-                ).also { adapter ->
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    categoryBox.adapter = adapter
-                }
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w("Error", error.message)
-            }
-        })
+        categoryRepository.getAllCategoriesForSpinner(categoryBox) { result ->
+            if(!result)
+                addItemBtn.isEnabled = false
+        }
 
         addItemBtn.setOnClickListener {
             handleAddItemBtnClick()
         }
 
+        bestBeforeBox.setOnFocusChangeListener { view, hasFocus ->
+            if(!hasFocus){
+                bestBeforeValidation()
+            }
+        }
+
+        productNameBox.setOnFocusChangeListener { view, hasFocus ->
+            if(!hasFocus){
+                productNameValidation()
+            }
+        }
+
+        descriptionBox.setOnFocusChangeListener { view, hasFocus ->
+            if(!hasFocus){
+                descriptionValidation()
+            }
+        }
+
+        unitPriceBox.setOnFocusChangeListener { view, hasFocus ->
+            if(!hasFocus){
+               unitPriceValidation()
+            }
+        }
+
+        quantityBox.setOnFocusChangeListener { view, hasFocus ->
+            if(!hasFocus){
+                quantityValidation()
+            }
+        }
+
+    }
+
+    fun productNameValidation() : Boolean{
+        if(productValidations.requiredCheck(productNameBox.text.toString())){
+            if(!productValidations.containsSpecialChar(productNameBox.text.toString())){
+                productName = productNameBox.text.toString()
+                return true
+            }
+            else
+                productNameBox.error = "Product Name cannot have special characters"
+        }
+        else
+            productNameBox.error = "Product Name is required"
+
+        productNameBox.setText("")
+        return false
+    }
+
+    fun descriptionValidation() : Boolean{
+        if(productValidations.requiredCheck(descriptionBox.text.toString())){
+            description = descriptionBox.text.toString()
+            return true
+        }
+        else
+            descriptionBox.error = "Description is required"
+
+        descriptionBox.setText("")
+        return false
+    }
+
+    fun unitPriceValidation() : Boolean{
+        if(productValidations.requiredCheck(unitPriceBox.text.toString())){
+            if(productValidations.doubleCheck(unitPriceBox.text.toString())){
+                unitPrice = unitPriceBox.text.toString().toDouble()
+                return true
+            }
+            else
+                unitPriceBox.error = "Unit Price must be a number"
+        }
+        else
+            unitPriceBox.error = "Unit Price is required"
+
+        unitPriceBox.setText("")
+        return false
+    }
+    fun quantityValidation() : Boolean{
+        if(productValidations.requiredCheck(quantityBox.text.toString())){
+            if(productValidations.doubleCheck(quantityBox.text.toString())){
+                quantity = quantityBox.text.toString().toDouble()
+                return true
+            }
+            else
+                quantityBox.error = "Quantity must be a number"
+        }
+        else
+            quantityBox.error = "Quantity Price is required"
+
+        quantityBox.setText("")
+        return false
+    }
+
+
+    fun bestBeforeValidation(): Boolean {
+        var text : String = bestBeforeBox.text!!.toString()
+        var error : String? = null;
+
+        if(!text.isNullOrEmpty()){
+            try{
+                error = productValidations.validateBestBefore(text)
+
+            } catch (ex: java.lang.Exception){
+                error = "Enter a valid date"
+                Log.i("Error", "Error parsing date")
+            }
+        }
+        else
+            error = "Best Before field is required"
+
+
+        if(error != null){
+            bestBeforeBox.error = error
+            bestBeforeBox.setText("")
+            return false
+        }
+        else
+            return true
     }
 
     private fun handleAddItemBtnClick() {
-//        category = categoryBox.selectedItem.toString()
-//        Log.i("category" , "categoryBox.selectedItem.toString()")
-//        productName = productNameBox.text!!.toString()
-//        unit = unitBox.text!!.toString()
-//        unitPrice = unitPriceBox.text!!.toString() as Double
-//        bestBefore = bestBeforeBox.text!!.toString() as Date
-//        description = descriptionBox.text!!.toString()
-//        quantity = quantityBox.text!!.toString() as Double
+        Log.i("categoryBox", categoryBox.selectedItem.toString())
+        if(
+            categoryBox.selectedItem.toString() != "Select" &&
+            unitBox.selectedItem != "Select"
+            && productNameValidation()
+            && quantityValidation()
+            && unitPriceValidation()
+            && bestBeforeValidation()
+            && descriptionValidation()
+        ){
+            category = categoryBox.selectedItem!!.toString()
+            productName = productNameBox.text!!.toString()
+            unit = unitBox.selectedItem!!.toString()
+            unitPrice = unitPriceBox.text!!.toString().toDouble()
+            bestBefore = SimpleDateFormat("dd/MM/yyyy").parse(bestBeforeBox.text!!.toString())
+            description = descriptionBox.text!!.toString()
+            quantity = quantityBox.text!!.toString().toDouble()
 
-        var productInfo : ProductModel = ProductModel(
-            null,
-            "Chandler's garden",
-            "-NUe1DcgFG32cZ7eOELX",
-            "Fruits",
-            "Homegrown countryside beans",
-            Date(),
-            "Beans",
-            12.0.toString(),
-            "Kilogram",
-            120.0.toString()
-        )
-        println(productInfo.production_id)
-        println(productInfo.name)
-        println(productInfo.category)
-        println(productInfo.description)
-        println(productInfo.best_before)
-        println(productInfo.quantity)
-        println(productInfo.unit)
-        println(productInfo.unit_price)
+            var productInfo : ProductModel = ProductModel(
+                null,
+                "Chandler's garden",
+                "-NUe1DcgFG32cZ7eOELX",
+                category,
+                description,
+                bestBefore,
+                productName,
+                quantity.toString(),
+                unit,
+                unitPrice.toString()
+            )
 
-        var productsRef = FirebaseDatabase.getInstance().reference.child("products")
-        val productId = productsRef.push().key!!
-        val response = Response(productId, false, "")
-        var productName : List<String>;
-
-        productInfo.production_id = productId
-        productsRef.child(productId).setValue(productInfo)
-            .addOnSuccessListener {
-                Log.i("Success" , "Product ${productInfo.name} created")
-                response.result = true
-                response.message = "Product created successfully"
-                Toast.makeText(this@AddItemActivity, "Product created successfully", Toast.LENGTH_LONG).show()
-//                callback(response)
-            }
-            .addOnFailureListener { err ->
-                Log.w("Error" , err.message.toString())
-                response.message = err.localizedMessage
-//                callback(response)
-                Toast.makeText(this@AddItemActivity, "Product creation failed", Toast.LENGTH_LONG).show()
-            }
+//            productRepository.createProduct(productInfo);
+        }
+        else{
+            if( categoryBox.selectedItem.toString() == "Select")
+                Toast.makeText(this, "Cannot add item without category", Toast.LENGTH_LONG).show()
+            else if( unitBox.selectedItem.toString() == "Select")
+                Toast.makeText(this, "Cannot add item without unit", Toast.LENGTH_LONG).show()
+        }
     }
 }

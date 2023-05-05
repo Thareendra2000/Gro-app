@@ -175,7 +175,7 @@
             android:layout_margin="@dimen/fourdp"
             android:layout_weight="1"
             android:background="@drawable/buttonborder"
-            android:text="@string/completeOrder"
+            android:text="@string/orders"
             android:textAllCaps="false"
             android:textColor="@color/darkGreen"
             app:backgroundTint="@color/backgroundWhite" />

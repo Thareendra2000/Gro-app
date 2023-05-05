@@ -159,12 +159,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
 
-        <EditText
+        <Spinner
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="textPersonName"
-            android:text="@string/vegetables"
+            android:entries="@array/categories"
             android:textColor="@color/darkGreen"
             android:textSize="16sp" />
     </LinearLayout>
@@ -204,8 +204,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/item1Name" />
+            android:inputType="textPersonName"/>
     </LinearLayout>
 
     <TextView
@@ -238,13 +237,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProductTitleLayout">
 
-        <EditText
+        <Spinner
             android:id="@+id/unit"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/item1Unit"
+            android:entries="@array/itemUnit"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -272,7 +271,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/border"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -280,12 +279,22 @@
 
         <EditText
             android:id="@+id/unitPrice"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/item1Price"
+            android:inputType="numberDecimal"
+            android:hint="@string/item1Price"
             android:textColor="@color/darkGreen" />
+
+
+        <TextView
+            android:id="@+id/priceCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textborder"
+            android:text="LKR"
+            android:textColor="@color/darkGreen"
+            android:textSize="16sp"/>
     </LinearLayout>
 
     <TextView
@@ -324,7 +333,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/item1BestBefore"
+            android:hint="@string/item1BestBefore"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -363,7 +372,6 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:text="@string/item1Description"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -402,7 +410,6 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:text="@string/item1Qnty"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
