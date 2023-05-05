@@ -72,6 +72,4 @@ class MarketPlaceActivity : AppCompatActivity() {
 
         })
     }
-
-
 }

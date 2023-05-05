@@ -81,7 +81,7 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
                         override fun onItemClick(position: Int) {
                             val intent = Intent(
                                 this@MarketBrowseCategoryItemsActivity,
-                                EmployeeDetailsActivity::class.java
+                                MarketPlaceAddItemToCartActivity::class.java
                             )
 
                             //put extras
