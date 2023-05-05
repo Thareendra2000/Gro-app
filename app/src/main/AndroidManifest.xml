@@ -16,10 +16,6 @@
         <activity
             android:name=".Activities.MarketPlace.MarketPlaceActivity"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".Activities.MyProfileActivity"
@@ -30,7 +26,11 @@
         </activity>
         <activity
             android:name=".Activities.LoginActivity"
-            android:exported="false" >
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Activities.MarketPlace.MarketPlaceAddItemToCartActivity"
@@ -73,12 +73,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.Product.AddItemActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" >
         <activity
             android:name=".Activities.Order.ManagePickUpActivity"
             android:exported="false" />

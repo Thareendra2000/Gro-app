@@ -3,7 +3,7 @@ package com.example.groapp.Models
 import java.util.Date
 
 data class NotificationModel (
-    val id: String ?= null,
+    var id: String ?= null,
     val title: String ?= null,
     val message: String ?= null,
     val timestamp: Date ?= null,
