@@ -78,23 +78,23 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
                     mAdapter.setOnItemClickListener(object :
                         BrowseCategoryItemAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
-                            val intent = Intent(
-                                this@MarketBrowseCategoryItemsActivity,
-                                MarketPlaceAddItemToCartActivity::class.java
-                            )
+//                            val intent = Intent(
+//                                this@MarketBrowseCategoryItemsActivity,
+//                                MarketPlaceAddItemToCartActivity::class.java
+//                            )
 
-                            //put extras
-                            intent.putExtra("prodId", productList[position].production_id)
-                            intent.putExtra("name", productList[position].name)
-                            intent.putExtra("quantity", productList[position].quantity)
-                            intent.putExtra("unit", productList[position].unit)
-                            intent.putExtra("unitPrice", productList[position].unit_price)
-                            intent.putExtra("gardenName", productList[position].garden_name)
-                            intent.putExtra("description", productList[position].description)
-                            intent.putExtra("category", productList[position].category)
-                            intent.putExtra("bestBefore", productList[position].best_before)
-
-                            startActivity(intent)
+//                            intent.putExtra("prodId", productList[position].production_id)
+//                            intent.putExtra("name", productList[position].name)
+//                            intent.putExtra("quantity", productList[position].quantity)
+//                            intent.putExtra("unit", productList[position].unit)
+//                            intent.putExtra("unitPrice", productList[position].unit_price)
+//                            intent.putExtra("gardenName", productList[position].garden_name)
+//                            intent.putExtra("description", productList[position].description)
+//                            intent.putExtra("category", productList[position].category)
+//                            intent.putExtra("bestBefore", productList[position].best_before)
+//
+//                            startActivity(intent)
+                            println("Button clicked!")
                         }
 
                     })
@@ -106,7 +106,7 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                print("Something went wrong")
             }
 
         })
