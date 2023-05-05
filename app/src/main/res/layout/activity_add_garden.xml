@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="textPersonName"
-            android:text="@string/gardenNameEx"
+            android:hint="@string/gardenNameEx"
             android:textColor="@color/darkGreen"
             android:textSize="16sp" />
     </LinearLayout>
@@ -62,7 +62,7 @@
         android:paddingLeft="4dp"
         android:paddingTop="4dp"
         android:paddingRight="4dp"
-        android:text="@string/gardenName"
+        android:text="Garden Name"
         android:textColor="@color/darkGreen"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/cgAddressEx" />
+            android:hint="@string/cgAddressEx" />
     </LinearLayout>
 
     <TextView
@@ -127,7 +127,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/cgAreaEx"
+            android:hint="@string/cgAreaEx"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -209,7 +209,8 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/cgPhoneNumberEx"
+            android:hint="@string/cgPhoneNumberEx"
+            android:textColorHint="@color/black"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -250,7 +251,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/cgDescriptionEx"
+            android:hint="@string/cgDescriptionEx"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
