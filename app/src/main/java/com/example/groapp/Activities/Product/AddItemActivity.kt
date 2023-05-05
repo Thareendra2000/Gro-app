@@ -102,9 +102,9 @@ class AddItemActivity : AppCompatActivity() {
             "Homegrown countryside beans",
             Date(),
             "Beans",
-            12.0,
+            12.0.toString(),
             "Kilogram",
-            120.0,
+            120.0.toString()
         )
         println(productInfo.production_id)
         println(productInfo.name)
@@ -135,7 +135,5 @@ class AddItemActivity : AppCompatActivity() {
 //                callback(response)
                 Toast.makeText(this@AddItemActivity, "Product creation failed", Toast.LENGTH_LONG).show()
             }
-
-        Toast.makeText(this@AddItemActivity, "End of btn handling", Toast.LENGTH_LONG).show()
     }
 }
