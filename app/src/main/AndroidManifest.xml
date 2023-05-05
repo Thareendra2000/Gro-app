@@ -33,9 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.ScreenshotShortcutActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activities.MarketPlace.MarketPlaceAddItemToCartActivity"
             android:exported="false"></activity>
         <activity
@@ -69,22 +66,22 @@
             android:name=".Activities.Cart.CartCompletedActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.RateItemActivity"
+            android:name=".Activities.Order.RateItemActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.EditDeleteItemActivity"
+            android:name=".Activities.Product.EditDeleteItemActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.AddItemActivity"
+            android:name=".Activities.Product.AddItemActivity"
+            android:exported="false" >
+        <activity
+            android:name=".Activities.Order.ManagePickUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.ManagePickUpActivity"
+            android:name=".Activities.Order.ManageOrdersActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.ManageOrdersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.ManageItemsActivity"
+            android:name=".Activities.Product.ManageItemsActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.HomeActivity"

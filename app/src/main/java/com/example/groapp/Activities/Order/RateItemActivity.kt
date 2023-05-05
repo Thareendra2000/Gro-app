@@ -1,12 +1,12 @@
-package com.example.groapp.Activities
+package com.example.groapp.Activities.Order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.groapp.R
 
-class ManagePickUpActivity : AppCompatActivity() {
+class RateItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_manage_pick_up)
+        setContentView(R.layout.activity_rate_item)
     }
 }
