@@ -9,5 +9,7 @@ data class CartModel (
     var quantity: String ?= null,
     var totalPrice: String ?= null,
     var date: Date ?= null,
-    var status: String ?= null
+    var status: String ?= null,
+    var image_url : String ?= null,
+    var garden_id : String ?= null
 )

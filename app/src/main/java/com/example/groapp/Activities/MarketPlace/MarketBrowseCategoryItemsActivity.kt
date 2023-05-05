@@ -88,6 +88,7 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
                             intent.putExtra("prodId", productList[position].production_id)
                             println(productList[position].production_id)
                             intent.putExtra("gardenName", productList[position].garden_name)
+                            intent.putExtra("gardenId", productList[position].garden_id)
                             intent.putExtra("category", productList[position].category)
                             intent.putExtra("description", productList[position].description)
                             intent.putExtra("bestBefore", productList[position].best_before)
@@ -95,6 +96,7 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
                             intent.putExtra("quantity", productList[position].quantity)
                             intent.putExtra("unit", productList[position].unit)
                             intent.putExtra("unitPrice", productList[position].unit_price)
+                            intent.putExtra("image_url", productList[position].img_url)
 
                             startActivity(intent)
                         }
