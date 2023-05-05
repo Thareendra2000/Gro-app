@@ -1,6 +1,7 @@
 package com.example.groapp.Activities
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -22,6 +23,11 @@ class HomeActivity : AppCompatActivity() {
         var tvCart : ImageView = findViewById(R.id.tvCart)
         tvCart.setOnClickListener{
             val intent = Intent(this, CartPendingActivity::class.java)
+            startActivity(intent)
+        }
+        var tvNotification : ImageView = findViewById(R.id.tvNotification)
+        tvNotification.setOnClickListener{
+            val intent = Intent(this, NotificationActivity::class.java)
             startActivity(intent)
         }
     }
