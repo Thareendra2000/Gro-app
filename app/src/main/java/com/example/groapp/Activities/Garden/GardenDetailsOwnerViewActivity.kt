@@ -4,12 +4,10 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.StringDef
+import com.example.groapp.Activities.MyProfileActivity
+import com.example.groapp.Activities.Product.ManageItemsActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 import com.google.firebase.database.FirebaseDatabase
@@ -49,6 +47,15 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
             deleteRecord(
                 intent.getStringExtra("gardenId").toString()
             )
+        }
+
+
+        var viewProducts : Button = findViewById(R.id.viewProducts)
+        viewProducts.setOnClickListener{
+            val intent = Intent(this, ManageItemsActivity::class.java)
+            intent.putExtra("gardenName", gardenName.text.toString())
+            intent.putExtra("gardenId", intent.getStringExtra("gardenId").toString())
+            startActivity(intent)
         }
 
         // Set a click listener on the volunteer button.

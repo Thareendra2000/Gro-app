@@ -225,21 +225,15 @@
             android:layout_weight="4"
             android:background="@drawable/card_bg_unfilled"
             android:padding="@dimen/eightdp">
-            <TextView
-                android:id="@+id/itemDescription"
+            <Spinner
+                android:id="@+id/categories"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/vegetables"
+                android:entries="@array/categories"
                 android:textAlignment="center"
                 android:textColor="@color/darkGreen"
                 android:textSize="18sp"
                 android:layout_weight="1"/>
-            <ImageView
-                android:id="@+id/backImg"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/baseline_keyboard_arrow_down_24" />
 
         </LinearLayout>
 

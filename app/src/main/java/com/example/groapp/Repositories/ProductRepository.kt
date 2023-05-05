@@ -32,7 +32,7 @@ class ProductRepository (
             }
     }
 
-    public fun getAllProducts(callback: (List<ProductModel>) -> Unit) {
+    public fun getAllProductsByGardenId(gardenId : String, callback: (List<ProductModel>) -> Unit) {
         var products = mutableListOf<ProductModel>()
 
         val productsListener = object : ValueEventListener {
@@ -41,22 +41,12 @@ class ProductRepository (
                     if (dataSnapshot.exists()) {
                         for (snap in dataSnapshot.children) {
                             val productData = snap.getValue(ProductModel::class.java)
-                            products.add(productData!!)
+                            if(productData!!.garden_id!!.equals(gardenId, ignoreCase = true)){
+                                products.add(productData!!)
+                                Log.i("product Found", productData.name.toString())
+                            }
                         }
                     }
-//                    if(dataSnapshot.value != null){
-//                        val productsSnapshot = dataSnapshot.value as HashMap<String, HashMap<String, String>>
-//                        for (product in productsSnapshot) {
-//                            var productObj = ProductModel()
-//
-//                            for ((key, value) in product.value)
-//                                productObj = ProductModel().toProduct(productObj, key, value)
-//                            products.add(productObj)
-//                        }
-//                        callback(products)
-//                    }
-                    //Log.i("Products List", products.size.toString())
-
                     callback(products)
                 } catch (ex: Exception) {
                     Log.w("exception", ex.localizedMessage)
