@@ -74,7 +74,14 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
         tvItemPrice.text = "Price: LKR $unitPrice"
         tvAvailability.text = "Availability: $quantity $unit"
 
-        btnAddCart.text = "Add $itemCount to Cart, LKR: %.2f".format(unitPrice.toDouble() * itemCount)
+        if (quantity.toInt() == 0) {
+            btnIncrease.isEnabled = false
+            btnDecrease.isEnabled = false
+            btnAddCart.isEnabled = false
+            btnAddCart.text = "Out of Stock"
+        }else{
+            btnAddCart.text = "Add $itemCount to Cart, LKR: %.2f".format(unitPrice.toDouble() * itemCount)
+        }
 
         btnIncrease.setOnClickListener{
             if (itemCount != quantity.toInt()){

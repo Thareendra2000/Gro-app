@@ -1,4 +1,4 @@
-package com.example.groapp.Model
+package com.example.groapp.Models
 
 import java.util.Date
 
