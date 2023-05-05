@@ -1,6 +1,6 @@
 package com.example.groapp.Utils;
 
-import com.example.groapp.User.User;
+import com.example.groapp.Repositories.User;
 
 public class CastToObject {
     public static User toUser(User user, String key, String value){
