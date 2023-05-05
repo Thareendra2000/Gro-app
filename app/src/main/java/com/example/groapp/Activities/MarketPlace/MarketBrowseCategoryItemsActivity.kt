@@ -14,6 +14,8 @@ import com.example.groapp.R
 import com.example.groapp.Adapters.BrowseCategoryItemAdapter
 import com.example.groapp.Models.ProductModel
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
     private lateinit var browseItemRecyclerView: RecyclerView
@@ -78,23 +80,23 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
                     mAdapter.setOnItemClickListener(object :
                         BrowseCategoryItemAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
-//                            val intent = Intent(
-//                                this@MarketBrowseCategoryItemsActivity,
-//                                MarketPlaceAddItemToCartActivity::class.java
-//                            )
+                            val intent = Intent(
+                                this@MarketBrowseCategoryItemsActivity,
+                                MarketPlaceAddItemToCartActivity::class.java
+                            )
 
-//                            intent.putExtra("prodId", productList[position].production_id)
-//                            intent.putExtra("name", productList[position].name)
-//                            intent.putExtra("quantity", productList[position].quantity)
-//                            intent.putExtra("unit", productList[position].unit)
-//                            intent.putExtra("unitPrice", productList[position].unit_price)
-//                            intent.putExtra("gardenName", productList[position].garden_name)
-//                            intent.putExtra("description", productList[position].description)
-//                            intent.putExtra("category", productList[position].category)
-//                            intent.putExtra("bestBefore", productList[position].best_before)
-//
-//                            startActivity(intent)
-                            println("Button clicked!")
+                            intent.putExtra("prodId", productList[position].production_id)
+                            println(productList[position].production_id)
+                            intent.putExtra("gardenName", productList[position].garden_name)
+                            intent.putExtra("category", productList[position].category)
+                            intent.putExtra("description", productList[position].description)
+                            intent.putExtra("bestBefore", productList[position].best_before)
+                            intent.putExtra("name", productList[position].name)
+                            intent.putExtra("quantity", productList[position].quantity)
+                            intent.putExtra("unit", productList[position].unit)
+                            intent.putExtra("unitPrice", productList[position].unit_price)
+
+                            startActivity(intent)
                         }
 
                     })
