@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.groapp.Models.CartModel
 import com.example.groapp.R
+import com.example.groapp.Services.NotificationService
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
@@ -120,6 +121,8 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
                 val productUpdates = mapOf("quantity" to newAvailability)
                 productsRef.child(productId.toString()).updateChildren(productUpdates)
 
+                val notificationService = NotificationService()
+                notificationService.saveNotifications("Item added to the cart", "test item has been added to the cart")
             }
             .addOnFailureListener{
                 error -> Toast.makeText(this, "Error ${error.message}", Toast.LENGTH_LONG).show()
