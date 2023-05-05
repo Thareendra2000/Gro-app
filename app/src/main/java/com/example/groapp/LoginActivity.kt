@@ -15,18 +15,18 @@ import com.google.firebase.database.DatabaseReference
 import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var createAccountTv : TextView;
-    private lateinit var forgotPasswordTV : TextView;
-    private lateinit var loginBtn : Button;
-    private lateinit var emailBox : EditText;
-    private lateinit var passwordBox : EditText;
+    private lateinit var createAccountTv: TextView;
+    private lateinit var forgotPasswordTV: TextView;
+    private lateinit var loginBtn: Button;
+    private lateinit var emailBox: EditText;
+    private lateinit var passwordBox: EditText;
 
-    var email : String? = null;
-    var password : String? = null;
+    var email: String? = null;
+    var password: String? = null;
 
-    private lateinit var dbRef : DatabaseReference ;
-    var pseudoCookie : PseudoCookie = PseudoCookie.getPseudoCookie()
-    val userRepository : UserRepository = UserRepository();
+    private lateinit var dbRef: DatabaseReference;
+    var pseudoCookie: PseudoCookie = PseudoCookie.getPseudoCookie()
+    val userRepository: UserRepository = UserRepository();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +47,8 @@ class LoginActivity : AppCompatActivity() {
             handleCreateAccountClicked()
         }
     }
-    fun clearTextBoxes(){
-        loginBtn.setText("")
-        passwordBox.setText("")
-    }
 
-    private fun handleCreateAccountClicked(){
+    private fun handleCreateAccountClicked() {
         val intent = Intent(this, SignUpActivity::class.java);
         intent.putExtra("email", email)
         startActivity(intent);
