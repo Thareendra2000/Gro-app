@@ -14,6 +14,8 @@ import com.example.groapp.R
 import com.example.groapp.Adapters.BrowseCategoryItemAdapter
 import com.example.groapp.Models.ProductModel
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
     private lateinit var browseItemRecyclerView: RecyclerView
@@ -83,16 +85,18 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
                                 MarketPlaceAddItemToCartActivity::class.java
                             )
 
-                            //put extras
                             intent.putExtra("prodId", productList[position].production_id)
+                            println(productList[position].production_id)
+                            intent.putExtra("gardenName", productList[position].garden_name)
+                            intent.putExtra("gardenId", productList[position].garden_id)
+                            intent.putExtra("category", productList[position].category)
+                            intent.putExtra("description", productList[position].description)
+                            intent.putExtra("bestBefore", productList[position].best_before)
                             intent.putExtra("name", productList[position].name)
                             intent.putExtra("quantity", productList[position].quantity)
                             intent.putExtra("unit", productList[position].unit)
                             intent.putExtra("unitPrice", productList[position].unit_price)
-                            intent.putExtra("gardenName", productList[position].garden_name)
-                            intent.putExtra("description", productList[position].description)
-                            intent.putExtra("category", productList[position].category)
-                            intent.putExtra("bestBefore", productList[position].best_before)
+                            intent.putExtra("image_url", productList[position].img_url)
 
                             startActivity(intent)
                         }
@@ -106,7 +110,7 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                print("Something went wrong")
             }
 
         })

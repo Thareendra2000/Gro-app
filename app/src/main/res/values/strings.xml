@@ -152,8 +152,8 @@
     <!--Login-->
     <string name="login">Log in</string>
     <string name="email">Email</string>
-    <string name="emailEx">example@email.com</string>
-    <string name="password">Password</string>
+    <string name="emailEx">example@gmail.com</string>
+    <string name="password">password</string>
     <string name="passwordEx">12345678</string>
     <string name="createAccount">Don\'t have an account? Sign up</string>
     <string name="forgotPassword">Forgot Passsword?</string>
