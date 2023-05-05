@@ -9,8 +9,8 @@ import java.util.*
 
 class NotificationService {
     private val dbRef = FirebaseDatabase.getInstance().getReference("notifications")
-    private val userId = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
-
+//    private val userId = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
+    private val userId = "-NUeURgCQxX2vHkhfi6z"
     fun saveNotifications(title: String, message: String) {
         val id = dbRef.push().key!!
         val timestamp = Date()

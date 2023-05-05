@@ -65,7 +65,6 @@
     </LinearLayout>
 
     <!-- items -->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBrowseItem"
         android:layout_width="369dp"
