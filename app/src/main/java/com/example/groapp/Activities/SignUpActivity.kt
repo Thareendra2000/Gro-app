@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.groapp.R
 import com.example.groapp.Repositories.User
 import com.example.groapp.Repositories.UserRepository
+import com.example.groapp.Services.NotificationService
 import com.example.groapp.Utils.PseudoCookie
 
 class SignUpActivity : AppCompatActivity() {
@@ -27,6 +28,8 @@ class SignUpActivity : AppCompatActivity() {
 
     val userRepository : UserRepository = UserRepository();
     var pseudoCookie : PseudoCookie = PseudoCookie.getPseudoCookie()
+
+    val notificationService = NotificationService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +65,7 @@ class SignUpActivity : AppCompatActivity() {
                 )
             ){ res ->
                 if(res.result){
+                    notificationService.saveNotifications("Welcome to the GroApp", "Your account created successfully!")
                     Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, HomeActivity::class.java);
                     pseudoCookie.setCookieValue("logged_user_id", res.id)
