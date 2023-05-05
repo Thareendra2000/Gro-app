@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundWhite"
-    tools:context=".Activities.ManageOrdersActivity">
+    android:background="@color/backgroundWhite">
 
     <!--Bottom NavBar-->
     <LinearLayout
@@ -159,12 +158,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
 
-        <EditText
+        <Spinner
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="textPersonName"
-            android:text="@string/vegetables"
             android:textColor="@color/darkGreen"
             android:textSize="16sp" />
     </LinearLayout>
@@ -272,7 +270,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/border"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -280,12 +278,23 @@
 
         <EditText
             android:id="@+id/unitPrice"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:text="@string/item1Price"
             android:textColor="@color/darkGreen" />
+
+
+        <TextView
+            android:id="@+id/priceCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textborder"
+            android:text="LKR"
+            android:textColor="@color/darkGreen"
+            android:textSize="16sp"/>
+
     </LinearLayout>
 
     <TextView
@@ -323,8 +332,8 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:text="@string/item1BestBefore"
+            android:inputType="date"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -398,7 +407,8 @@
         app:layout_constraintTop_toBottomOf="@+id/DescriptionLinearLayout">
 
         <EditText
-            android:id="@+id/description"
+            android:id="@+id/quantity"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -451,6 +461,7 @@
 
 
         <Button
+            android:id="@+id/addItemBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fourdp"
