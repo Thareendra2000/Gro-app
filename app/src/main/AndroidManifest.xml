@@ -19,7 +19,8 @@
         </activity>
         <activity
             android:name=".Activities.MyProfileActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+        </activity>
         <activity
             android:name=".Activities.SignUpActivity"
             android:exported="false">
@@ -34,7 +35,8 @@
         </activity>
         <activity
             android:name=".Activities.MarketPlace.MarketPlaceAddItemToCartActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+        </activity>
         <activity
             android:name=".Activities.Garden.AddGardenActivity"
             android:exported="false">
@@ -73,7 +75,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.Product.AddItemActivity"
-            android:exported="false" >
+            android:exported="false" />
         <activity
             android:name=".Activities.Order.ManagePickUpActivity"
             android:exported="false" />
