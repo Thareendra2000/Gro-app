@@ -73,7 +73,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.Product.AddItemActivity"
-            android:exported="false" >
+            android:exported="false" />
         <activity
             android:name=".Activities.Order.ManagePickUpActivity"
             android:exported="false" />
