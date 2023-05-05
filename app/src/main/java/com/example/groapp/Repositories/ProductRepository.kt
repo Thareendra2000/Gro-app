@@ -48,6 +48,7 @@ class ProductRepository (
                         }
                     }
                     callback(products)
+                    Log.i("callback", products.size.toString())
                 } catch (ex: Exception) {
                     Log.w("exception", ex.localizedMessage)
                 }

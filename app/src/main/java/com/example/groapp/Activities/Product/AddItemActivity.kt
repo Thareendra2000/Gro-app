@@ -39,6 +39,9 @@ class AddItemActivity : AppCompatActivity() {
     private var description : String = "";
     private var quantity : Double = 0.0;
 
+    private var gardenId : String = ""
+    private var gardenName : String = ""
+
     val productRepository = ProductRepository(this@AddItemActivity);
     val categoryRepository = CategoryRespository(this@AddItemActivity);
     val productValidations : ProductValidations = ProductValidations();
@@ -57,6 +60,9 @@ class AddItemActivity : AppCompatActivity() {
         addItemBtn = findViewById(R.id.addItemBtn)
         backBtn = findViewById(R.id.backImg)
 
+        gardenId = intent.getStringExtra("gardenId").toString()
+        gardenName = intent.getStringExtra("gardenName").toString()
+
         categoryRepository.getAllCategoriesForSpinner(categoryBox) { result ->
             if(!result)
                 addItemBtn.isEnabled = false
@@ -67,7 +73,9 @@ class AddItemActivity : AppCompatActivity() {
         }
 
         backBtn.setOnClickListener{
-            var intent = Intent(this, MyGardensActivity::class.java)
+            var intent = Intent(this, ManageItemsActivity::class.java)
+            intent.putExtra("gardenName", gardenName)
+            intent.putExtra("gardenId", gardenId)
             startActivity(intent)
             finish()
         }
@@ -115,8 +123,8 @@ class AddItemActivity : AppCompatActivity() {
 
             var productInfo : ProductModel = ProductModel(
                 null,
-                "Chandler's garden",
-                "-NUe1DcgFG32cZ7eOELX",
+                gardenName,
+                gardenId,
                 category,
                 description,
                 bestBefore,
@@ -126,12 +134,20 @@ class AddItemActivity : AppCompatActivity() {
                 unitPrice.toString()
             )
 
+            Log.i("productInfo", productInfo.garden_name.toString())
+            Log.i("productInfo", productInfo.garden_id.toString())
+
             productRepository.createProduct(productInfo);
             addItemBtn.isEnabled = true;
             productNameBox.setText("")
             descriptionBox.setText("")
             unitPriceBox.setText("")
             quantityBox.setText("")
+            var intent = Intent(this, ManageItemsActivity::class.java)
+            intent.putExtra("gardenName", gardenName)
+            intent.putExtra("gardenId", gardenId)
+            startActivity(intent)
+            finish()
 
         }
         else{

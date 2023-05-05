@@ -2,11 +2,9 @@ package com.example.groapp.Activities.Garden
 
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import androidx.annotation.StringDef
-import com.example.groapp.Activities.MyProfileActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.groapp.Activities.Product.ManageItemsActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
@@ -50,11 +48,28 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         }
 
 
+        val gardenName = intent.getStringExtra("name")
+        val gardenId = intent.getStringExtra("gardenId")
+        val area = intent.getStringExtra("area")
+        val address = intent.getStringExtra("address")
+        val description = intent.getStringExtra("description")
+        val phoneNo = intent.getStringExtra("phoneNo")
+
         var viewProducts : Button = findViewById(R.id.viewProducts)
         viewProducts.setOnClickListener{
             val intent = Intent(this, ManageItemsActivity::class.java)
-            intent.putExtra("gardenName", gardenName.text.toString())
-            intent.putExtra("gardenId", intent.getStringExtra("gardenId").toString())
+            intent.putExtra("name", gardenName)
+            intent.putExtra("gardenId", gardenId)
+            intent.putExtra("area", area)
+            intent.putExtra("address", address)
+            intent.putExtra("description", description)
+            intent.putExtra("phoneNo", phoneNo)
+            startActivity(intent)
+        }
+
+        var backBtn : ImageView = findViewById(R.id.backBtn)
+        backBtn.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
             startActivity(intent)
         }
 
@@ -71,7 +86,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         gardenPhoneNo = findViewById(R.id.gardenPhoneNo)
         gardenDescription  = findViewById(R.id.gardenDescription)
 
-        productionAddBtn = findViewById(R.id.volunteerBtn)
+        productionAddBtn = findViewById(R.id.viewProducts)
         editBtn =findViewById(R.id.btnEdit)
         deleteBtn = findViewById(R.id.btnDelete)
     }
