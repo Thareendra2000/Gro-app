@@ -15,19 +15,12 @@ class CategoryRespository (
 
     public fun getAllCategoriesForSpinner(categoryBox : Spinner, callback : (Boolean) -> Unit){
         var categories = mutableListOf<String>()
-        Log.i("1", "Testinggggg")
-        Log.i("2", "Testinggggg")
-        Log.i("3", "Testinggggg")
-        Log.i("4", "Testinggggg")
-        Log.i("5", "Testinggggg")
         categoriesRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 categories.clear()
-                Log.i("6", "Testinggggg")
 
                 if (snapshot.exists()) {
                     for (snap in snapshot.children) {
-                        Log.i("7", "Testinggggg")
                         val catData = snap.getValue(CategoryModel::class.java)
                         categories.add(catData!!.name!!)
                     }
@@ -42,7 +35,6 @@ class CategoryRespository (
                     categoryBox.adapter = adapter
                 }
                 callback(true)
-                Log.i("8", "Testinggggg")
 
             }
 
@@ -51,7 +43,6 @@ class CategoryRespository (
                 callback(false)
             }
         })
-        Log.i("9", "Testinggggg")
 
     }
 }

@@ -1,5 +1,6 @@
 package com.example.groapp.Activities.Product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
 import com.example.groapp.Repositories.CategoryRespository
@@ -26,6 +28,7 @@ class AddItemActivity : AppCompatActivity() {
     private lateinit var descriptionBox : EditText;
     private lateinit var quantityBox : EditText;
     private lateinit var addItemBtn : Button;
+    private lateinit var backBtn : ImageView;
 
     private var category : String = "";
     private var productName : String = "";
@@ -51,6 +54,7 @@ class AddItemActivity : AppCompatActivity() {
         descriptionBox = findViewById(R.id.description)
         quantityBox = findViewById(R.id.quantity)
         addItemBtn = findViewById(R.id.addItemBtn)
+        backBtn = findViewById(R.id.backImg)
 
         categoryRepository.getAllCategoriesForSpinner(categoryBox) { result ->
             if(!result)
@@ -61,36 +65,81 @@ class AddItemActivity : AppCompatActivity() {
             handleAddItemBtnClick()
         }
 
+        backBtn.setOnClickListener{
+            var intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         bestBeforeBox.setOnFocusChangeListener { view, hasFocus ->
-            if(!hasFocus){
-                bestBeforeValidation()
-            }
+            if(!hasFocus) bestBeforeValidation()
         }
 
         productNameBox.setOnFocusChangeListener { view, hasFocus ->
-            if(!hasFocus){
-                productNameValidation()
-            }
+            if(!hasFocus) productNameValidation()
         }
 
         descriptionBox.setOnFocusChangeListener { view, hasFocus ->
-            if(!hasFocus){
-                descriptionValidation()
-            }
+            if(!hasFocus)  descriptionValidation()
         }
 
         unitPriceBox.setOnFocusChangeListener { view, hasFocus ->
-            if(!hasFocus){
-               unitPriceValidation()
-            }
+            if(!hasFocus) unitPriceValidation()
         }
 
         quantityBox.setOnFocusChangeListener { view, hasFocus ->
-            if(!hasFocus){
-                quantityValidation()
-            }
+            if(!hasFocus) quantityValidation()
         }
 
+    }
+
+    private fun handleAddItemBtnClick() {
+        addItemBtn.isEnabled = false;
+        if(
+            categoryBox.selectedItem.toString() != "Select" &&
+            unitBox.selectedItem != "Select"
+            && productNameValidation()
+            && quantityValidation()
+            && unitPriceValidation()
+            && bestBeforeValidation()
+            && descriptionValidation()
+        ){
+            category = categoryBox.selectedItem!!.toString()
+            productName = productNameBox.text!!.toString()
+            unit = unitBox.selectedItem!!.toString()
+            unitPrice = unitPriceBox.text!!.toString().toDouble()
+            bestBefore = SimpleDateFormat("dd/MM/yyyy").parse(bestBeforeBox.text!!.toString())
+            description = descriptionBox.text!!.toString()
+            quantity = quantityBox.text!!.toString().toDouble()
+
+            var productInfo : ProductModel = ProductModel(
+                null,
+                "Chandler's garden",
+                "-NUe1DcgFG32cZ7eOELX",
+                category,
+                description,
+                bestBefore,
+                productName,
+                quantity.toString(),
+                unit,
+                unitPrice.toString()
+            )
+
+            productRepository.createProduct(productInfo);
+            addItemBtn.isEnabled = true;
+            productNameBox.setText("")
+            descriptionBox.setText("")
+            unitPriceBox.setText("")
+            quantityBox.setText("")
+
+        }
+        else{
+            if( categoryBox.selectedItem.toString() == "Select")
+                Toast.makeText(this, "Cannot add item without category", Toast.LENGTH_LONG).show()
+            else if( unitBox.selectedItem.toString() == "Select")
+                Toast.makeText(this, "Cannot add item without unit", Toast.LENGTH_LONG).show()
+        }
+        addItemBtn.isEnabled = true;
     }
 
     fun productNameValidation() : Boolean{
@@ -179,45 +228,4 @@ class AddItemActivity : AppCompatActivity() {
             return true
     }
 
-    private fun handleAddItemBtnClick() {
-        Log.i("categoryBox", categoryBox.selectedItem.toString())
-        if(
-            categoryBox.selectedItem.toString() != "Select" &&
-            unitBox.selectedItem != "Select"
-            && productNameValidation()
-            && quantityValidation()
-            && unitPriceValidation()
-            && bestBeforeValidation()
-            && descriptionValidation()
-        ){
-            category = categoryBox.selectedItem!!.toString()
-            productName = productNameBox.text!!.toString()
-            unit = unitBox.selectedItem!!.toString()
-            unitPrice = unitPriceBox.text!!.toString().toDouble()
-            bestBefore = SimpleDateFormat("dd/MM/yyyy").parse(bestBeforeBox.text!!.toString())
-            description = descriptionBox.text!!.toString()
-            quantity = quantityBox.text!!.toString().toDouble()
-
-            var productInfo : ProductModel = ProductModel(
-                null,
-                "Chandler's garden",
-                "-NUe1DcgFG32cZ7eOELX",
-                category,
-                description,
-                bestBefore,
-                productName,
-                quantity.toString(),
-                unit,
-                unitPrice.toString()
-            )
-
-//            productRepository.createProduct(productInfo);
-        }
-        else{
-            if( categoryBox.selectedItem.toString() == "Select")
-                Toast.makeText(this, "Cannot add item without category", Toast.LENGTH_LONG).show()
-            else if( unitBox.selectedItem.toString() == "Select")
-                Toast.makeText(this, "Cannot add item without unit", Toast.LENGTH_LONG).show()
-        }
-    }
 }
