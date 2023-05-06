@@ -1,6 +1,7 @@
-package com.example.groapp
+package com.example.tute5
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,10 +10,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.groapp.volunteering.models.VolunteeringModel
+import com.example.tute5.volunteering.activities.FetchingActivity
+import com.example.tute5.volunteering.activities.VolunteerDashboard
+import com.example.tute5.volunteering.services.volHours
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 
@@ -22,6 +24,9 @@ class ProfileMain : AppCompatActivity() {
     private lateinit var userName: TextView
     private lateinit var btnUpdate: Button
     private lateinit var userEmail: TextView
+    private lateinit var totalHour: TextView
+    private lateinit var volEfforts: TextView
+    private lateinit var volDashboard: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +35,19 @@ class ProfileMain : AppCompatActivity() {
         btnUpdate = findViewById(R.id.btnUpdate)
         userName = findViewById(R.id.userName)
         userEmail = findViewById(R.id.userEmail)
+        totalHour = findViewById(R.id.totalHours)
+        volEfforts = findViewById(R.id.volEfforts)
+        volDashboard = findViewById(R.id.volDashboard)
+
+        volEfforts.setOnClickListener {
+            val intent = Intent(this, FetchingActivity::class.java)
+            startActivity(intent)
+        }
+
+        volDashboard.setOnClickListener {
+            val intent = Intent(this, VolunteerDashboard::class.java)
+            startActivity(intent)
+        }
 
         btnUpdate.setOnClickListener {
             openUpdateDialog() }
@@ -42,7 +60,12 @@ class ProfileMain : AppCompatActivity() {
 
             userName.text = UserSingleton.name;
             userEmail.text = UserSingleton.email;
-        }
+//            totalHour.text = volHours.calTotalUserVolHours(UserSingleton.uid).toString()
+            volHours.calTotalUserVolHours(UserSingleton.uid) { totalHours ->
+                totalHour.text = totalHours.toString()
+            }
+
+    }
 
 
 

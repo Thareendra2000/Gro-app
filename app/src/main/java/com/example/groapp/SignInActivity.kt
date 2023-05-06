@@ -1,11 +1,11 @@
-package com.example.groapp
+package com.example.tute5
 
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.groapp.databinding.ActivitySignInBinding
+import com.example.tute5.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInActivity : AppCompatActivity() {

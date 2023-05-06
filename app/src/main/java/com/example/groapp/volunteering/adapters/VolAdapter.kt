@@ -1,12 +1,12 @@
-package com.example.groapp.volunteering.adapters
+package com.example.tute5.volunteering.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.groapp.R
-import com.example.groapp.volunteering.models.VolunteeringModel
+import com.example.tute5.R
+import com.example.tute5.volunteering.models.VolunteeringModel
 
 
 class VolAdapter(private val volList: ArrayList<VolunteeringModel>) :
@@ -33,6 +33,7 @@ class VolAdapter(private val volList: ArrayList<VolunteeringModel>) :
         holder.tvVolGarden.text = currentVol.gardenName
         holder.tvVolHours.text = currentVol.hours
         holder.tvVolDate.text = currentVol.date
+        holder.tvVolStatus.text = currentVol.status
 
     }
 
@@ -46,6 +47,7 @@ class VolAdapter(private val volList: ArrayList<VolunteeringModel>) :
         val tvVolGarden : TextView = itemView.findViewById(R.id.tvVolGarden)
         val tvVolHours : TextView = itemView.findViewById(R.id.tvVolHours)
         val tvVolDate : TextView = itemView.findViewById(R.id.tvVolDate)
+        val tvVolStatus : TextView = itemView.findViewById(R.id.tvVolStatus)
 
         init {
             itemView.setOnClickListener {

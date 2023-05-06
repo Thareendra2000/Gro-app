@@ -11,8 +11,10 @@
         android:id="@+id/volunteer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
         android:text="Volunteer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,10 +22,10 @@
         android:id="@+id/signout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="160dp"
         android:text="Signout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.778"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,31 +33,22 @@
         android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="260dp"
         android:text="Profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvUserEmail"
+    <Button
+        android:id="@+id/garden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="47dp"
-        android:text="TextView"
+        android:layout_marginTop="54dp"
+        android:text="Garden"
+        app:layout_constraintEnd_toEndOf="@+id/signout"
         app:layout_constraintStart_toStartOf="@+id/signout"
         app:layout_constraintTop_toBottomOf="@+id/signout" />
-
-    <TextView
-        android:id="@+id/tvUserUUI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/tvUserEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvUserEmail" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

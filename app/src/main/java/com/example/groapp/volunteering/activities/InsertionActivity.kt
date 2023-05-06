@@ -1,26 +1,28 @@
-package com.example.groapp.volunteering.activities
+package com.example.tute5.volunteering.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import com.example.groapp.R
-import com.example.groapp.UserSingleton
+import com.example.tute5.R
+import com.example.tute5.UserSingleton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.example.groapp.volunteering.models.VolunteeringModel
+import com.example.tute5.volunteering.models.VolunteeringModel
 
 class InsertionActivity : AppCompatActivity() {
 
 
     private var userId = UserSingleton.uid
     private var userName = UserSingleton.name
-    private var gardenId: String = "101"
-    private var gardenName: String = "Suwapetha"
+    private lateinit var gardenId : String
+    private lateinit var gardenName : String
 
     private lateinit var etHours: EditText
     private lateinit var etDate: EditText
+    private lateinit var etGardenName: TextView
 
     private lateinit var btnSaveData: Button
 
@@ -29,8 +31,6 @@ class InsertionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.volunteer_form)
-
-
 
         //actionbar
         val actionbar = supportActionBar
@@ -45,7 +45,8 @@ class InsertionActivity : AppCompatActivity() {
 
         etHours = findViewById(R.id.etHours)
         etDate = findViewById(R.id.etDate)
-
+        etGardenName = findViewById(R.id.etGardenName)
+        etGardenName.text = intent.getStringExtra("gardenName")
         btnSaveData = findViewById(R.id.btnSave)
 
         dbRef = FirebaseDatabase.getInstance().getReference("Volunteering")
@@ -65,6 +66,9 @@ class InsertionActivity : AppCompatActivity() {
         //getting values
         val hours = etHours.text.toString()
         val date = etDate.text.toString()
+
+        gardenId = intent.getStringExtra("gardenId").toString()
+        gardenName = intent.getStringExtra("gardenName").toString()
 //        val empSalary = etEmpSalary.text.toString()
 
         if (hours.isEmpty()) {

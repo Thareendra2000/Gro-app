@@ -78,12 +78,12 @@
     </LinearLayout>
 
     <include
-        android:layout_gravity="center"
         layout="@layout/profile_item_image"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="276dp"
+        android:layout_gravity="center"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_width="match_parent" />
+        android:layout_marginRight="16dp" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -92,13 +92,13 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-<!--            <include layout="@layout/profile_item_add"/>-->
+            <include layout="@layout/profile_item_add"/>
 <!--            <include layout="@layout/profile_item_info"/>-->
-            <include layout="@layout/profile_item_email"/>
-
+            <include layout="@layout/profile_dashboard"/>
         </LinearLayout>
     </ScrollView>
 
+    <include layout="@layout/profile_item_email" />
 
 
 </LinearLayout>

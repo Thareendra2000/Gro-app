@@ -13,7 +13,7 @@ import com.example.tute5.UserSingleton
 import com.google.firebase.database.FirebaseDatabase
 import com.example.tute5.volunteering.models.VolunteeringModel
 
-class VolunteeringDetailsActivity : AppCompatActivity() {
+class VolunteeringDetailsActivityOwner : AppCompatActivity() {
 
     private lateinit var tvHours: TextView
     private lateinit var tvDate: TextView
@@ -26,7 +26,16 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_volunteering_details)
+        setContentView(R.layout.activity_volunteering_details_owner)
+
+        //actionbar
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "Approve Volunteer Requests"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
 
         initView()
         setValuesToViews()
@@ -109,17 +118,19 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
     ) {
         val mDialog = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        val mDialogView = inflater.inflate(R.layout.volunteering_update_dialog, null)
+        val mDialogView = inflater.inflate(R.layout.volunteering_update_dialog_owner, null)
 
         mDialog.setView(mDialogView)
 
         val etHours = mDialogView.findViewById<EditText>(R.id.etHours)
         val etDate = mDialogView.findViewById<EditText>(R.id.etDate)
+        val etStatus = mDialogView.findViewById<EditText>(R.id.etStatus)
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         etHours.setText(intent.getStringExtra("hours").toString())
         etDate.setText(intent.getStringExtra("date").toString())
+        etStatus.setText(intent.getStringExtra("status").toString())
 
 
         mDialog.setTitle("Updating Volunteer Record")
@@ -132,6 +143,7 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
                 volId,
                 etHours.text.toString(),
                 etDate.text.toString(),
+                etStatus.text.toString()
             )
 
             Toast.makeText(applicationContext, "Volunteering Record Updated!", Toast.LENGTH_LONG).show()
@@ -149,6 +161,7 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
         volId: String,
         hours: String,
         date: String,
+        status:String
 
     ) {
 
@@ -156,7 +169,6 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
          var userName= UserSingleton.name
          var gardenId: String = "101"
          var gardenName: String = "Suwapetha"
-         var status : String = "Pending"
 
         val dbRef = FirebaseDatabase.getInstance().getReference("Volunteering").child(volId)
         val volInfo = VolunteeringModel(volId,userId,userName, hours, gardenId,gardenName,date,status)

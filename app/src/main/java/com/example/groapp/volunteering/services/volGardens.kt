@@ -8,34 +8,33 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class volHours {
-
+class volGardens {
     companion object {
-        fun calTotalUserVolHours(uid: String?, callback: (Int?) -> Unit) {
+        fun calTotalUserVolGardens(uid: String?, callback: (Int?) -> Unit) {
+            val userId = uid;
+            val uniqueGardens = HashSet<String>()
 
             val database = Firebase.database.reference
+            val userQuery = database.child("Volunteering").orderByChild("userId").equalTo(userId)
 
-            val userQuery = database.child("Volunteering").orderByChild("userId").equalTo(uid)
-
-            var totalHours = 0
-            val valueEventListener = object : ValueEventListener {
+            userQuery.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (recordSnapshot in dataSnapshot.children) {
                         val record = recordSnapshot.getValue(VolunteeringModel::class.java)
-                        totalHours += record?.hours?.toInt() ?: 0
+                        if (record != null) {
+                            record.gardenId?.let { uniqueGardens.add(it) }
+                        }
                     }
-                    Log.d("TAG", "Total hours for user $uid: $totalHours")
-                    callback(totalHours)
+                    val numUniqueGardens = uniqueGardens.size
+                    Log.d("TAG", "User $userId has volunteered at $numUniqueGardens unique gardens")
+                    callback(numUniqueGardens)
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
                     Log.e("TAG", "Error getting volunteer data", databaseError.toException())
-                    callback(null)
                 }
-            }
-
-            userQuery.addValueEventListener(valueEventListener)
+            })
         }
-    }
 
+    }
 }

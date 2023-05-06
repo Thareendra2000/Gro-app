@@ -1,4 +1,4 @@
-package com.example.groapp
+package com.example.tute5
 
 object UserSingleton {
     var name: String? = null

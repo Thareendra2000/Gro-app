@@ -13,7 +13,7 @@ import com.example.tute5.UserSingleton
 import com.google.firebase.database.*
 import com.example.tute5.volunteering.models.VolunteeringModel
 
-class FetchingActivity : AppCompatActivity() {
+class FetchingActivityOwner : AppCompatActivity() {
 
     private lateinit var volRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
@@ -27,10 +27,11 @@ class FetchingActivity : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "Personal Records"
+        actionbar!!.title = "Garden Volunteer Records"
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
+
 
         volRecyclerView = findViewById(R.id.rvVol)
         volRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -68,7 +69,7 @@ class FetchingActivity : AppCompatActivity() {
 
 
         dbRef = FirebaseDatabase.getInstance().getReference("Volunteering")
-        val query = dbRef.orderByChild("userId").equalTo(UserSingleton.uid)
+        val query = dbRef.orderByChild("gardenId").equalTo("-NUkAv0dxuexFf-vL5I8")
 
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -84,7 +85,7 @@ class FetchingActivity : AppCompatActivity() {
                     mAdapter.setOnItemClickListener(object : VolAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@FetchingActivity, VolunteeringDetailsActivity::class.java)
+                            val intent = Intent(this@FetchingActivityOwner, VolunteeringDetailsActivityOwner::class.java)
 
                             //put extras
                             intent.putExtra("volId", volList[position].volunteeringId)

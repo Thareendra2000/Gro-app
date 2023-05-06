@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/volunteerTopic" />
 
     <TextView
-        android:id="@+id/gardenName"
+        android:id="@+id/etGardenName"
         android:layout_width="395dp"
         android:layout_height="33dp"
         android:text="Suwa"
@@ -53,7 +53,7 @@
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gardenName">
+        app:layout_constraintTop_toBottomOf="@+id/etGardenName">
 
         <EditText
             android:id="@+id/etHours"
@@ -79,7 +79,7 @@
         android:textColor="@color/darkGreen"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gardenName" />
+        app:layout_constraintTop_toBottomOf="@+id/etGardenName" />
 
     <LinearLayout
         android:id="@+id/businessOwnerLinearLayout"
