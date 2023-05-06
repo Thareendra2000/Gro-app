@@ -14,10 +14,13 @@
         android:theme="@style/Theme.GroApp"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.Garden.GardenDashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Garden.MyGardensActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.Garden.GardenDashboardActivity"
+            android:name=".Activities.Garden.GardenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,16 +33,16 @@
             android:exported="false" />
         <activity
             android:name=".Activities.SignUpActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Activities.LoginActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Activities.MarketPlace.MarketPlaceAddItemToCartActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.Garden.AddGardenActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Activities.MarketPlace.MarketPlaceActivity"
             android:exported="false" />
@@ -54,10 +57,10 @@
             android:exported="false" />
         <activity
             android:name=".Activities.MarketPlace.MarketBrowseGardenActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Activities.MarketPlace.MarketBrowseCategoryItemsActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.Cart.CartPickUpsActivity"
             android:exported="false" />
