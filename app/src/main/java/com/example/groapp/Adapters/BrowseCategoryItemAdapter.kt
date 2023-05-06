@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.groapp.R
 import com.example.groapp.Models.ProductModel
-import com.example.groapp.Utils.DateUtils
+import com.example.groapp.Utils.DateUtil
 
 class BrowseCategoryItemAdapter(private val productList: ArrayList<ProductModel>) :
     RecyclerView.Adapter<BrowseCategoryItemAdapter.ViewHolder>() {
@@ -35,7 +35,7 @@ class BrowseCategoryItemAdapter(private val productList: ArrayList<ProductModel>
         holder.tvItemName.text = currentData.name
         holder.tvItemDescription.text = currentData.description
         holder.tvItemPrice.text =  currentData.unit_price.toString()+ " per " + currentData.unit
-        holder.tvItemBestBefore.text = currentData.best_before?.let { DateUtils.formatDate(it) }
+        holder.tvItemBestBefore.text = currentData.best_before?.let { DateUtil.formatDate(it) }
         Glide.with(holder.itemView.context)
             .load(currentData.img_url)
             .into(holder.tvCatItemImage)

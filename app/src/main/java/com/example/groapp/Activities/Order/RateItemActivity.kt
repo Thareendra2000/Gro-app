@@ -10,12 +10,11 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.groapp.Activities.Cart.CartCompletedActivity
-import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.Models.RatingModel
 import com.example.groapp.R
-import com.example.groapp.Utils.DateUtils
+import com.example.groapp.Utils.DateUtil
 import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -113,7 +112,7 @@ class RateItemActivity : AppCompatActivity() {
                         reviewItemUnitPrice.text = product?.unit_price
                         reviewItemUnit.text = product?.unit
                         reviewItemBestBefore.text = product?.best_before?.let {
-                            DateUtils.formatDate(
+                            DateUtil.formatDate(
                                 it
                             )
                         }
