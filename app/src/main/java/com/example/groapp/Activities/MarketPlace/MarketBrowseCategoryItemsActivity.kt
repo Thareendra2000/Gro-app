@@ -96,6 +96,7 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
                             intent.putExtra("unit", productList[position].unit)
                             intent.putExtra("unitPrice", productList[position].unit_price)
                             intent.putExtra("image_url", productList[position].img_url)
+                            intent.putExtra("rating", productList[position].rating)
 
                             startActivity(intent)
                         }
