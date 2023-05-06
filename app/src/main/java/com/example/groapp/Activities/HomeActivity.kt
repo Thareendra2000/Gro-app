@@ -35,7 +35,6 @@ class HomeActivity : AppCompatActivity() {
         var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
         accountBtn.setOnClickListener{
             val intent = Intent(this, MyProfileActivity::class.java)
-
             startActivity(intent)
         }
     }
