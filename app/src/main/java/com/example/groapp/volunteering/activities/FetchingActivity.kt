@@ -1,4 +1,4 @@
-package com.example.tute5.volunteering.activities
+package com.example.groapp.volunteering.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +7,11 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tute5.volunteering.adapters.VolAdapter
-import com.example.tute5.R
+import com.example.groapp.volunteering.adapters.VolAdapter
+import com.example.groapp.R
+import com.example.groapp.UserSingleton
 import com.google.firebase.database.*
-import com.example.tute5.volunteering.models.VolunteeringModel
+import com.example.groapp.volunteering.models.VolunteeringModel
 
 class FetchingActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class FetchingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fetching)
+        setContentView(R.layout.volunteering_activity_fetching)
 
         volRecyclerView = findViewById(R.id.rvVol)
         volRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -59,7 +60,7 @@ class FetchingActivity : AppCompatActivity() {
 
 
         dbRef = FirebaseDatabase.getInstance().getReference("Volunteering")
-        val query = dbRef.orderByChild("userId").equalTo("001")
+        val query = dbRef.orderByChild("userId").equalTo(UserSingleton.uid)
 
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

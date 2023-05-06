@@ -1,4 +1,4 @@
-package com.example.tute5.volunteering.activities
+package com.example.groapp.volunteering.activities
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -8,9 +8,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.tute5.R
+import com.example.groapp.R
+import com.example.groapp.UserSingleton
 import com.google.firebase.database.FirebaseDatabase
-import com.example.tute5.volunteering.models.VolunteeringModel
+import com.example.groapp.volunteering.models.VolunteeringModel
 
 class VolunteeringDetailsActivity : AppCompatActivity() {
 
@@ -105,7 +106,7 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
     ) {
         val mDialog = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        val mDialogView = inflater.inflate(R.layout.update_dialog, null)
+        val mDialogView = inflater.inflate(R.layout.volunteering_update_dialog, null)
 
         mDialog.setView(mDialogView)
 
@@ -148,8 +149,8 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
 
     ) {
 
-         var userId: String = "001"
-         var userName: String = "Dinal"
+         var userId = UserSingleton.uid
+         var userName= UserSingleton.name
          var gardenId: String = "101"
          var gardenName: String = "Suwapetha"
 
