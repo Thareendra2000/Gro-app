@@ -39,13 +39,8 @@
 
         <!--MarketPlace-->
         <activity
-            android:name=".Activities.MarketPlace.MarketPlaceActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".Activities.MarketPlace.MarketPlaceAddItemToCartActivity"
-            android:exported="false"/>
-
+            android:name=".Activities.Garden.GardenDetailsVolunteerViewActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.MarketPlace.MarketBrowseGardenActivity"
             android:exported="false">
@@ -88,11 +83,8 @@
             android:name=".Activities.Product.ManageItemsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.Product.EditDeleteItemActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.Product.AddItemActivity"
-            android:exported="false" >
+            android:name=".Activities.HomeActivity"
+            android:exported="true">
         </activity>
 
         <!--Gardens-->
@@ -119,6 +111,42 @@
         <activity
             android:name=".Activities.EmployeeDetailsActivity"
             android:exported="false" />
+
+<!--        Dinal's Activities-->
+
+        <activity
+            android:name=".volunteering.activities.VolunteeringDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".volunteering.activities.FetchingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".volunteering.activities.InsertionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileMain"
+            android:exported="false" />
+        <activity
+            android:name=".volunteering.activities.VolunteerMain"
+            android:exported="true" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".SignInActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
