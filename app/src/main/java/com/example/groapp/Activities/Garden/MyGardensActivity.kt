@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.example.groapp.Adapters.GardenAdapter
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 import com.google.firebase.database.*
+import kotlin.collections.ArrayList
 
 class MyGardensActivity : AppCompatActivity() {
 
@@ -19,7 +21,8 @@ class MyGardensActivity : AppCompatActivity() {
     private lateinit var gardenList: ArrayList<GardenModel>
     private lateinit var dbRef: DatabaseReference
 
-
+    private lateinit var searchEditText: TextView
+    private lateinit var searchBtn: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,4 +90,7 @@ class MyGardensActivity : AppCompatActivity() {
 
         })
     }
-    }
+
+
+
+}

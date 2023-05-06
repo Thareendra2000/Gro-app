@@ -30,8 +30,8 @@ class BrowseCategoryItemAdapter(private val productList: ArrayList<ProductModel>
         val currentData = productList[position]
         holder.tvItemName.text = currentData.name
         holder.tvItemDescription.text = currentData.description
-        holder.tvItemPrice.text =  currentData.unit_price + " per " + currentData.unit
-        holder.tvItemBestBefore.text = currentData.best_before
+        holder.tvItemPrice.text =  currentData.unit_price.toString()+ " per " + currentData.unit
+        holder.tvItemBestBefore.text = currentData.best_before.toString()
     }
 
     override fun getItemCount(): Int {

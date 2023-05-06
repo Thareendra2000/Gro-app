@@ -1,4 +1,4 @@
-package com.example.groapp.Activities
+package com.example.groapp.Activities.Order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

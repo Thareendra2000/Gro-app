@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:inputType="textPersonName"
-                    android:text="@string/emailEx"
+                    android:hint="@string/emailEx"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:inputType="textPassword"
-                    android:text="@string/passwordEx"
+                    android:hint="@string/passwordEx"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
             </LinearLayout>
