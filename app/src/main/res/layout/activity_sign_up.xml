@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:inputType="textPersonName"
-                    android:text="@string/NameEx"
+                    android:hint="@string/NameEx"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -91,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:inputType="textPersonName"
-                    android:text="@string/emailEx"
+                    android:hint="@string/emailEx"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -131,7 +131,7 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="@string/passwordEx"
+                    android:hint="@string/passwordEx"
                     android:inputType="textPassword"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
@@ -171,7 +171,7 @@
                     android:id="@+id/retypePassword"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="@string/passwordEx"
+                    android:hint="@string/passwordEx"
                     android:inputType="textPassword"
                     android:textColor="@color/darkGreen"
                     android:textSize="16sp" />
