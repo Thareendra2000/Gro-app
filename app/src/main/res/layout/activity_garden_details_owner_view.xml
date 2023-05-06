@@ -132,10 +132,13 @@
 
         </Button>
 
+        <!--bottom nav Bar-->
         <LinearLayout
             android:id="@+id/BottomNavBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
             android:paddingTop="@dimen/fourdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -143,13 +146,14 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
+                android:id="@+id/tvHome"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageView1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -166,20 +170,21 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/tvMarketPlace"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/baseline_shopping_cart_24" />
 
                 <TextView
-                    android:id="@+id/exploreText"
+                    android:id="@+id/cartText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/market"
@@ -189,13 +194,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/tvLeaderboard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -212,13 +218,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/tvProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageView4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -234,7 +241,6 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-             
         </LinearLayout>
 
         <ImageButton
