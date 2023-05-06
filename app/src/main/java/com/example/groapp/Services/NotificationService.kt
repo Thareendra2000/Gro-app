@@ -1,18 +1,8 @@
 package com.example.groapp.Services
 
-import android.Manifest
-import android.app.PendingIntent
 import android.content.ContentValues.TAG
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import com.example.groapp.Activities.NotificationActivity
 import com.example.groapp.Models.NotificationModel
-import com.example.groapp.R
 import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.*
 import java.util.*
@@ -27,6 +17,7 @@ class NotificationService {
         val notification = NotificationModel(id, title, message, timestamp, false, userId)
         dbRef.child(id).setValue(notification)
     }
+
 
     /*  how to use this function
         val notificationService = NotificationService()
