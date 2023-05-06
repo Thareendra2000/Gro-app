@@ -65,10 +65,10 @@ class SignUpActivity : AppCompatActivity() {
                 )
             ){ res ->
                 if(res.result){
-                    notificationService.saveNotifications("Welcome to the GroApp", "Your account created successfully!")
                     Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, HomeActivity::class.java);
                     pseudoCookie.setCookieValue("logged_user_id", res.id)
+                    notificationService.saveNotifications("Welcome to the GroApp", "Your account created successfully!")
                     startActivity(intent);
                     finish();
                 }
