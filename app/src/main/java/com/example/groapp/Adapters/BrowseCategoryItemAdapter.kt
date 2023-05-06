@@ -3,6 +3,7 @@ package com.example.groapp.Adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +39,7 @@ class BrowseCategoryItemAdapter(private val productList: ArrayList<ProductModel>
         Glide.with(holder.itemView.context)
             .load(currentData.img_url)
             .into(holder.tvCatItemImage)
+        holder.tvItemRatings.text = currentData.rating.toString() + " Ratings"
     }
 
     override fun getItemCount(): Int {
@@ -50,6 +52,7 @@ class BrowseCategoryItemAdapter(private val productList: ArrayList<ProductModel>
         val tvItemPrice : TextView = itemView.findViewById(R.id.tvItemPrice)
         val tvItemBestBefore : TextView = itemView.findViewById(R.id.tvItemBestBefore)
         val tvCatItemImage : ImageView = itemView.findViewById(R.id.tvCatItemImage)
+        val tvItemRatings : Button = itemView.findViewById(R.id.tvItemRatings)
 
         init {
             itemView.setOnClickListener {
