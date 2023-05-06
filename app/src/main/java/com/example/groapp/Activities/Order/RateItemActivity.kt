@@ -16,6 +16,7 @@ import com.example.groapp.Models.ProductModel
 import com.example.groapp.Models.RatingModel
 import com.example.groapp.R
 import com.example.groapp.Utils.DateUtils
+import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -84,7 +85,7 @@ class RateItemActivity : AppCompatActivity() {
         rateBtn.setOnClickListener{
             println(ratingCount)
             val ratingModel = RatingModel(
-                userId = "-NUeURgCQxX2vHkhfi6z",
+                userId = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id"),
                 productId = productId,
                 rating = ratingCount.toDouble()
             )
