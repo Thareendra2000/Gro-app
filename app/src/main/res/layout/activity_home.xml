@@ -37,15 +37,17 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/baseline_shopping_cart_24" />
+            app:srcCompat="@drawable/baseline_shopping_bag_24" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/tvNotification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             app:srcCompat="@drawable/notification_icon" />
     </LinearLayout>
+
+    <!--bottom nav Bar-->
     <LinearLayout
         android:id="@+id/BottomNavBar"
         android:layout_width="match_parent"
@@ -59,13 +61,14 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
+            android:id="@+id/tvHome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -89,7 +92,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -106,13 +109,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tvLeaderboard"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -129,14 +133,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/accountBtn"
+            android:id="@+id/tvProfile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imageView4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -153,6 +157,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:paddingTop="@dimen/eightdp"
         android:layout_width="match_parent"

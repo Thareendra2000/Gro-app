@@ -9,17 +9,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.EmployeeDetailsActivity
 import com.example.groapp.Activities.HomeActivity
-import com.example.groapp.Activities.MainActivity
-import com.example.groapp.Adapters.EmpAdapter
+import com.example.groapp.Adapters.CartPendingAdapter
+import com.example.groapp.Enums.CartStatus
+import com.example.groapp.Models.CartModel
 import com.example.groapp.Models.EmployeeModel
 import com.example.groapp.R
 import com.google.firebase.database.*
 
 class CartPendingActivity : AppCompatActivity() {
-    private lateinit var empRecyclerView: RecyclerView
+    private lateinit var cartPendingRecycleView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var empList: ArrayList<EmployeeModel>
+    private lateinit var pendingList: ArrayList<CartModel>
     private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,50 +50,47 @@ class CartPendingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        empRecyclerView = findViewById(R.id.rvEmp)
-        empRecyclerView.layoutManager = LinearLayoutManager(this)
-        empRecyclerView.setHasFixedSize(true)
+        cartPendingRecycleView = findViewById(R.id.rvEmp)
+        cartPendingRecycleView.layoutManager = LinearLayoutManager(this)
+        cartPendingRecycleView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        empList = arrayListOf<EmployeeModel>()
+        pendingList = arrayListOf<CartModel>()
 
-        getEmployeesData()
+        getCartPending()
     }
 
-    private fun getEmployeesData() {
+    private fun getCartPending() {
 
-        empRecyclerView.visibility = View.GONE
+        cartPendingRecycleView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Employee")
+        val dbRef = FirebaseDatabase.getInstance().getReference("cart").orderByChild("status").equalTo("PENDING")
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                empList.clear()
+                pendingList.clear()
                 if (snapshot.exists()) {
-                    for (empSnap in snapshot.children) {
-                        val empData = empSnap.getValue(EmployeeModel::class.java)
-                        empList.add(empData!!)
+                    for (cartSnap in snapshot.children) {
+                        val data = cartSnap.getValue(CartModel::class.java)
+                        pendingList.add(data!!)
                     }
-                    val mAdapter = EmpAdapter(empList)
-                    empRecyclerView.adapter = mAdapter
+                    val mAdapter = CartPendingAdapter(pendingList)
+                    cartPendingRecycleView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : EmpAdapter.onItemClickListener {
+                    mAdapter.setOnItemClickListener(object : CartPendingAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
-
-//                            val intent = Intent(this@FetchingActivity, EmployeeDetailsActivity::class.java)
-
-                            //put extras
-//                            intent.putExtra("empId", empList[position].empId)
-//                            intent.putExtra("empName", empList[position].empName)
-//                            intent.putExtra("empAge", empList[position].empAge)
-//                            intent.putExtra("empSalary", empList[position].empSalary)
-//                            startActivity(intent)
+                            val intent = Intent(this@CartPendingActivity, CartPendingCheckoutActivity::class.java)
+                            intent.putExtra("cartId", pendingList[position].id)
+                            intent.putExtra("userId", pendingList[position].userId)
+                            intent.putExtra("gardenId", pendingList[position].garden_id)
+                            intent.putExtra("productId", pendingList[position].productId)
+                            intent.putExtra("price", pendingList[position].totalPrice)
+                            startActivity(intent)
                         }
-
                     })
 
-                    empRecyclerView.visibility = View.VISIBLE
+                    cartPendingRecycleView.visibility = View.VISIBLE
                     tvLoadingData.visibility = View.GONE
                 }
             }
@@ -102,4 +101,5 @@ class CartPendingActivity : AppCompatActivity() {
 
         })
     }
+
 }

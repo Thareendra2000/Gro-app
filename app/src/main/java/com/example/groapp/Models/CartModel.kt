@@ -1,5 +1,6 @@
 package com.example.groapp.Models
 
+import com.example.groapp.Enums.CartStatus
 import java.util.Date
 
 data class CartModel (
@@ -9,7 +10,7 @@ data class CartModel (
     var quantity: String ?= null,
     var totalPrice: String ?= null,
     var date: Date ?= null,
-    var status: String ?= null,
+    var status: CartStatus ?= null,
     var image_url : String ?= null,
     var garden_id : String ?= null
 )
