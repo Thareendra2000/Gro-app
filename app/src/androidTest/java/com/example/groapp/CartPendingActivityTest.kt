@@ -37,4 +37,5 @@ class CartPendingActivityTest {
         onView(withId(R.id.tvCompleted)).check(matches(isDisplayed())).perform(click())
     }
 
+
 }
