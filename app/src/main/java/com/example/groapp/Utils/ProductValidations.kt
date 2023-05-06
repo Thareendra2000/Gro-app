@@ -15,7 +15,7 @@ class ProductValidations {
         return b;
     }
 
-    public fun requiredCheck(text : String) : Boolean{
+    public fun requiredCheck(text : String?) : Boolean{
         return (!text.isNullOrBlank())
     }
 
@@ -30,6 +30,7 @@ class ProductValidations {
 
     public fun validateBestBefore(text : String) : String?{
         var date = SimpleDateFormat("dd/MM/yyyy").parse(text)
+
         if(date.before(Date())){
             return "Best before date must be a day after today"
         }
