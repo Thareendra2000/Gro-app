@@ -31,15 +31,32 @@
             android:name=".Activities.MarketPlace.MarketPlaceAddItemToCartActivity"
             android:exported="false">
         </activity>
+<!--        ========Garden=======-->
         <activity
             android:name=".Activities.Garden.AddGardenActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.MarketPlace.MarketPlaceActivity"
+            android:name=".Activities.Garden.MyGardensActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Garden.GardenListActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.Garden.GardenDetailsVolunteerViewActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".Activities.Garden.GardenDetailsOwnerViewActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.Garden.GardenDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:exported="false" />
+
+
         <activity
             android:name=".Activities.MarketPlace.MarketBrowseGardenActivity"
             android:exported="false" />
@@ -83,7 +100,7 @@
             android:name=".Activities.Product.ManageItemsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.HomeActivity"
+            android:name=".Activities.Garden.GardenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

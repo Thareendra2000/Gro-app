@@ -10,23 +10,44 @@ class GardenDashboardActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var gardensCountTextView: TextView
-//    private lateinit var volunteersCountTextView: TextView
+    private lateinit var productsCountTextView: TextView
+    private lateinit var mostProfitableProduct: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_garden_dashboard)
 
     database = FirebaseDatabase.getInstance().reference
     gardensCountTextView = findViewById(R.id.Amount)
-//    volunteersCountTextView = findViewById(R.id.volunteers_count_text_view)
+    productsCountTextView = findViewById(R.id.pTotal)
+    mostProfitableProduct = findViewById(R.id.pName)
 
     database.addValueEventListener(object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             val gardensCount = dataSnapshot.child("Garden").childrenCount
-//            val volunteersCount = dataSnapshot.child("volunteers").childrenCount
+            val productsCount = dataSnapshot.child("products").childrenCount
 
             gardensCountTextView.text = gardensCount.toString()
-//            volunteersCountTextView.text = volunteersCount.toString()
+            productsCountTextView.text = productsCount.toString()
+
+            var maxProfit = 0.0
+            var mostProfitableProductName = ""
+
+            for (productSnapshot in dataSnapshot.child("products").children) {
+                val productName = productSnapshot.child("name").value.toString()
+                val quantity = productSnapshot.child("quantity").value.toString().toDouble()
+                val unitPrice = productSnapshot.child("unit_price").value.toString().toDouble()
+
+                val profit = quantity * unitPrice
+                if (profit > maxProfit) {
+                    maxProfit = profit
+                    mostProfitableProductName = productName
+                }
+            }
+
+            mostProfitableProduct.text = "$mostProfitableProductName"
         }
+
+
 
         override fun onCancelled(databaseError: DatabaseError) {
             // Handle errors

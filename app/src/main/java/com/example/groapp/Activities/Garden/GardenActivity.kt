@@ -25,5 +25,11 @@ class GardenActivity : AppCompatActivity() {
             val intent = Intent(this, GardenListActivity::class.java)
             startActivity(intent)
         }
+
+        val Btn5 = findViewById<View>(R.id.button3)
+        Btn5.setOnClickListener {
+            val intent = Intent(this, GardenDashboardActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

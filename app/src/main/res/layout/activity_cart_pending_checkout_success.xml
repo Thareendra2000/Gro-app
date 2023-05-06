@@ -82,7 +82,7 @@
                 android:layout_margin="@dimen/fourdp">
 
                 <TextView
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/avrgSesionEx1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/orderSuccessHeading"
@@ -91,7 +91,7 @@
                     android:textSize="24sp">
                 </TextView>
                 <TextView
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/avrgSesionEx2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
