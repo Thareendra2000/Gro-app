@@ -9,18 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.groapp.Activities.EmployeeDetailsActivity
 import com.example.groapp.Activities.HomeActivity
-import com.example.groapp.Activities.MainActivity
-import com.example.groapp.Adapters.EmpAdapter
-import com.example.groapp.Models.EmployeeModel
+import com.example.groapp.Adapters.CartPickUpAdapter
+import com.example.groapp.Models.OrderModel
 import com.example.groapp.R
 import com.google.firebase.database.*
 
 class CartPickUpsActivity : AppCompatActivity() {
-    private lateinit var empRecyclerView: RecyclerView
+    private lateinit var pickUpRecycleView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var empList: ArrayList<EmployeeModel>
+    private lateinit var pickUpList: ArrayList<OrderModel>
     private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,50 +47,41 @@ class CartPickUpsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        empRecyclerView = findViewById(R.id.rvEmp)
-        empRecyclerView.layoutManager = LinearLayoutManager(this)
-        empRecyclerView.setHasFixedSize(true)
+        pickUpRecycleView = findViewById(R.id.rvEmp)
+        pickUpRecycleView.layoutManager = LinearLayoutManager(this)
+        pickUpRecycleView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        empList = arrayListOf<EmployeeModel>()
+        pickUpList = arrayListOf<OrderModel>()
 
-        getEmployeesData()
+        getPickUpData()
     }
 
-    private fun getEmployeesData() {
+    private fun getPickUpData() {
 
-        empRecyclerView.visibility = View.GONE
+        pickUpRecycleView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Employee")
+        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("PENDING")
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                empList.clear()
+                pickUpList.clear()
                 if (snapshot.exists()){
-                    for (empSnap in snapshot.children){
-                        val empData = empSnap.getValue(EmployeeModel::class.java)
-                        empList.add(empData!!)
+                    for (dataSnap in snapshot.children){
+                        val data = dataSnap.getValue(OrderModel::class.java)
+                        pickUpList.add(data!!)
                     }
-                    val mAdapter = EmpAdapter(empList)
-                    empRecyclerView.adapter = mAdapter
+                    val mAdapter = CartPickUpAdapter(pickUpList)
+                    pickUpRecycleView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : EmpAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : CartPickUpAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-//                            val intent = Intent(this@CartPickUpsActivity, EmployeeDetailsActivity::class.java)
-
-                            //put extras
-//                            intent.putExtra("empId", empList[position].empId)
-//                            intent.putExtra("empName", empList[position].empName)
-//                            intent.putExtra("empAge", empList[position].empAge)
-//                            intent.putExtra("empSalary", empList[position].empSalary)
-//                            startActivity(intent)
                         }
-
                     })
 
-                    empRecyclerView.visibility = View.VISIBLE
+                    pickUpRecycleView.visibility = View.VISIBLE
                     tvLoadingData.visibility = View.GONE
                 }
             }
