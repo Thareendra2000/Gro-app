@@ -167,6 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="textPersonName"
+            android:entries="@array/categories"
             android:textColor="@color/darkGreen"
             android:textSize="16sp" />
     </LinearLayout>
@@ -207,7 +208,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/item1Name" />
+            android:hint="@string/item1Name" />
     </LinearLayout>
 
     <TextView
@@ -240,13 +241,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProductTitleLayout">
 
-        <EditText
+        <Spinner
             android:id="@+id/unit"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/item1Unit"
+            android:entries="@array/itemUnit"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -286,7 +287,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:text="@string/item1Price"
+            android:hint="@string/item1Price"
             android:textColor="@color/darkGreen" />
 
 
@@ -336,7 +337,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:text="@string/item1BestBefore"
+            android:hint="@string/item1BestBefore"
             android:inputType="date"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
@@ -376,7 +377,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:text="@string/item1Description"
+            android:hint="@string/item1Description"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -416,7 +417,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:text="@string/item1Qnty"
+            android:hint="@string/item1Qnty"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 

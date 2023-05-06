@@ -2,14 +2,11 @@ package com.example.groapp.Activities.Garden
 
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.StringDef
+import android.util.Log
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import com.example.groapp.Activities.Product.ManageItemsActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 import com.google.firebase.database.FirebaseDatabase
@@ -51,6 +48,35 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
             )
         }
 
+
+        val gardenName = intent.getStringExtra("name")
+        val gardenId = intent.getStringExtra("gardenId")
+        val area = intent.getStringExtra("area")
+        val address = intent.getStringExtra("address")
+        val description = intent.getStringExtra("description")
+        val phoneNo = intent.getStringExtra("phoneNo")
+
+        Log.i("gardenName", gardenName.toString())
+        Log.i("gardenId", gardenId.toString())
+
+        var viewProducts : Button = findViewById(R.id.viewProducts)
+        viewProducts.setOnClickListener{
+            val intent = Intent(this, ManageItemsActivity::class.java)
+            intent.putExtra("name", gardenName)
+            intent.putExtra("gardenId", gardenId)
+            intent.putExtra("area", area)
+            intent.putExtra("address", address)
+            intent.putExtra("description", description)
+            intent.putExtra("phoneNo", phoneNo)
+            startActivity(intent)
+        }
+
+        var backBtn : ImageView = findViewById(R.id.backBtn)
+        backBtn.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+
         // Set a click listener on the volunteer button.
 
     }
@@ -64,7 +90,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         gardenPhoneNo = findViewById(R.id.gardenPhoneNo)
         gardenDescription  = findViewById(R.id.gardenDescription)
 
-        productionAddBtn = findViewById(R.id.volunteerBtn)
+        productionAddBtn = findViewById(R.id.viewProducts)
         editBtn =findViewById(R.id.btnEdit)
         deleteBtn = findViewById(R.id.btnDelete)
     }

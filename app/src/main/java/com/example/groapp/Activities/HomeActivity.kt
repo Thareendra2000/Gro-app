@@ -25,9 +25,15 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, CartPendingActivity::class.java)
             startActivity(intent)
         }
+
         var tvNotification : ImageView = findViewById(R.id.tvNotification)
         tvNotification.setOnClickListener{
             val intent = Intent(this, NotificationActivity::class.java)
+
+        var accountBtn : LinearLayout = findViewById(R.id.accountBtn)
+        accountBtn.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+
             startActivity(intent)
         }
     }
