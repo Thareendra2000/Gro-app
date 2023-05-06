@@ -1,22 +1,17 @@
 package com.example.groapp.Activities.Product
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import com.example.groapp.Activities.Garden.MyGardensActivity
-import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
 import com.example.groapp.Repositories.CategoryRespository
 import com.example.groapp.Repositories.ProductRepository
 import com.example.groapp.Utils.ProductValidations
-import com.google.android.play.integrity.internal.l
-import kotlinx.coroutines.channels.ProducerScope
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,6 +25,7 @@ class AddItemActivity : AppCompatActivity() {
     private lateinit var quantityBox : EditText;
     private lateinit var addItemBtn : Button;
     private lateinit var backBtn : ImageView;
+    private lateinit var addMediaBtn : TextView
 
     private var category : String = "";
     private var productName : String = "";
@@ -59,6 +55,7 @@ class AddItemActivity : AppCompatActivity() {
         quantityBox = findViewById(R.id.quantity)
         addItemBtn = findViewById(R.id.addItemBtn)
         backBtn = findViewById(R.id.backImg)
+        addMediaBtn = findViewById(R.id.addMediaBtn)
 
         gardenId = intent.getStringExtra("gardenId").toString()
         gardenName = intent.getStringExtra("name").toString()
@@ -66,6 +63,10 @@ class AddItemActivity : AppCompatActivity() {
         categoryRepository.getAllCategoriesForSpinner(categoryBox) { result ->
             if(!result)
                 addItemBtn.isEnabled = false
+        }
+
+        addMediaBtn.setOnClickListener {
+            handleAddMediaBtnClick()
         }
 
         addItemBtn.setOnClickListener {
@@ -99,6 +100,43 @@ class AddItemActivity : AppCompatActivity() {
         quantityBox.setOnFocusChangeListener { view, hasFocus ->
             if(!hasFocus) quantityValidation()
         }
+
+    }
+
+    private fun handleAddMediaBtnClick() {
+//        val intent = Intent(Intent.ACTION_GET_CONTENT)
+//        intent.type = "*/*" // Allow any type of file to be chosen
+//        const val FILE_SELECT_CODE = "FILE_SELECT_CODE"
+//        startActivityForResult(intent, FILE_SELECT_CODE) // FILE_SELECT_CODE is a user-defined constant
+//
+//        val storage = Firebase.
+//        val storageRef = storage.reference
+//
+//        // Create a reference to the image file to upload
+//        val imageRef = storageRef.child("images/${UUID.randomUUID()}.jpg")
+//
+//        // Get the local file Uri
+//        val localImageUri: Uri =
+//
+//        // Upload the file to Firebase Storage
+//        val uploadTask = imageRef.putFile(localImageUri)
+//
+//        // Listen for the upload success/failure
+//        uploadTask.addOnSuccessListener { taskSnapshot ->
+//            // The image was successfully uploaded to Firebase Storage
+//            // Get the image URL
+//            imageRef.downloadUrl.addOnSuccessListener { uri ->
+//                // The download URL was successfully retrieved
+//                val imageUrl = uri.toString()
+//                // Do something with the image URL
+//            }.addOnFailureListener { e ->
+//                // Failed to retrieve the download URL
+//                Log.e("Firebase", "Failed to get image URL: ${e.message}")
+//            }
+//        }.addOnFailureListener { e ->
+//            // Failed to upload the image to Firebase Storage
+//            Log.e("Firebase", "Failed to upload image: ${e.message}")
+//        }
 
     }
 

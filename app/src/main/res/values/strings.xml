@@ -19,6 +19,9 @@
     <string name="businessProduct2">Fertiliser - Artificial</string>
     <string name="addProductsBtn">Add Products</string>
 
+    <!--Notification-->
+    <string name="channel_name">Gro App</string>
+    <string name="channel_description">For the Future</string>
 
     <!--Home-->
     <string name="home">Home</string>
