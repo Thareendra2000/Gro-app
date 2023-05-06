@@ -4,8 +4,9 @@ import java.util.*
 
 enum class OrderStatus {
     PENDING,
+    ACCEPTED,
     COMPLETED,
-    ACCEPTED
+    REJECTED
 }
 
 data class OrderModel(
