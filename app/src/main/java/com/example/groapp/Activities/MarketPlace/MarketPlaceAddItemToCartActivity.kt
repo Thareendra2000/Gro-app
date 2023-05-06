@@ -23,6 +23,8 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
     private lateinit var unit : String
     private var quantity: Double = 0.0
     private var unitPrice: Double = 0.0
+    private lateinit var image_url : String
+    private lateinit var garden_id : String
 
     private lateinit var tvItemName : TextView
     private lateinit var tvItemPrice : TextView
@@ -55,6 +57,8 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
             quantity = extras.getString("quantity")?.toDouble() ?: 0.0
             unit = extras.getString("unit").toString()
             unitPrice = extras.getString("unitPrice")?.toDouble() ?: 0.0
+            image_url = extras.getString("image_url").toString()
+            garden_id = extras.getString("gardenId").toString()
         }
 
         tvItemName = findViewById(R.id.tvItemName)
@@ -104,7 +108,7 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
         val userId = "-NUeURgCQxX2vHkhfi6z"
         val productId = prodId
         val cartId = dbRef.push().key!!
-        val cart = CartModel(cartId, userId, productId, amount.toString(), total.toString(), Date(), "Pending")
+        val cart = CartModel(cartId, userId, productId, amount.toString(), total.toString(), Date(), "Pending", image_url, garden_id)
 
         dbRef.child(cartId).setValue(cart)
             .addOnCompleteListener{

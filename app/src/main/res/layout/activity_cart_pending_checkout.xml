@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- sapumal -->
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/backgroundWhite"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activities.Cart.CartPendingCheckoutActivity"
+    android:background="@color/backgroundWhite">
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/btnGoBack"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -62,7 +62,7 @@
                 android:padding="@dimen/eightdp"
                 android:layout_margin="@dimen/fourdp">
                 <TextView
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/tvItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/guava"
@@ -84,7 +84,7 @@
                 android:padding="@dimen/eightdp"
                 android:layout_margin="@dimen/fourdp">
                 <TextView
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/tvItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/guavePrice"
@@ -109,7 +109,7 @@
                 android:layout_margin="@dimen/fourdp">
 
                 <EditText
-                    android:id="@+id/avrgSesionEx"
+                    android:id="@+id/tvItemNote"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:hint="@string/hintSpecial"
@@ -124,7 +124,7 @@
             android:layout_marginTop="40dp"
             android:orientation="horizontal">
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/tvDeleteButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
@@ -142,17 +142,15 @@
             android:layout_marginTop="100dp"
             android:orientation="horizontal">
             <LinearLayout
-                android:id="@+id/averageSessionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/cardbackground"
                 android:orientation="vertical"
                 android:padding="@dimen/eightdp"
                 android:layout_margin="@dimen/fourdp">
 
-                <TextView
-                    android:id="@+id/avrgSesionEx"
+                <Button
+                    android:id="@+id/tvBtnCheckout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/checkout"

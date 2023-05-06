@@ -37,10 +37,10 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/baseline_shopping_cart_24" />
+            app:srcCompat="@drawable/baseline_shopping_bag_24" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/tvNotification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"

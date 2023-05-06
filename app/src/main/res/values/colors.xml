@@ -7,13 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rejectRed">#bc4749</color>
+    <color name="gray">#808080</color>
 
+    <color name="yellow">#FFC801</color>
+
+    <color name="divider_grey">#FFFF0000</color>
     <color name="darkGreen">#283618</color>
     <color name="lessDarkGreen">#DADADA</color>
     <color name="backgroundWhite">#F1F1F1</color>
-    <color name="approveGreen">#6a994e</color>
-    <color name="rejectRed">#bc4749</color>
+    <color name="approveGreen">#039487</color>
+    <color name="deleteRed">#d11a2a</color>
+    <color name="colorPrimary">#26a69a</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#048b7a</color>
 
-    <color name="gray">#808080</color>
 
 </resources>

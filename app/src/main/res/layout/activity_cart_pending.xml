@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundWhite"
-    tools:context=".Activities.Product.ManageItemsActivity">
+    tools:context=".Activities.Cart.CartPendingActivity">
 
     <!--Bottom NavBar-->
     <LinearLayout
@@ -159,6 +159,7 @@
         app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
 
         <Button
+            android:id="@+id/tvPending"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fourdp"
@@ -170,6 +171,7 @@
             android:textAllCaps="false"/>
 
         <Button
+            android:id="@+id/tvPickUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fourdp"
@@ -181,6 +183,7 @@
             android:textAllCaps="false"/>
 
         <Button
+            android:id="@+id/tvCompleted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fourdp"
@@ -192,99 +195,31 @@
             android:textAllCaps="false"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="541dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEmp"
+        android:layout_width="375dp"
+        android:layout_height="601dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SwappingButtonsLayout">
+        app:layout_constraintTop_toBottomOf="@+id/SwappingButtonsLayout"
+        app:layout_constraintVertical_bias="0.674"
+        tools:listitem="@layout/activity_cart_pending_items" />
 
-        <!--Single Item Card-->
-        <LinearLayout
-            android:id="@+id/ItemCardWithApproveRejectButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/fourdp"
-            android:paddingBottom="@dimen/fourdp"
-            android:background="@drawable/card_bg_unfilled">
-
-            <!--Item Image-->
-            <LinearLayout
-                android:id="@+id/itemImageLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/eightdp"
-                android:orientation="horizontal"
-                android:background="@drawable/card_bg_unfilled"
-                android:layout_weight="2">
-
-            </LinearLayout>
-
-            <!--Item details & controls-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
-
-                <!--Item Details-->
-                <LinearLayout
-                    android:id="@+id/ItemCardDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="7"
-                    android:layout_margin="@dimen/fourdp">
-
-                    <TextView
-                        android:id="@+id/itemName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/item1Name"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pickUpsOwner"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pickUpsAddress"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/itemBestBefore"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/pickUpsContact"
-                        android:textColor="@color/darkGreen"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <!--Approve Reject Btns-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/fourdp"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tvLoadingData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading Data....."
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

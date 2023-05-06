@@ -3,10 +3,12 @@ package com.example.groapp.Activities.MarketPlace
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Adapters.CategoryAdapter
 import com.example.groapp.Models.CategoryModel
 import com.example.groapp.R
@@ -21,6 +23,12 @@ class MarketPlaceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_market_place)
+
+        var tvHome : LinearLayout = findViewById(R.id.tvHome)
+        tvHome.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
 
         catRecyclerView = findViewById(R.id.rvCat)
         catRecyclerView.layoutManager = LinearLayoutManager(this)
