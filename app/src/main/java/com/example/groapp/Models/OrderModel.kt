@@ -11,6 +11,6 @@ data class OrderModel(
     val cartId: String? = null,
     val note: String? = null,
     val timestamp: Date = Date(),
-    val status: OrderStatus? = null
+    var status: OrderStatus? = null
 )
 
