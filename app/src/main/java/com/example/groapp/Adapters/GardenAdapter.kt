@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 
-class GardenAdapter(private val gardenList: ArrayList<GardenModel>) :
+class GardenAdapter(private var gardenList: ArrayList<GardenModel>) :
     RecyclerView.Adapter<GardenAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
@@ -36,6 +36,7 @@ class GardenAdapter(private val gardenList: ArrayList<GardenModel>) :
     override fun getItemCount(): Int {
         return gardenList.size
     }
+
 
     class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
