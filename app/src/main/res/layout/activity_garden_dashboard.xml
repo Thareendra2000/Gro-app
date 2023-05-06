@@ -72,7 +72,7 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/VolunteerCount"
+                android:id="@+id/resultsCount"
                 android:layout_width="99dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -83,7 +83,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/vAmount"
+                android:id="@+id/rAmount"
                 android:layout_width="99dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/clothingName"
