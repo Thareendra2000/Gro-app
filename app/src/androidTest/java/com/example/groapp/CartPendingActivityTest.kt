@@ -16,7 +16,6 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class CartPendingActivityTest {
-
     @Before
     fun setUp() {
         ActivityScenario.launch(CartPendingActivity::class.java)
@@ -24,18 +23,9 @@ class CartPendingActivityTest {
 
     @Test
     fun verifyCartNavigationButtons() {
-        // Verify that the back button is displayed and clickable
         onView(withId(R.id.backImg)).check(matches(isDisplayed())).perform(click())
-
-        // Verify that the "Pending" button is displayed and clickable
         onView(withId(R.id.tvPending)).check(matches(isDisplayed())).perform(click())
-
-        // Verify that the "Pick Up" button is displayed and clickable
         onView(withId(R.id.tvPickUp)).check(matches(isDisplayed())).perform(click())
-
-        // Verify that the "Completed" button is displayed and clickable
         onView(withId(R.id.tvCompleted)).check(matches(isDisplayed())).perform(click())
     }
-
-
 }

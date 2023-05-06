@@ -18,6 +18,7 @@ import com.example.groapp.R
 import com.google.firebase.database.*
 
 class CartCompletedActivity : AppCompatActivity() {
+    // initialize the UI elements
     private lateinit var completedRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var completedList: ArrayList<OrderModel>
@@ -49,6 +50,7 @@ class CartCompletedActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // set values
         completedRecyclerView = findViewById(R.id.rvEmp)
         completedRecyclerView.layoutManager = LinearLayoutManager(this)
         completedRecyclerView.setHasFixedSize(true)
@@ -56,16 +58,20 @@ class CartCompletedActivity : AppCompatActivity() {
 
         completedList = arrayListOf<OrderModel>()
 
+        // call function to get data
         getCompletedData()
     }
 
     private fun getCompletedData() {
 
+        // show this.. if there isn't any data
         completedRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
+        // db
         val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("COMPLETED")
 
+        // pass values to RateItem page
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 completedList.clear()

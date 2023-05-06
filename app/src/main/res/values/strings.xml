@@ -211,6 +211,8 @@
     <string name="aTitle">Analytics</string>
     <string name="aNoOfGardens">Total No of Gardens</string>
     <string name="aNoOfVolunteers">Total No of Volunteers</string>
+    <string name="channel_name">GroApp</string>
+    <string name="channel_description">For The Future</string>
 
 </resources>
 

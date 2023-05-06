@@ -193,7 +193,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
                 val notificationService = NotificationService()
                 notificationService.saveNotifications("Item added to the cart", "Item has been added to the cart")
 
-                sendNotification("Added to cart" , "Item has been added to the cart")
+//                sendNotification("Added to cart" , "Item has been added to the cart")
 
             }.addOnFailureListener { error ->
                 println("Error updating cart status: ${error.message}")
@@ -247,7 +247,10 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
         val cartRef = database.getReference("cart").child(cartId)
         cartRef.removeValue().addOnSuccessListener {
             val notificationService = NotificationService()
-            notificationService.saveNotifications("Item deleted from the cart", "Item has been deleted from the cart")
+            notificationService.saveNotifications(
+                "Item deleted from the cart",
+                "Item has been deleted from the cart"
+            )
 
             Handler().postDelayed({
                 val intent = Intent(this, CartPendingActivity::class.java)

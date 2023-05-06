@@ -16,6 +16,7 @@ import com.example.groapp.R
 import com.google.firebase.database.*
 
 class CartPickUpsActivity : AppCompatActivity() {
+    // initialize the UI elements
     private lateinit var pickUpRecycleView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var pickUpList: ArrayList<OrderModel>
@@ -54,6 +55,7 @@ class CartPickUpsActivity : AppCompatActivity() {
 
         pickUpList = arrayListOf<OrderModel>()
 
+        // call the function to get data
         getPickUpData()
     }
 
