@@ -27,6 +27,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
     private lateinit var productionAddBtn: Button
     private lateinit var editBtn: ImageButton
     private lateinit var deleteBtn: ImageButton
+    private lateinit var shareBtn: ImageButton
 
 
 
@@ -37,6 +38,15 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
 
         initView()
         setValuesToViews()
+
+        // Set a click listener on the share button.
+        shareBtn.setOnClickListener {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this garden")
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Name: ${gardenName.text}\nAddress: ${gardenAddress.text}\nArea: ${gardenArea.text}\nLocation: ${gardenLocation.text}\nPhone number: ${gardenPhoneNo.text}\nDescription: ${gardenDescription.text}")
+            startActivity(Intent.createChooser(shareIntent, "Share via"))
+        }
 
         editBtn.setOnClickListener {
             openUpdateDialog(
@@ -67,15 +77,17 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         productionAddBtn = findViewById(R.id.volunteerBtn)
         editBtn =findViewById(R.id.btnEdit)
         deleteBtn = findViewById(R.id.btnDelete)
+        shareBtn = findViewById(R.id.btnshare)
+
     }
 
     // Set the values of the UI elements with data passed from the previous activity.
     private fun setValuesToViews() {
-
+        val area = intent.getStringExtra("area")
         gardenId.text = intent.getStringExtra("gardenId")
         gardenName.text = intent.getStringExtra("name")
         gardenAddress.text = intent.getStringExtra("address")
-        gardenArea.text = intent.getStringExtra("area")
+        gardenArea.text = "$area Acre"
         gardenPhoneNo.text = intent.getStringExtra("phoneNo")
         gardenDescription.text = intent.getStringExtra("description")
         gardenLocation.text = intent.getStringExtra("location")

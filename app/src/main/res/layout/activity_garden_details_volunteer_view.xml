@@ -246,8 +246,8 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             tools:layout_editor_absoluteX="165dp"
-            tools:layout_editor_absoluteY="37dp"/>
-<!--            android:visibility="invisible"/>-->
+            tools:layout_editor_absoluteY="37dp"
+            android:visibility="invisible"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
