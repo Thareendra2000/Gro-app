@@ -24,7 +24,7 @@ class ManageItemsActivity : AppCompatActivity() {
     private lateinit var gardenId : String
 
     private lateinit var titleTv : TextView
-    private lateinit var categoriesSpinner : Spinner
+//    private lateinit var categoriesSpinner : Spinner
 
     val categoryRespository = CategoryRespository(this)
 
@@ -45,22 +45,12 @@ class ManageItemsActivity : AppCompatActivity() {
 
         titleTv = findViewById(R.id.Title)
         titleTv.setText(gardenName)
-        categoriesSpinner = findViewById(R.id.categories)
+//        categoriesSpinner = findViewById(R.id.categories)
+        itemsRV = findViewById(R.id.itemsRV)
+        itemsRV.layoutManager = LinearLayoutManager(this)
+        itemsRV.setHasFixedSize(true)
+        tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        Log.i("Garden ID", gardenId)
-        Log.i("Garden Name", gardenName)
-        categoryRespository.getAllCategoriesForSpinner(categoriesSpinner){ result ->
-            if(result){
-                itemsRV = findViewById(R.id.itemsRV)
-                itemsRV.layoutManager = LinearLayoutManager(this)
-                itemsRV.setHasFixedSize(true)
-                tvLoadingData = findViewById(R.id.tvLoadingData)
-
-                itemsRV.visibility = View.GONE
-                tvLoadingData.visibility = View.VISIBLE
-                getProducts()
-            }
-        }
 
         val gardenNameT = intent.getStringExtra("name")
         val gardenIdT = intent.getStringExtra("gardenId")
@@ -83,36 +73,58 @@ class ManageItemsActivity : AppCompatActivity() {
         addItemBtn = findViewById(R.id.addItemBtn)
         addItemBtn.setOnClickListener{
             val intent = Intent(this, AddItemActivity::class.java)
-            intent.putExtra("gardenName", gardenName)
+            intent.putExtra("name", gardenName)
             intent.putExtra("gardenId", gardenId)
             startActivity(intent)
-            finish()
         }
 
+        getProducts()
+//        categoryRespository.getAllCategoriesForSpinner(categoriesSpinner){ result ->
+//            if(result){
+//                getProducts()
+//            }
+//        }
     }
 
+
     private fun getProducts() {
+
         itemsRV.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        var dbRef = FirebaseDatabase.getInstance().reference.child("products")
+        var dbRef = FirebaseDatabase.getInstance().getReference("products")
 
-        productsList = arrayListOf<ProductModel>()
+        var empList = arrayListOf<ProductModel>()
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                productsList.clear()
+                empList.clear()
                 if (snapshot.exists()) {
-                    for (snap in snapshot.children) {
-                        val prodData = snap.getValue(ProductModel::class.java)
-                        if(prodData!!.garden_id == gardenId)
-                            productsList.add(prodData!!)
+                    for (empSnap in snapshot.children) {
+                        val empData = empSnap.getValue(ProductModel::class.java)
+                        if(empData!!.garden_id.toString() == gardenId.toString())
+                            empList.add(empData!!)
                     }
-                    val mAdapter = ProductAdapter(productsList)
-                    itemsRV.adapter = mAdapter
 
+                    if(empList.size > 0)
+                    {
+                        val mAdapter = ProductAdapter(empList)
+                        itemsRV.adapter = mAdapter
 
-                    itemsRV.visibility = View.VISIBLE
-                    tvLoadingData.visibility = View.GONE
+                        mAdapter.setOnItemClickListener(object : ProductAdapter.onItemClickListener {
+                            override fun onItemClick(position: Int) {
+                            }
+
+                        })
+
+                        itemsRV.visibility = View.VISIBLE
+                        tvLoadingData.visibility = View.GONE
+                    }
+                    else{
+                        tvLoadingData.text = " No Products Found";
+                    }
+                }
+                else{
+                    tvLoadingData.text = " No Products Found";
                 }
             }
 
@@ -123,38 +135,4 @@ class ManageItemsActivity : AppCompatActivity() {
         })
     }
 
-//    private fun getProducts() {
-//        productsList = arrayListOf<ProductModel>()
-//
-//        val productsListener = object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                try {
-//                    if (dataSnapshot.exists()) {
-//                        for (snap in dataSnapshot.children) {
-//                            val productData = snap.getValue(ProductModel::class.java)
-//                            if(productData!!.garden_id!!.equals(gardenId, ignoreCase = true)){
-//                                productsList.add(productData!!)
-//                                Log.i("product Found", productData.name.toString())
-//                            }
-//
-//                            val mAdapter = ProductAdapter(productsList)
-//                            itemsRV.adapter = mAdapter
-//
-//                            itemsRV.visibility = View.VISIBLE
-//                            tvLoadingData.visibility = View.GONE
-//                        }
-//                    }
-//                    Log.i("callback", productsList.size.toString())
-//                } catch (ex: Exception) {
-//                    Log.w("exception", ex.localizedMessage)
-//                }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                Log.w("loadPost:onCancelled", databaseError.toException())
-//            }
-//        }
-//        FirebaseDatabase.getInstance().reference.child("products").addValueEventListener(productsListener);
-//
-//    }
 }

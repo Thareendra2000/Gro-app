@@ -208,36 +208,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
 
-        <TextView
-            android:id="@+id/itemDescription"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/chooseCategory"
-            android:textAlignment="center"
-            android:textColor="@color/darkGreen"
-            android:padding="@dimen/eightdp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/itemDescription"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/chooseCategory"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/darkGreen"-->
+<!--            android:padding="@dimen/eightdp"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="4"
-            android:background="@drawable/card_bg_unfilled"
-            android:padding="@dimen/eightdp">
-            <Spinner
-                android:id="@+id/categories"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:entries="@array/categories"
-                android:textAlignment="center"
-                android:textColor="@color/darkGreen"
-                android:textSize="18sp"
-                android:layout_weight="1"/>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_weight="4"-->
+<!--            android:background="@drawable/card_bg_unfilled"-->
+<!--            android:padding="@dimen/eightdp">-->
+<!--            <Spinner-->
+<!--                android:id="@+id/categories"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:entries="@array/categories"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/darkGreen"-->
+<!--                android:textSize="18sp"-->
+<!--                android:layout_weight="1"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
     </LinearLayout>
 
 
@@ -250,7 +250,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        tools:listitem="@layout/market_category_list" />
+        tools:listitem="@layout/product_owner_pov" />
 
     <TextView
         android:id="@+id/tvLoadingData"

@@ -332,7 +332,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="date"
             android:hint="@string/item1BestBefore"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
@@ -406,9 +406,10 @@
         app:layout_constraintTop_toBottomOf="@+id/DescriptionLinearLayout">
 
         <EditText
-            android:id="@+id/description"
+            android:id="@+id/quantity"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:inputType="numberDecimal"
             android:ems="10"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
@@ -458,6 +459,7 @@
             app:backgroundTint="@color/darkGreen"/>
 
         <Button
+            android:id="@+id/updateBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fourdp"
@@ -467,17 +469,6 @@
             android:textAllCaps="false"
             android:textColor="@color/backgroundWhite"
             app:backgroundTint="@color/approveGreen"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fourdp"
-            android:layout_weight="1"
-            android:background="@drawable/red_button"
-            android:text="@string/deleteBtn"
-            android:textAllCaps="false"
-            android:textColor="@color/backgroundWhite"
-            app:backgroundTint="@color/rejectRed"/>
 
     </LinearLayout>
 

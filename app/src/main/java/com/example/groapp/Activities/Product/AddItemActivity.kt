@@ -61,7 +61,7 @@ class AddItemActivity : AppCompatActivity() {
         backBtn = findViewById(R.id.backImg)
 
         gardenId = intent.getStringExtra("gardenId").toString()
-        gardenName = intent.getStringExtra("gardenName").toString()
+        gardenName = intent.getStringExtra("name").toString()
 
         categoryRepository.getAllCategoriesForSpinner(categoryBox) { result ->
             if(!result)
@@ -74,7 +74,7 @@ class AddItemActivity : AppCompatActivity() {
 
         backBtn.setOnClickListener{
             var intent = Intent(this, ManageItemsActivity::class.java)
-            intent.putExtra("gardenName", gardenName)
+            intent.putExtra("name", gardenName)
             intent.putExtra("gardenId", gardenId)
             startActivity(intent)
             finish()
@@ -144,7 +144,7 @@ class AddItemActivity : AppCompatActivity() {
             unitPriceBox.setText("")
             quantityBox.setText("")
             var intent = Intent(this, ManageItemsActivity::class.java)
-            intent.putExtra("gardenName", gardenName)
+            intent.putExtra("name", gardenName)
             intent.putExtra("gardenId", gardenId)
             startActivity(intent)
             finish()
@@ -205,8 +205,12 @@ class AddItemActivity : AppCompatActivity() {
     fun quantityValidation() : Boolean{
         if(productValidations.requiredCheck(quantityBox.text.toString())){
             if(productValidations.doubleCheck(quantityBox.text.toString())){
-                quantity = quantityBox.text.toString().toDouble()
-                return true
+                if(quantityBox.text.toString().toDouble() > 0){
+                    quantity = quantityBox.text.toString().toDouble()
+                    return true
+                }
+                else
+                    quantityBox.error = "Quantity Must be greater than zero"
             }
             else
                 quantityBox.error = "Quantity must be a number"

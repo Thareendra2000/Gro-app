@@ -15,7 +15,17 @@ class ProductRepository (
     var productsRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("products")
 )
 {
-
+    public fun updateProduct(product : ProductModel){
+        productsRef.child(product.production_id!!).setValue(product)
+            .addOnSuccessListener{
+                Log.i("Success" , "Product ${product.name} updated")
+                Toast.makeText(activity, "Product updated successfully", Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener{ err ->
+                Log.w("Error" , err.message.toString())
+                Toast.makeText(activity, "Product update failed", Toast.LENGTH_LONG).show()
+            }
+    }
     public fun createProduct(product: ProductModel){
         val productId = productsRef.push().key!!
         product.production_id = productId

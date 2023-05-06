@@ -3,6 +3,7 @@ package com.example.groapp.Activities.Garden
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.groapp.Activities.Product.ManageItemsActivity
@@ -54,6 +55,9 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         val address = intent.getStringExtra("address")
         val description = intent.getStringExtra("description")
         val phoneNo = intent.getStringExtra("phoneNo")
+
+        Log.i("gardenName", gardenName.toString())
+        Log.i("gardenId", gardenId.toString())
 
         var viewProducts : Button = findViewById(R.id.viewProducts)
         viewProducts.setOnClickListener{

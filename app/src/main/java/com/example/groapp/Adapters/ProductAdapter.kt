@@ -1,6 +1,7 @@
 package com.example.groapp.Adapters
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,29 +16,15 @@ import com.example.groapp.Activities.Product.EditDeleteItemActivity
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
 import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
-class ProductAdapter(private val productsList: List<ProductModel>) :
+class ProductAdapter(private val prodList:  ArrayList<ProductModel>) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
-
-    class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
-
-        val tvCatName : TextView = itemView.findViewById(R.id.tvCatName)
-        val tvCatDescription : TextView = itemView.findViewById(R.id.tvCatDescription)
-        val tvCatImage : ImageView = itemView.findViewById(R.id.tvCatImage)
-        val tvBestBefore : TextView = itemView.findViewById(R.id.tvBestBefore)
-        val editBtn : Button = itemView.findViewById(R.id.editBtn)
-        val deleteBtn : Button = itemView.findViewById(R.id.deleteBtn)
-
-        init {
-            itemView.setOnClickListener {
-                clickListener.onItemClick(adapterPosition)
-            }
-        }
-
-    }
 
     interface onItemClickListener{
         fun onItemClick(position: Int)
@@ -53,43 +40,67 @@ class ProductAdapter(private val productsList: List<ProductModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentProduct = productsList[position]
-        holder.tvCatName.text = currentProduct.name
-        holder.tvCatDescription.text = currentProduct.description
-        holder.tvBestBefore.text = currentProduct.best_before!!.date.toString()
-        holder.editBtn.setTag(currentProduct.production_id)
-        holder.deleteBtn.setTag(currentProduct.production_id)
-
+        val currentProd= prodList[position]
+        holder.tvProdName.text = currentProd.name
+        holder.tvProdDescription.text = currentProd.description
+        holder.tvProdBestBefore.text = currentProd.best_before!!.toLocaleString().toString()
         Glide.with(holder.itemView.context)
-            .load(currentProduct.img_url)
-            .into(holder.tvCatImage)
+            .load(currentProd.img_url)
+            .into(holder.tvProdImage)
 
-        holder.editBtn.setOnClickListener {
+        holder.editBtnProd.setOnClickListener {
             val intent = Intent(holder.itemView.context, EditDeleteItemActivity::class.java)
-            intent.putExtra("productID", currentProduct.production_id)
+
+            Log.i("best before", currentProd.best_before.toString())
+            intent.putExtra("name", currentProd.garden_name)
+            intent.putExtra("gardenId", currentProd.garden_id)
+            intent.putExtra("category", currentProd.category)
+            intent.putExtra("productName", currentProd.name)
+            intent.putExtra("productId", currentProd.production_id)
+            intent.putExtra("unit", currentProd.unit)
+            intent.putExtra("unitPrice", currentProd.unit_price.toString().toDouble())
+            intent.putExtra("bestBefore", currentProd.best_before.toString())
+            intent.putExtra("description", currentProd.description)
+            intent.putExtra("quantity", currentProd.quantity.toString().toDouble())
+
             holder.itemView.context.startActivity(intent)
         }
-
-        holder.deleteBtn.setOnClickListener {
+        holder.deleteBtnProd.setOnClickListener {
             val builder = AlertDialog.Builder(holder.itemView.context)
             builder.setMessage("Are you sure you want to delete this record?")
             builder.setPositiveButton("Yes") { _, _ ->
-                val dbRef = FirebaseDatabase.getInstance().getReference("products").child(currentProduct.production_id.toString())
-                val mTask = dbRef.removeValue()
-
-                mTask.addOnSuccessListener {
-                    Toast.makeText(holder.itemView.context, "Volunteering Deleted", Toast.LENGTH_LONG).show()
-                }.addOnFailureListener { error ->
-                    Toast.makeText(holder.itemView.context, "Deleting Err ${error.message}", Toast.LENGTH_LONG).show()
-                }
+                FirebaseDatabase.getInstance().reference.child("products").child(currentProd.production_id!!).removeValue()
+                    .addOnSuccessListener{
+                        Toast.makeText(holder.itemView.context, "Product Deleted", Toast.LENGTH_LONG).show()
+                    }
+                    .addOnFailureListener{ err ->
+                        Toast.makeText(holder.itemView.context, "Deleting Err ${err.message}", Toast.LENGTH_LONG).show()
+                    }
             }
             builder.setNegativeButton("No") { _, _ -> }
             builder.show()
         }
-
     }
 
     override fun getItemCount(): Int {
-        return productsList.size
+        return prodList.size
     }
+
+    class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
+
+        val tvProdName : TextView = itemView.findViewById(R.id.tvProdName)
+        val tvProdDescription : TextView = itemView.findViewById((R.id.tvProdDescription))
+        val tvProdBestBefore : TextView = itemView.findViewById((R.id.tvProdBestBefore))
+        val tvProdImage : ImageView = itemView.findViewById(R.id.tvProdImage)
+        val editBtnProd : Button = itemView.findViewById((R.id.editBtnProd))
+        val deleteBtnProd : Button = itemView.findViewById((R.id.deleteBtnProd))
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.onItemClick(adapterPosition)
+            }
+        }
+
+    }
+
 }
