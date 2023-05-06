@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.example.groapp.Enums.CartStatus
 import com.example.groapp.Models.CartModel
 import com.example.groapp.R
 import com.example.groapp.Services.NotificationService
@@ -108,7 +109,7 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
         val userId = "-NUeURgCQxX2vHkhfi6z"
         val productId = prodId
         val cartId = dbRef.push().key!!
-        val cart = CartModel(cartId, userId, productId, amount.toString(), total.toString(), Date(), "Pending", image_url, garden_id)
+        val cart = CartModel(cartId, userId, productId, amount.toString(), total.toString(), Date(), CartStatus.PENDING, image_url, garden_id)
 
         dbRef.child(cartId).setValue(cart)
             .addOnCompleteListener{

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.Activities.EmployeeDetailsActivity
 import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Adapters.CartPendingAdapter
+import com.example.groapp.Enums.CartStatus
 import com.example.groapp.Models.CartModel
 import com.example.groapp.Models.EmployeeModel
 import com.example.groapp.R
@@ -64,7 +65,7 @@ class CartPendingActivity : AppCompatActivity() {
         cartPendingRecycleView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("cart").orderByChild("status").equalTo("Pending")
+        val dbRef = FirebaseDatabase.getInstance().getReference("cart").orderByChild("status").equalTo("PENDING")
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

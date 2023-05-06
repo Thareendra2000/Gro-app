@@ -1,13 +1,7 @@
 package com.example.groapp.Models
 
+import com.example.groapp.Enums.OrderStatus
 import java.util.*
-
-enum class OrderStatus {
-    PENDING,
-    ACCEPTED,
-    COMPLETED,
-    REJECTED
-}
 
 data class OrderModel(
     val id: String? = null,
@@ -16,6 +10,7 @@ data class OrderModel(
     val productId: String? = null,
     val cartId: String? = null,
     val note: String? = null,
-    val timestamp: Date,
+    val timestamp: Date = Date(),
     val status: OrderStatus? = null
 )
+

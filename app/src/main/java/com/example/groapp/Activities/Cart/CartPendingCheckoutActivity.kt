@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.example.groapp.Enums.CartStatus
+import com.example.groapp.Enums.OrderStatus
 import com.example.groapp.Models.*
 import com.example.groapp.R
 import com.example.groapp.Services.NotificationService
@@ -137,7 +139,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
         dbRef.child(id).setValue(order).addOnSuccessListener {
             // update the cart status
             val dbRef = FirebaseDatabase.getInstance().getReference("cart").child(cartId)
-            dbRef.child("status").setValue("Ordered").addOnSuccessListener {
+            dbRef.child("status").setValue(CartStatus.ORDERED).addOnSuccessListener {
                 val notificationService = NotificationService()
                 notificationService.saveNotifications("Item added to the cart", "Item has been added to the cart")
             }.addOnFailureListener { error ->
@@ -145,7 +147,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
             }
 
             Handler().postDelayed({
-                val intent = Intent(this, CartPendingActivity::class.java)
+                val intent = Intent(this, CartPendingCheckoutSuccessActivity::class.java)
                 startActivity(intent)
             }, 1000)
         }.addOnFailureListener { error ->
