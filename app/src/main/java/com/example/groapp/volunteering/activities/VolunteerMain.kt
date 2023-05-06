@@ -1,9 +1,9 @@
-package com.example.tute5.volunteering.activities
+package com.example.groapp.volunteering.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import com.example.tute5.R
+import com.example.groapp.R
 import androidx.appcompat.app.AppCompatActivity
 
 

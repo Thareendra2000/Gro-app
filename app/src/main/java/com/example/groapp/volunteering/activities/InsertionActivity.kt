@@ -1,19 +1,21 @@
-package com.example.tute5.volunteering.activities
+package com.example.groapp.volunteering.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.tute5.R
+import com.example.groapp.R
+import com.example.groapp.UserSingleton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.example.tute5.volunteering.models.VolunteeringModel
+import com.example.groapp.volunteering.models.VolunteeringModel
 
 class InsertionActivity : AppCompatActivity() {
 
-    private var userId: String = "001"
-    private var userName: String = "Dinal"
+
+    private var userId = UserSingleton.uid
+    private var userName = UserSingleton.name
     private var gardenId: String = "101"
     private var gardenName: String = "Suwapetha"
 

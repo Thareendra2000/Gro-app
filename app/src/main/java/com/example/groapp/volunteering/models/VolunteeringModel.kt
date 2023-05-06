@@ -1,4 +1,4 @@
-package com.example.tute5.volunteering.models
+package com.example.groapp.volunteering.models
 
 data class VolunteeringModel(
     var volunteeringId: String? = null,
