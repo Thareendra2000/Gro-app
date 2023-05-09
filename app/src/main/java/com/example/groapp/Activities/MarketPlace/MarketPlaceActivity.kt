@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Adapters.CategoryAdapter
 import com.example.groapp.Models.CategoryModel
 import com.example.groapp.R
@@ -27,6 +29,16 @@ class MarketPlaceActivity : AppCompatActivity() {
         var tvHome : LinearLayout = findViewById(R.id.tvHome)
         tvHome.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var tvLeaderboard : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvLeaderboard.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+        var tvProfile : LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
         }
 

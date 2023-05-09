@@ -28,6 +28,7 @@ import com.example.groapp.R
 import com.google.firebase.database.*
 
 class CartPendingActivity : AppCompatActivity() {
+    // initialize UI elements
     private lateinit var cartPendingRecycleView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var pendingList: ArrayList<CartModel>
@@ -60,6 +61,7 @@ class CartPendingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // set values
         cartPendingRecycleView = findViewById(R.id.rvEmp)
         cartPendingRecycleView.layoutManager = LinearLayoutManager(this)
         cartPendingRecycleView.setHasFixedSize(true)
@@ -67,8 +69,8 @@ class CartPendingActivity : AppCompatActivity() {
 
         pendingList = arrayListOf<CartModel>()
 
+        // call to get pending cart items
         getCartPending()
-
     }
 
     private fun getCartPending() {

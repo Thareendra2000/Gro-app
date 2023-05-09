@@ -12,6 +12,7 @@ class CartPendingCheckoutSuccessActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart_pending_checkout_success)
 
+        // show the pending checkout success page
         var exploreMoreButton : Button = findViewById(R.id.exploreMoreButton)
         exploreMoreButton.setOnClickListener{
             val intent = Intent(this, MarketPlaceActivity::class.java)
