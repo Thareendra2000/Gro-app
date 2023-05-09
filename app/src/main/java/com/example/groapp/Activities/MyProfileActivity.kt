@@ -24,5 +24,11 @@ class MyProfileActivity : AppCompatActivity() {
             val intent = Intent(this, ManageOrdersActivity::class.java)
             startActivity(intent)
         }
+
+        var home : LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
