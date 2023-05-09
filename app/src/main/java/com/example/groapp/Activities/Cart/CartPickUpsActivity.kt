@@ -62,7 +62,7 @@ class CartPickUpsActivity : AppCompatActivity() {
         pickUpRecycleView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("PENDING")
+        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("ACCEPTED")
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.Adapters.NotificationAdapter
 import com.example.groapp.Models.NotificationModel
 import com.example.groapp.R
+import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.*
 
 class NotificationActivity : AppCompatActivity() {
@@ -23,8 +24,6 @@ class NotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
 
-        var userId = "-NUeURgCQxX2vHkhfi6z"
-
         var backImg : ImageView = findViewById(R.id.backImg)
         backImg.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
@@ -33,7 +32,7 @@ class NotificationActivity : AppCompatActivity() {
 
         var tvMark : ImageView = findViewById(R.id.tvMark)
         tvMark.setOnClickListener{
-            deleteNotificationsForUserId(userId)
+            deleteNotificationsForUserId(PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id"))
         }
 
         notificationRecyclerView = findViewById(R.id.rvNotification)
@@ -42,7 +41,7 @@ class NotificationActivity : AppCompatActivity() {
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
         notificationList = arrayListOf<NotificationModel>()
-        getNotificationsData(userId)
+        getNotificationsData(PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id"))
     }
 
     private fun getNotificationsData(userId: String) {
@@ -63,6 +62,8 @@ class NotificationActivity : AppCompatActivity() {
                     }
                     // Sort the notification list by timestamp in descending order
                     notificationList.sortByDescending { it.timestamp }
+
+                    println("Sent notifications to frontend")
 
                     val mAdapter = NotificationAdapter(notificationList)
                     notificationRecyclerView.adapter = mAdapter
@@ -91,6 +92,9 @@ class NotificationActivity : AppCompatActivity() {
                 for (notSnap in snapshot.children) {
                     notSnap.ref.removeValue()
                 }
+                val intent = Intent(this@NotificationActivity, NotificationActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
             override fun onCancelled(error: DatabaseError) {

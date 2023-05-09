@@ -1,18 +1,32 @@
 package com.example.groapp.Activities.Cart
 
+import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.example.groapp.Activities.NotificationActivity
 import com.example.groapp.Enums.CartStatus
 import com.example.groapp.Enums.OrderStatus
 import com.example.groapp.Models.*
 import com.example.groapp.R
 import com.example.groapp.Services.NotificationService
+import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.*
 import java.util.*
+import kotlin.random.Random
 
 class CartPendingCheckoutActivity : AppCompatActivity() {
     private lateinit var cartId : String
@@ -23,6 +37,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
     private lateinit var note : String
     private lateinit var dbRef : DatabaseReference
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart_pending_checkout)
@@ -42,7 +57,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
 
         val extras = intent.extras
         cartId = extras?.getString("cartId").toString()
-        userId = extras?.getString("userId").toString()
+        userId = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
         gardenId = extras?.getString("gardenId").toString()
         productId = extras?.getString("productId").toString()
         price = extras?.getString("price").toString()
@@ -123,7 +138,43 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
         // delete the cart item
     }
 
-    private fun saveOrderData() {
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun sendNotification(title: String, message: String) {
+        val name = getString(R.string.channel_name)
+        val descriptionText = getString(R.string.channel_description)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel("test_channel_id", name, importance).apply {
+            description = descriptionText
+        }
+
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+
+        val intent = Intent(this, NotificationActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+
+        val builder = NotificationCompat.Builder(this, "test_channel_id")
+            .setSmallIcon(R.drawable.notification_icon)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+
+        with(NotificationManagerCompat.from(this)) {
+            if (ActivityCompat.checkSelfPermission( this@CartPendingCheckoutActivity, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED ) {
+                return
+            }
+            notify(Random.nextInt(1200), builder.build())
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun saveOrderData() {
         dbRef = FirebaseDatabase.getInstance().getReference("order")
         val id = dbRef.push().key!!
         val order = OrderModel(
@@ -137,11 +188,13 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
             status = OrderStatus.PENDING
         )
         dbRef.child(id).setValue(order).addOnSuccessListener {
-            // update the cart status
             val dbRef = FirebaseDatabase.getInstance().getReference("cart").child(cartId)
             dbRef.child("status").setValue(CartStatus.ORDERED).addOnSuccessListener {
                 val notificationService = NotificationService()
                 notificationService.saveNotifications("Item added to the cart", "Item has been added to the cart")
+
+                sendNotification("Added to cart" , "Item has been added to the cart")
+
             }.addOnFailureListener { error ->
                 println("Error updating cart status: ${error.message}")
             }
@@ -155,7 +208,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateProductQuantity(productId: String, newQuantity: Int) {
+    fun updateProductQuantity(productId: String, newQuantity: Int) {
         val dbRef = FirebaseDatabase.getInstance().getReference("products").child(productId)
 
         dbRef.addListenerForSingleValueEvent(object : ValueEventListener {

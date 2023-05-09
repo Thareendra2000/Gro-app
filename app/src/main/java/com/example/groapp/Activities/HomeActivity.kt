@@ -1,7 +1,6 @@
 package com.example.groapp.Activities
 
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -35,7 +34,6 @@ class HomeActivity : AppCompatActivity() {
         var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
         accountBtn.setOnClickListener{
             val intent = Intent(this, MyProfileActivity::class.java)
-
             startActivity(intent)
         }
     }

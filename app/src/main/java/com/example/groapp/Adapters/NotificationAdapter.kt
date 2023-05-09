@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.R
 import com.example.groapp.Models.NotificationModel
-import com.example.groapp.Utils.DateUtils.Companion.getTimeAgoString
+import com.example.groapp.Utils.DateUtil.Companion.getTimeAgoString
 
 class NotificationAdapter(private val notificationList: ArrayList<NotificationModel>) :
     RecyclerView.Adapter<NotificationAdapter.ViewHolder>() {
