@@ -36,6 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Activities.NotificationActivity"
             android:exported="false" />
@@ -91,6 +92,13 @@
             android:name=".Activities.Product.ManageItemsActivity"
             android:exported="false" />
         <activity
+            android:name=".Activities.Garden.GardenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        <activity
             android:name=".Activities.Product.EditDeleteItemActivity"
             android:exported="false" />
         <activity
@@ -114,6 +122,15 @@
         <activity
             android:name=".Activities.Garden.GardenListActivity"
             android:exported="false"/>
+        <activity
+            android:name=".Activities.Garden.GardenDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Garden.GardenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:exported="false" />
 
         <!--Miscellaneous-->
         <activity

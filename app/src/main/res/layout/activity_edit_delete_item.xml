@@ -372,7 +372,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bestBeforeLayout">
 
         <EditText
-            android:id="@+id/description"
+            android:id="@+id/description1"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -410,7 +410,9 @@
         app:layout_constraintTop_toBottomOf="@+id/DescriptionLinearLayout">
 
         <EditText
+
             android:id="@+id/quantity"
+
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="numberDecimal"

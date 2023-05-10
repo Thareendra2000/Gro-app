@@ -36,12 +36,12 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        nameBox = findViewById(R.id.name)
-        emailBox = findViewById(R.id.email)
-        passwordBox = findViewById(R.id.password)
-        retypePasswordBox = findViewById(R.id.retypePassword)
-        loginText = findViewById(R.id.AlreadyAccountLayout)
-        signUpBtn = findViewById(R.id.signUpBtn)
+//        nameBox = findViewById(R.id.name)
+//        emailBox = findViewById(R.id.email)
+//        passwordBox = findViewById(R.id.password)
+//        retypePasswordBox = findViewById(R.id.retypePassword)
+//        loginText = findViewById(R.id.AlreadyAccountLayout)
+//        signUpBtn = findViewById(R.id.signUpBtn)
 
 
         signUpBtn.setOnClickListener {
