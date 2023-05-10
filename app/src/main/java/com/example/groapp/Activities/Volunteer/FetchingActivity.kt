@@ -11,6 +11,7 @@ import com.example.groapp.Adapters.VolAdapter
 import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.*
 import com.example.groapp.Models.VolunteeringModel
+import com.example.groapp.R
 
 class FetchingActivity : AppCompatActivity() {
 
