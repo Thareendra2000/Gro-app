@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -13,56 +16,50 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroApp"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name=".Activities.MyProfileActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Activities.SignUpActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Activities.NotificationActivity"
+            android:exported="false" />
+
+        <!--MarketPlace-->
         <activity
             android:name=".Activities.MarketPlace.MarketPlaceActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".Activities.MyProfileActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".Activities.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activities.MarketPlace.MarketPlaceAddItemToCartActivity"
-            android:exported="false">
-        </activity>
-<!--        ========Garden=======-->
-        <activity
-            android:name=".Activities.Garden.AddGardenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.Garden.MyGardensActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.Garden.GardenListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.Garden.GardenDetailsVolunteerViewActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Activities.Garden.GardenDetailsOwnerViewActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Activities.Garden.GardenDashboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.HomeActivity"
-            android:exported="false" />
-
+            android:exported="false"/>
 
         <activity
             android:name=".Activities.MarketPlace.MarketBrowseGardenActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".Activities.MarketPlace.MarketBrowseCategoryItemsActivity"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
+
+        <!--Cart-->
         <activity
             android:name=".Activities.Cart.CartPickUpsActivity"
             android:exported="false" />
@@ -73,22 +70,15 @@
             android:name=".Activities.Cart.CartPendingCheckoutActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.NotificationActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activities.Cart.CartPendingActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.Cart.CartCompletedActivity"
             android:exported="false" />
+
+        <!--Order-->
         <activity
             android:name=".Activities.Order.RateItemActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.Product.EditDeleteItemActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.Product.AddItemActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.Order.ManagePickUpActivity"
@@ -96,6 +86,8 @@
         <activity
             android:name=".Activities.Order.ManageOrdersActivity"
             android:exported="false" />
+
+        <!--Product-->
         <activity
             android:name=".Activities.Product.ManageItemsActivity"
             android:exported="false" />
@@ -106,7 +98,41 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        <activity
+            android:name=".Activities.Product.EditDeleteItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Product.AddItemActivity"
+            android:exported="false" >
         </activity>
+
+        <!--Gardens-->
+        <activity
+            android:name=".Activities.Garden.MyGardensActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Garden.AddGardenActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Activities.Garden.GardenDetailsOwnerViewActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Activities.Garden.GardenDetailsVolunteerViewActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Activities.Garden.GardenListActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Activities.Garden.GardenDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Garden.GardenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:exported="false" />
+
+        <!--Miscellaneous-->
         <activity
             android:name=".Activities.MainActivity"
             android:exported="false" />

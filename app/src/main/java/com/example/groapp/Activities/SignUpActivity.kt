@@ -2,6 +2,7 @@ package com.example.groapp.Activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -68,9 +69,6 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, HomeActivity::class.java);
                     pseudoCookie.setCookieValue("logged_user_id", res.id)
-                    notificationService.saveNotifications("Welcome to the GroApp", "Your account created successfully!")
-                    startActivity(intent);
-                    finish();
                 }
                 else{
                     Toast.makeText(this, res.message, Toast.LENGTH_LONG).show()

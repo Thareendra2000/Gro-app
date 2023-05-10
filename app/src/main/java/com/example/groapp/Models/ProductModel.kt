@@ -1,5 +1,6 @@
 package com.example.groapp.Models
 
+import android.media.Rating
 import java.util.*
 
 data class ProductModel(
@@ -13,6 +14,23 @@ data class ProductModel(
     var quantity: String? = null,
     var unit: String? = null,
     var unit_price: String? = null,
-    var img_url: String? = "https://cdn.shopify.com/s/files/1/0572/7889/0150/products/Quince-Flowers-Toronto-Florist-Rosey-Colour-Combo-2_1445x.jpg?v=1639030157"
-
-)
+    var img_url: String? = "https://cdn.shopify.com/s/files/1/0572/7889/0150/products/Quince-Flowers-Toronto-Florist-Rosey-Colour-Combo-2_1445x.jpg?v=1639030157",
+    var rating: Double? = 0.0
+){
+    fun toProduct(production: ProductModel, key: String, value: String): ProductModel {
+        when (key.toLowerCase()) {
+            "production_id" -> production.production_id = value
+            "garden_name" -> production.garden_name = value
+            "garden_id" -> production.garden_id = value
+            "category" -> production.category = value
+            "description" -> production.description = value
+            "best_before" -> production.best_before = Date(value.toLong())
+            "name" -> production.name = value
+            "quantity" -> production.quantity = value
+            "unit" -> production.unit = value
+            "unit_price" -> production.unit_price = value
+            "img_url" -> production.img_url = value
+        }
+        return production
+    }
+}

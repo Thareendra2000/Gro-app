@@ -4,11 +4,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.text.format.DateUtils
 
-class DateUtils {
+class DateUtil {
     companion object {
-        private const val MINUTE_IN_MILLIS = 60 * 1000L
-        private const val HOUR_IN_MILLIS = 60 * MINUTE_IN_MILLIS
-        private const val DAY_IN_MILLIS = 24 * HOUR_IN_MILLIS
+        const val MINUTE_IN_MILLIS = 60 * 1000L
+        const val HOUR_IN_MILLIS = 60 * MINUTE_IN_MILLIS
+        const val DAY_IN_MILLIS = 24 * HOUR_IN_MILLIS
         private const val DATE_FORMAT = "yyyy-MM-dd"
 
         fun formatDate(date: Date): String {

@@ -114,17 +114,17 @@
             android:text="@string/DescriptionEx"
             android:textAlignment="center"
             android:textSize="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/volunteerBtn"
+            app:layout_constraintBottom_toTopOf="@+id/viewProducts"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/volunteerBtn"
+            android:id="@+id/viewProducts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/darkGreen"
-            android:text="Add Production"
+            android:text="View Products"
             android:textAllCaps="false"
             app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
             app:layout_constraintEnd_toEndOf="parent"

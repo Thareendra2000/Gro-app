@@ -24,7 +24,7 @@
     <string name="home">Home</string>
     <string name="cart">My Cart</string>
     <string name="market">Market</string>
-    <string name="leaderboard">Leaderboard</string>
+    <string name="leaderboard">Gardens</string>
     <string name="account">Account</string>
     <string name="avrgSessionText">Average Session</string>
     <string name="avrgSessionEx">2h 34m /day</string>
@@ -83,12 +83,20 @@
     <string name="pickup">Pick Ups</string>
     <string name="pending">Pending</string>
     <string name="item1Name">Potato</string>
-    <string name="item1Price">90 LKR/kg</string>
-    <string name="item1Unit">kilograms</string>
+    <string name="item1Price">90</string>
+    <string-array name="itemUnit">
+        <item>Select</item>
+        <item>grams(g)</item>
+        <item>kilogram(kg)</item>
+    </string-array>
+    <string-array name="categories">
+        <item>Select</item>
+    </string-array>
     <string name="item1BestBefore">26/03/2023</string>
     <string name="item1Description">Grown with organic fertilisers</string>
     <string name="item1OrderQnty">10 kgs</string>
-    <string name="item1Qnty">12 kgs</string>
+    <string name="item1Qnty">12</string>
+    <string name="item1Unit">grams(g)</string>
     <string name="item1TotalPrice">900 LKR</string>
     <string name="item1OrderedOn">17/03/2023</string>
     <string name="item1OrderConfirmed">17/03/2023</string>
@@ -134,6 +142,7 @@
     <string name="rateBtn">Rate</string>
     <string name="rateItem">Rate Order</string>
     <string name="rated">Rated</string>
+    <string name="orders">Orders</string>
 
 
     <!-- Notifications -->
@@ -202,6 +211,8 @@
     <string name="aTitle">Analytics</string>
     <string name="aNoOfGardens">Total No of Gardens</string>
     <string name="aNoOfVolunteers">Total No of Volunteers</string>
+    <string name="channel_name">GroApp</string>
+    <string name="channel_description">For The Future</string>
 
 </resources>
 

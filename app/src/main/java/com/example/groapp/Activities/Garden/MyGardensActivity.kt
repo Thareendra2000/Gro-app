@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Adapters.GardenAdapter
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
@@ -38,6 +39,12 @@ class MyGardensActivity : AppCompatActivity() {
         val plusBtn = findViewById<View>(R.id.plusBtn)
         plusBtn.setOnClickListener {
             val intent = Intent(this, AddGardenActivity::class.java)
+            startActivity(intent)
+        }
+
+        val backBtn = findViewById<View>(R.id.backBtn)
+        backBtn.setOnClickListener {
+            val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
         }
 
