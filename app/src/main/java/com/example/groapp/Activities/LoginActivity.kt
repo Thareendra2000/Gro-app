@@ -13,7 +13,7 @@ import com.example.groapp.Repositories.UserRepository
 import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DatabaseReference
 
-class LoginActivity : AppCompatActivity() {
+class shabinaLoginActivity : AppCompatActivity() {
     private lateinit var createAccountTv: TextView;
     private lateinit var forgotPasswordTV: TextView;
     private lateinit var loginBtn: Button;
