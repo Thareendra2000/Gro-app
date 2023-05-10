@@ -5,5 +5,5 @@
         android:radius="20dp">
     </corners>
     <solid
-        android:color="@color/rejectRed"/>
+        android:color="@color/deleteRed"/>
 </shape>

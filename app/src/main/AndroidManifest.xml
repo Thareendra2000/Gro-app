@@ -25,18 +25,6 @@
             android:name=".Activities.MyProfileActivity"
             android:exported="false"/>
         <activity
-            android:name=".Activities.SignUpActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".Activities.LoginActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".Activities.NotificationActivity"
             android:exported="false" />
 
@@ -118,6 +106,55 @@
         <activity
             android:name=".Activities.EmployeeDetailsActivity"
             android:exported="false" />
+
+
+        <!--Volunteer-->
+        <activity
+            android:name=".Activities.Volunteer.VolunteeringDetailsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.Volunteer.FetchingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.Volunteer.VolunteeringDetailsActivityOwner"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.Volunteer.FetchingActivityOwner"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.Volunteer.InsertionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.ProfileMain"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.Volunteer.VolunteerMain"
+            android:exported="true" />
+
+        <activity
+            android:name=".Activities.Volunteer.VolunteerDashboard"
+            android:exported="true" />
+
+        <!-- SignIn & SignUp -->
+        <activity
+            android:name=".Activities.SignUpActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.SignInActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

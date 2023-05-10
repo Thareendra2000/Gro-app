@@ -6,10 +6,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.groapp.UserSingleton
+import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.example.tute5.volunteering.models.VolunteeringModel
+import com.example.groapp.Models.VolunteeringModel
+import com.example.groapp.R
 
 class InsertionActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.groapp
+package com.example.groapp.Services
 
 object UserSingleton {
     var name: String? = null

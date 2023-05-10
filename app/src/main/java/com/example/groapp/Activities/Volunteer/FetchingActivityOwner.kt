@@ -7,9 +7,9 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tute5.volunteering.adapters.VolAdapter
+import com.example.groapp.Adapters.VolAdapter
 import com.google.firebase.database.*
-import com.example.tute5.volunteering.models.VolunteeringModel
+import com.example.groapp.Models.VolunteeringModel
 
 class FetchingActivityOwner : AppCompatActivity() {
 

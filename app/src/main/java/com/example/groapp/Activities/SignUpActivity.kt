@@ -1,111 +1,54 @@
 package com.example.groapp.Activities
 
+
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.groapp.R
-import com.example.groapp.Repositories.User
-import com.example.groapp.Repositories.UserRepository
-import com.example.groapp.Services.NotificationService
-import com.example.groapp.Utils.PseudoCookie
+import com.example.groapp.databinding.ActivitySignUpBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SignUpActivity : AppCompatActivity() {
-    private lateinit var nameBox: EditText;
-    private lateinit var emailBox: EditText;
-    private lateinit var passwordBox: EditText;
-    private lateinit var retypePasswordBox: EditText;
-    private lateinit var loginText: TextView;
-    private lateinit var signUpBtn: Button;
 
-    var name: String? = null
-    var email: String? = null
-    var password1: String? = null
-    var password2: String? = null
-
-    val userRepository : UserRepository = UserRepository();
-    var pseudoCookie : PseudoCookie = PseudoCookie.getPseudoCookie()
-
-    val notificationService = NotificationService()
+    private lateinit var binding: ActivitySignUpBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
 
-        nameBox = findViewById(R.id.name)
-        emailBox = findViewById(R.id.email)
-        passwordBox = findViewById(R.id.password)
-        retypePasswordBox = findViewById(R.id.retypePassword)
-        loginText = findViewById(R.id.AlreadyAccountLayout)
-        signUpBtn = findViewById(R.id.signUpBtn)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        signUpBtn.setOnClickListener {
-            handleSignUpBtnClick()
+        binding.textView.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
         }
-    }
+        binding.button.setOnClickListener {
+            val email = binding.emailEt.text.toString()
+            val pass = binding.passET.text.toString()
+            val confirmPass = binding.confirmPassEt.text.toString()
 
-    private fun handleSignUpBtnClick() {
-        name = nameBox.text.toString()
-        email = emailBox.text.toString()
-        password1 = passwordBox.text.toString()
-        password2 = retypePasswordBox.text.toString()
+            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+                if (pass == confirmPass) {
 
-        var response : Pair<Boolean, String> = validateForm()
-        if(response.first){
-            userRepository.createUser(
-                User(
-                    null,
-                    name,
-                    email,
-                    password1
-                )
-            ){ res ->
-                if(res.result){
-                    Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, HomeActivity::class.java);
-                    pseudoCookie.setCookieValue("logged_user_id", res.id)
-                }
-                else{
-                    Toast.makeText(this, res.message, Toast.LENGTH_LONG).show()
-                }
-            }
-        }else{
-            Toast.makeText(this, response.second, Toast.LENGTH_LONG).show()
-        }
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            val intent = Intent(this, SignInActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 
-    }
-
-    private fun validateForm() : Pair<Boolean, String>{
-        var message = "";
-        var result = false;
-
-        if (!name.isNullOrEmpty()) {
-            if (!email.isNullOrEmpty()) {
-                if (email!!.contains("@") && email!!.contains(".")) {
-                    if (!password1.isNullOrEmpty() && !password2.isNullOrEmpty()) {
-                        if (password1 == password2) {
-                            result = true;
-                            message = "Loading"
                         }
-                        else
-                            message = "Passwords doesn't match"
                     }
-                    else
-                        message = "Please fill both the password fields"
+                } else {
+                    Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
                 }
-                else
-                    message = "Enter a valid email"
+            } else {
+                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+
             }
-            else
-                message = "Email cannot be empty"
         }
-        else
-            message = "Name cannot be empty"
-        return Pair(result, message);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.tute5.volunteering.services
+package com.example.groapp.Services
 
 class AvgFun {
 

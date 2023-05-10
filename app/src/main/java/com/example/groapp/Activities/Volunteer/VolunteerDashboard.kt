@@ -3,10 +3,11 @@ package com.example.groapp.Activities.Volunteer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.example.groapp.UserSingleton
-import com.example.tute5.volunteering.services.AvgFun
-import com.example.tute5.volunteering.services.volGardens
-import com.example.tute5.volunteering.services.volHours
+import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
+import com.example.groapp.Services.AvgFun
+import com.example.groapp.Services.volGardens
+import com.example.groapp.Services.volHours
 
 class VolunteerDashboard : AppCompatActivity() {
 

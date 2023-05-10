@@ -1,4 +1,4 @@
-package com.example.groapp
+package com.example.groapp.Activities
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -12,7 +12,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.groapp.Activities.Volunteer.FetchingActivity
 import com.example.groapp.Activities.Volunteer.VolunteerDashboard
-import com.example.tute5.volunteering.services.volHours
+import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
+import com.example.groapp.Services.volHours
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase

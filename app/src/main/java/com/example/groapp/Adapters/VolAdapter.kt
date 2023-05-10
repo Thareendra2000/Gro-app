@@ -1,12 +1,12 @@
-package com.example.tute5.volunteering.adapters
+package com.example.groapp.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tute5.R
-import com.example.tute5.volunteering.models.VolunteeringModel
+import com.example.groapp.Models.VolunteeringModel
+import com.example.groapp.R
 
 
 class VolAdapter(private val volList: ArrayList<VolunteeringModel>) :

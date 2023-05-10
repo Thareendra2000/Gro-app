@@ -13,7 +13,10 @@
     <color name="backgroundWhite">#F1F1F1</color>
     <color name="approveGreen">#6a994e</color>
     <color name="rejectRed">#bc4749</color>
-
+    <color name="deleteRed">#d11a2a</color>
+    <color name="colorPrimary">#26a69a</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#048b7a</color>
     <color name="gray">#808080</color>
-
+    <color name="yellow">#283618</color>
 </resources>

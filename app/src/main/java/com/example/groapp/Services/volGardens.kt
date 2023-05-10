@@ -1,7 +1,7 @@
-package com.example.tute5.volunteering.services
+package com.example.groapp.Services
 
 import android.util.Log
-import com.example.tute5.volunteering.models.VolunteeringModel
+import com.example.groapp.Models.VolunteeringModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
