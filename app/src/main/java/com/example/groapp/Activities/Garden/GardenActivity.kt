@@ -14,6 +14,11 @@ class GardenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_garden)
 
+        val Btn2 = findViewById<View>(R.id.button2)
+        Btn2.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
 
         val Btn3 = findViewById<View>(R.id.button4)
         Btn3.setOnClickListener {

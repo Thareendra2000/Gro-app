@@ -8,7 +8,9 @@ import com.google.firebase.database.*
 
 class GardenDashboardActivity : AppCompatActivity() {
 
-    private lateinit var database: DatabaseReference
+    companion object {
+        lateinit var database: DatabaseReference // static property to hold the database reference
+    }
     private lateinit var gardensCountTextView: TextView
     private lateinit var productsCountTextView: TextView
     private lateinit var mostProfitableProduct: TextView
@@ -55,4 +57,8 @@ class GardenDashboardActivity : AppCompatActivity() {
     })
 
     }
+
+
+
+
 }

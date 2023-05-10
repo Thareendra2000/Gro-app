@@ -1,59 +1,53 @@
-//package com.example.groapp.Adapters
-//
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import android.widget.Filter
-//import android.widget.Filterable
-//import android.widget.TextView
-//import androidx.recyclerview.widget.RecyclerView
+import android.widget.Filterable
+import androidx.recyclerview.widget.RecyclerView
 //import com.example.groapp.Models.GardenModel
-//import com.example.groapp.R
 //
-//class GardenSearchAdapter(private val gardenList: List<GardenModel>) :
-//    RecyclerView.Adapter<GardenSearchAdapter.GardenViewHolder>() {
+//class GardenSearchAdapter(private val gardenList: List<GardenModel>) : RecyclerView.Adapter<GardenSearchAdapter.GardenViewHolder>(),
+//    Filterable {
 //
 //    private var filteredList: List<GardenModel> = gardenList
 //
-//    inner class GardenViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        val tvName: TextView = itemView.findViewById(R.id.gardenName)
-//        val tvArea: TextView = itemView.findViewById(R.id.gardenArea)
-//    }
-//
 //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GardenViewHolder {
-//        val view =
-//            LayoutInflater.from(parent.context).inflate(R.layout.garden_list_item, parent, false)
-//        return GardenViewHolder(view)
+//        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_garden, parent, false)
+//        return GardenViewHolder(itemView)
 //    }
 //
 //    override fun onBindViewHolder(holder: GardenViewHolder, position: Int) {
-//        val currentItem = filteredList[position]
-//
-//        holder.tvName.text = currentItem.name
-//        holder.tvArea.text = currentItem.area
+//        val garden = filteredList[position]
+//        holder.bind(garden)
 //    }
 //
 //    override fun getItemCount() = filteredList.size
 //
-//    fun filterList(keyword: List<GardenModel>) {
-//        filteredList = if (keyword.isNotEmpty()) {
-//            gardenList.filter { garden ->
-//                garden.name?.contains(keyword, ignoreCase = true)==true ||
-//                        garden.area?.contains(keyword, ignoreCase = true)==true
-//            }
-//        } else {
-//            gardenList
+//    inner class GardenViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//        fun bind(garden: GardenModel) {
+//            // Bind the data to the views in the item layout
+//            itemView.findViewById<TextView>(R.id.garden_name).text = garden.name
+//            itemView.findViewById<TextView>(R.id.garden_address).text = garden.address
+//            itemView.findViewById<TextView>(R.id.garden_area).text = garden.area
 //        }
-//        notifyDataSetChanged()
 //    }
 //
-//    interface OnItemClickListener {
-//        fun onItemClick(position: Int)
-//    }
+//    override fun getFilter() = object : Filter() {
+//        override fun performFiltering(constraint: CharSequence?): FilterResults {
+//            val query = constraint.toString().toLowerCase(Locale.getDefault())
+//            filteredList = if (query.isEmpty()) {
+//                gardenList
+//            } else {
+//                gardenList.filter { garden ->
+//                    garden.name.toLowerCase(Locale.getDefault()).contains(query) ||
+//                            garden.address.toLowerCase(Locale.getDefault()).contains(query) ||
+//                            garden.area.toLowerCase(Locale.getDefault()).contains(query)
+//                }
+//            }
+//            val results = FilterResults()
+//            results.values = filteredList
+//            return results
+//        }
 //
-//    private var listener: OnItemClickListener? = null
-//
-//    fun setOnItemClickListener(listener: OnItemClickListener) {
-//        this.listener = listener
+//        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+//            filteredList = results?.values as List<GardenModel>
+//            notifyDataSetChanged()
+//        }
 //    }
 //}

@@ -24,6 +24,7 @@
         android:text="@string/addGarden"
         android:textColor="@color/darkGreen"
         android:textSize="24sp"
+        android:layout_marginTop="@dimen/twentyfourDP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,6 +65,7 @@
         android:paddingRight="4dp"
         android:text="Garden Name"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addYourBusiness" />
@@ -104,6 +106,7 @@
         android:text="@string/cgAddress"
         android:textColor="@color/darkGreen"
         android:textSize="16sp"
+        android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BusinessNamelinearLayout" />
 
@@ -143,6 +146,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgArea"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/businessOwnerLinearLayout" />
@@ -184,6 +188,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgLocationLink"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/businessLocationLinearLayout" />
@@ -226,6 +231,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgPhoneNumber"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ContactNolinearLayout" />
@@ -267,6 +273,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgDescription"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLinearLayout" />

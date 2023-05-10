@@ -15,6 +15,7 @@
     <color name="divider_grey">#FFFF0000</color>
     <color name="darkGreen">#283618</color>
     <color name="lessDarkGreen">#DADADA</color>
+    <color name="lightGreen">#B9CDA1</color>
     <color name="backgroundWhite">#F1F1F1</color>
     <color name="approveGreen">#039487</color>
     <color name="deleteRed">#d11a2a</color>
