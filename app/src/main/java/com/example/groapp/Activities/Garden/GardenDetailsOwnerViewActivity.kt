@@ -71,11 +71,11 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        var backBtn : ImageView = findViewById(R.id.backBtn)
-        backBtn.setOnClickListener{
-            val intent = Intent(this, MyGardensActivity::class.java)
-            startActivity(intent)
-        }
+//        var backBtn : ImageView = findViewById(R.id.backBtn)
+//        backBtn.setOnClickListener{
+//            val intent = Intent(this, MyGardensActivity::class.java)
+//            startActivity(intent)
+//        }
 
         // Set a click listener on the volunteer button.
 
@@ -101,7 +101,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         gardenId.text = intent.getStringExtra("gardenId")
         gardenName.text = intent.getStringExtra("name")
         gardenAddress.text = intent.getStringExtra("address")
-        gardenArea.text = intent.getStringExtra("area")
+        gardenArea.text = intent.getStringExtra("area") + " acre"
         gardenPhoneNo.text = intent.getStringExtra("phoneNo")
         gardenDescription.text = intent.getStringExtra("description")
         gardenLocation.text = intent.getStringExtra("location")
