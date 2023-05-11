@@ -1,10 +1,12 @@
 package com.example.groapp.Activities.Product
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
@@ -14,6 +16,7 @@ import com.example.groapp.R
 import com.example.groapp.Repositories.CategoryRespository
 import com.example.groapp.Repositories.ProductRepository
 import com.example.groapp.Utils.ProductValidations
+import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,6 +35,7 @@ class EditDeleteItemActivity : AppCompatActivity() {
 
     private lateinit var updateBtn : Button;
     private lateinit var backBtn : ImageView;
+    private lateinit var editBtn : Button;
 
     private lateinit var category : String
     private lateinit var productId : String
@@ -40,6 +44,8 @@ class EditDeleteItemActivity : AppCompatActivity() {
     private var unitPrice : Double = 0.0
     private lateinit var bestBefore : Date
     private lateinit var description : String
+    private lateinit var img_url : String
+    private var rating : Double = 0.0
     private var quantity : Double = 0.0
 
     val productValidations = ProductValidations();
@@ -76,6 +82,7 @@ class EditDeleteItemActivity : AppCompatActivity() {
         tvTitle = findViewById(R.id.Title)
         tvTitle.text = gardenName
         backBtn = findViewById(R.id.backImg)
+        editBtn = findViewById(R.id.editBtn)
 
         categoryBox = findViewById(R.id.category)
         productNameBox = findViewById(R.id.productName)
@@ -94,13 +101,13 @@ class EditDeleteItemActivity : AppCompatActivity() {
         unitPrice  = intent.getDoubleExtra("unitPrice", 0.0);
         description = intent.getStringExtra("description").toString()
         quantity = intent.getDoubleExtra("quantity", 0.0)
+        img_url = intent.getStringExtra("image_url").toString()
+        rating = intent.getDoubleExtra("rating", 0.0)
 
         val inputDateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy")
         val outputDateFormat = SimpleDateFormat("dd/MM/yyyy")
         val date = inputDateFormat.parse(intent.getStringExtra("bestBefore"))
         val formattedDate = outputDateFormat.format(date)
-
-        Log.i("Formatted date:" ,formattedDate)
 
         productNameBox.setText(productName.toString())
         unitPriceBox.setText(unitPrice.toString())
@@ -108,10 +115,12 @@ class EditDeleteItemActivity : AppCompatActivity() {
         descriptionBox.setText(description.toString())
         quantityBox.setText(quantity.toString())
 
+        editBtn.setOnClickListener {
+            handleEditImageBtn()
+        }
 
         categoryRepository.getAllCategoriesForSpinner(categoryBox) { result ->
             if(!result){
-//                categoryBox.selectedItem = intent.getStringExtra("category")
                 updateBtn.isEnabled = false
             }
         }
@@ -147,6 +156,41 @@ class EditDeleteItemActivity : AppCompatActivity() {
             if(!hasFocus) quantityValidation()
         }
     }
+    private fun handleEditImageBtn() {
+        openGallery()
+    }
+    private lateinit var selectedImageUri: Uri
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                selectedImageUri = uri
+                uploadImageToFirebase()
+            }
+        }
+    private lateinit var storage: FirebaseStorage
+    private fun openGallery() {
+        getContent.launch("image/*")
+    }
+
+    private fun uploadImageToFirebase() {
+        storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+        val imagesRef = storageRef.child("images/${selectedImageUri.lastPathSegment}")
+
+        val uploadTask = imagesRef.putFile(selectedImageUri)
+        uploadTask
+            .addOnSuccessListener {
+                imagesRef.downloadUrl.addOnSuccessListener { downloadUrl : Uri ->
+                    val imageUrl = downloadUrl.toString()
+                    Log.i("Image Url", imageUrl)
+                    editBtn.setText("Image Editted")
+                    img_url = imageUrl
+                }
+            }
+            .addOnFailureListener { exception : Exception ->
+                Log.w("Error", exception.message.toString())
+            }
+    }
     private fun handleUpdateBtnClick() {
         updateBtn.isEnabled = false;
         if(
@@ -176,21 +220,9 @@ class EditDeleteItemActivity : AppCompatActivity() {
                 productName,
                 quantity.toString(),
                 unit,
-                unitPrice.toString()
-            )
-
-            Log.i("productInfo", productInfo.garden_name.toString())
-            Log.i("productInfo", productInfo.garden_id.toString())
-            Log.i("TAG", "productInfo: " +
-                    "\n Garden Name: ${productInfo.garden_name}" +
-                    "\n Garden ID: ${productInfo.garden_id}" +
-                    "\n Category: ${productInfo.category}" +
-                    "\n Description: ${productInfo.description}" +
-                    "\n Best Before: ${productInfo.best_before}" +
-                    "\n Product Name: ${productInfo.name}" +
-                    "\n Quantity: ${productInfo.quantity}" +
-                    "\n Unit: ${productInfo.unit}" +
-                    "\n Unit Price: ${productInfo.unit_price}"
+                unitPrice.toString(),
+                img_url,
+                rating
             )
 
             productRepository.updateProduct(productInfo);
