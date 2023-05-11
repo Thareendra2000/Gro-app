@@ -114,9 +114,10 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         gardenName.text = intent.getStringExtra("name")
         gardenAddress.text = intent.getStringExtra("address")
         gardenArea.text = "$area Acre"
+        gardenLocation.text = intent.getStringExtra("location")
         gardenPhoneNo.text = intent.getStringExtra("phoneNo")
         gardenDescription.text = intent.getStringExtra("description")
-        gardenLocation.text = intent.getStringExtra("location")
+
 
     }
 

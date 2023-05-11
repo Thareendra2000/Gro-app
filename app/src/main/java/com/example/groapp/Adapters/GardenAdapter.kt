@@ -37,7 +37,6 @@ class GardenAdapter(private var gardenList: ArrayList<GardenModel>) :
         return gardenList.size
     }
 
-
     class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
         val gardenName : TextView = itemView.findViewById(R.id.gLName)

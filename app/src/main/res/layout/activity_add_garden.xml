@@ -251,14 +251,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLinearLayout">
 
+
         <EditText
             android:id="@+id/gardenDescription"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="86dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:gravity="start|top"
             android:hint="@string/cgDescriptionEx"
-            android:textColor="@color/darkGreen" />
+            android:inputType="textMultiLine" />
+
+
     </LinearLayout>
 
     <TextView
