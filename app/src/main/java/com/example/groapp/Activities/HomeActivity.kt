@@ -27,6 +27,16 @@ class HomeActivity : AppCompatActivity() {
             UserSingleton.uid = it.uid
         }
 
+        val reload : ImageView = findViewById(R.id.reload)
+        reload.setOnClickListener{
+            println(UserSingleton.uid)
+        }
+
+        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        tvMarketPlace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
         var tvCart : ImageView = findViewById(R.id.tvCart)
         tvCart.setOnClickListener{
             val intent = Intent(this, CartPendingActivity::class.java)
@@ -39,42 +49,35 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-        var volunteerfun : Button = findViewById(R.id.volunteer)
-        volunteerfun.setOnClickListener {
-            val intent = Intent(this, VolunteerMain::class.java)
-            startActivity(intent)
-        }
-        var signout : Button = findViewById(R.id.signout)
-        signout.setOnClickListener {
-            Firebase.auth.signOut()
-        }
-        var profile : Button = findViewById(R.id.profile)
-        profile.setOnClickListener {
-            val intent = Intent(this, ProfileMain::class.java)
-            startActivity(intent)
-        }
-
-        //Bottom nav bar intents
         var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
         accountBtn.setOnClickListener{
             val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
         }
-        var gardenList : LinearLayout = findViewById(R.id.tvLeaderboard)
+
+
+//        var volunteerfun : Button = findViewById(R.id.volunteer)
+//        volunteerfun.setOnClickListener {
+//            val intent = Intent(this, VolunteerMain::class.java)
+//            startActivity(intent)
+//        }
+//        var signout : Button = findViewById(R.id.signout)
+//        signout.setOnClickListener {
+//            Firebase.auth.signOut()
+//        }
+//        var profile : Button = findViewById(R.id.profile)
+//        profile.setOnClickListener {
+//            val intent = Intent(this, ProfileMain::class.java)
+//            startActivity(intent)
+//        }
+        //var volunteerfun : Button = findViewById(R.id.volunteer)
+//        garden.setOnClickListener {
+//            val intent = Intent(this, GardenActivity::class.java)
+//            startActivity(intent)
+//        }
+        var gardenList : LinearLayout = findViewById(R.id.gardenList)
         gardenList.setOnClickListener {
             val intent = Intent(this, GardenListActivity::class.java)
-            startActivity(intent)
-        }
-        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
-        tvMarketPlace.setOnClickListener{
-            val intent = Intent(this, MarketPlaceActivity::class.java)
-            startActivity(intent)
-        }
-        var homeBtn : LinearLayout = findViewById(R.id.tvHome)
-        homeBtn.setOnClickListener{
-            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
