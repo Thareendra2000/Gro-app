@@ -12,6 +12,7 @@ import com.example.groapp.Enums.CartStatus
 import com.example.groapp.Models.CartModel
 import com.example.groapp.R
 import com.example.groapp.Services.NotificationService
+import com.example.groapp.Services.UserSingleton
 import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -107,7 +108,7 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
     private fun saveCartData(){
         val amount = itemCount
         val total = unitPrice * amount
-        val userId = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
+        val userId = UserSingleton.uid.toString()
         val productId = prodId
         val cartId = dbRef.push().key!!
         val cart = CartModel(cartId, userId, productId, amount.toString(), total.toString(), Date(), CartStatus.PENDING, image_url, garden_id)

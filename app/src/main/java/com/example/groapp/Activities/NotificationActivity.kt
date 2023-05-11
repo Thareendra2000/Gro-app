@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.Adapters.NotificationAdapter
 import com.example.groapp.Models.NotificationModel
 import com.example.groapp.R
-import com.example.groapp.Utils.PseudoCookie
+import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.*
 
 class NotificationActivity : AppCompatActivity() {
@@ -32,7 +32,7 @@ class NotificationActivity : AppCompatActivity() {
 
         var tvMark : ImageView = findViewById(R.id.tvMark)
         tvMark.setOnClickListener{
-            deleteNotificationsForUserId(PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id"))
+            deleteNotificationsForUserId(UserSingleton.uid.toString())
         }
 
         notificationRecyclerView = findViewById(R.id.rvNotification)
@@ -41,7 +41,7 @@ class NotificationActivity : AppCompatActivity() {
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
         notificationList = arrayListOf<NotificationModel>()
-        getNotificationsData(PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id"))
+        getNotificationsData(UserSingleton.uid.toString())
     }
 
     private fun getNotificationsData(userId: String) {

@@ -63,7 +63,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvGarden"
                 android:layout_width="match_parent"
-                android:layout_height="408dp"
+                android:layout_height="613dp"
                 android:layout_marginStart="1dp"
                 android:layout_marginEnd="1dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +78,7 @@
                 android:id="@+id/tvLoadingData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loading Data....."
+                android:text="No data to show!"
                 android:textSize="28sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"

@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.Garden.MyGardensActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.R
 import com.example.groapp.Adapters.BrowseCategoryItemAdapter
 import com.example.groapp.Models.ProductModel
@@ -36,6 +39,16 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
         backImg = findViewById(R.id.backImg)
         backImg.setOnClickListener {
             val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
+        var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvGardens.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+        var tvProfile : LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
         }
 

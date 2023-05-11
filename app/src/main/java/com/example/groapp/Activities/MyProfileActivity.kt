@@ -18,23 +18,24 @@ class MyProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
 
-        var myGardensBtn : LinearLayout = findViewById(R.id.myGardensBtn)
-        myGardensBtn.setOnClickListener{
+        var myGardensBtn: LinearLayout = findViewById(R.id.myGardensBtn)
+        myGardensBtn.setOnClickListener {
             val intent = Intent(this, MyGardensActivity::class.java)
             startActivity(intent)
         }
 
-        var myOrdersBtn : LinearLayout = findViewById(R.id.myOrdersBtn)
-        myOrdersBtn.setOnClickListener{
+        var myOrdersBtn: LinearLayout = findViewById(R.id.myOrdersBtn)
+        myOrdersBtn.setOnClickListener {
             val intent = Intent(this, ManageOrdersActivity::class.java)
             startActivity(intent)
         }
 
-        var home : LinearLayout = findViewById(R.id.tvHome)
-        home.setOnClickListener{
+        var home: LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
+
 
         volEfforts = findViewById(R.id.volEfforts)
         volEfforts.setOnClickListener {
@@ -44,7 +45,22 @@ class MyProfileActivity : AppCompatActivity() {
         volDashboard = findViewById(R.id.volDashboard)
         volDashboard.setOnClickListener {
             val intent = Intent(this, VolunteerDashboard::class.java)
-            startActivity(intent)
+            var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
+            marketplace.setOnClickListener {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }
+            var tvGardens: LinearLayout = findViewById(R.id.tvLeaderboard)
+            tvGardens.setOnClickListener {
+                val intent = Intent(this, MyGardensActivity::class.java)
+                startActivity(intent)
+            }
+            var tvProfile: LinearLayout = findViewById(R.id.tvProfile)
+            tvProfile.setOnClickListener {
+                val intent = Intent(this, MyProfileActivity::class.java)
+
+                startActivity(intent)
+            }
         }
     }
 }

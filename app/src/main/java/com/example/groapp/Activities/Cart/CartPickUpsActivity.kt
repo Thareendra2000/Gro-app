@@ -3,16 +3,21 @@ package com.example.groapp.Activities.Cart
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Adapters.CartPickUpAdapter
 import com.example.groapp.Models.OrderModel
 import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.*
 
 class CartPickUpsActivity : AppCompatActivity() {
@@ -20,7 +25,6 @@ class CartPickUpsActivity : AppCompatActivity() {
     private lateinit var pickUpRecycleView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var pickUpList: ArrayList<OrderModel>
-    private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,16 @@ class CartPickUpsActivity : AppCompatActivity() {
         var backImg : ImageView = findViewById(R.id.backImg)
         backImg.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvGardens.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+        var tvProfile : LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
         }
         var tvPending : Button = findViewById(R.id.tvPending)
@@ -64,7 +78,8 @@ class CartPickUpsActivity : AppCompatActivity() {
         pickUpRecycleView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("ACCEPTED")
+        val dbRef = FirebaseDatabase.getInstance().getReference("order")
+            .orderByChild("userId").equalTo(UserSingleton.uid)
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -72,7 +87,9 @@ class CartPickUpsActivity : AppCompatActivity() {
                 if (snapshot.exists()){
                     for (dataSnap in snapshot.children){
                         val data = dataSnap.getValue(OrderModel::class.java)
-                        pickUpList.add(data!!)
+                        if (data?.status.toString() == "PENDING") { // Filter by status
+                            pickUpList.add(data!!)
+                        }
                     }
                     val mAdapter = CartPickUpAdapter(pickUpList)
                     pickUpRecycleView.adapter = mAdapter
@@ -89,9 +106,10 @@ class CartPickUpsActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                println("Something went wrong")
             }
 
         })
     }
+
 }

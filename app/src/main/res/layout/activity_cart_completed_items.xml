@@ -105,7 +105,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"
-                        app:backgroundTint="@color/rejectRed" />
+                        app:backgroundTint="@color/approveGreen" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
