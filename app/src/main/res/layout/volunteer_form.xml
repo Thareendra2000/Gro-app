@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/GardenTopic"
-        android:layout_width="405dp"
-        android:layout_height="79dp"
+        android:layout_width="417dp"
+        android:layout_height="63dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Garden"
@@ -41,98 +41,121 @@
         app:layout_constraintTop_toBottomOf="@+id/GardenTopic" />
 
 
-    <LinearLayout
-        android:id="@+id/BusinessNamelinearLayout"
+<!--    <LinearLayout-->
+<!--        android:id="@+id/BusinessNamelinearLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/border"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="5dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etGardenName">-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etHours"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:hint="Amount of volunteering hours: 3h"-->
+<!--            android:textColor="@color/darkGreen"-->
+<!--            android:textSize="16sp" />-->
+<!--    </LinearLayout>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/businessNameText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@drawable/textborder"-->
+<!--        android:paddingLeft="4dp"-->
+<!--        android:paddingTop="4dp"-->
+<!--        android:paddingRight="4dp"-->
+<!--        android:text="Volunteering Hours"-->
+<!--        android:textColor="@color/darkGreen"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etGardenName" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProductQtyContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/border"
-        android:orientation="vertical"
-        android:padding="5dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+
+        app:counterMaxLength="16"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etGardenName">
+        app:layout_constraintTop_toBottomOf="@id/etGardenName">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etHours"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:inputType="textPersonName"
-            android:hint="Amount of volunteering hours: 3h"
-            android:textColor="@color/darkGreen"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:hint="Volunteering Hours: 3h"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLength="16" />
 
-    <TextView
-        android:id="@+id/businessNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/textborder"
-        android:paddingLeft="4dp"
-        android:paddingTop="4dp"
-        android:paddingRight="4dp"
-        android:text="Volunteering Hours"
-        android:textColor="@color/darkGreen"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etGardenName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
-        android:id="@+id/businessOwnerLinearLayout"
+        android:id="@+id/offerDatesContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/border"
-        android:orientation="vertical"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BusinessNamelinearLayout">
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/ProductQtyContainer"
+        app:layout_constraintVertical_bias="0.286"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_marginTop="15dp">
 
-        <EditText
-            android:id="@+id/etDate"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="dd/mm/yyyy" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/offerStartDateContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:hint="Date"
+            app:helperText=""
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toStartOf="@+id/offerEndDateContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sellerLocationContainer"
+            app:startIconDrawable="@drawable/calendar_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDate"
+                android:layout_width="370dp"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/businessOwnerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/textborder"
-        android:paddingLeft="4dp"
-        android:paddingTop="-4dp"
-        android:paddingRight="4dp"
-        android:text="Date"
-        android:textColor="@color/darkGreen"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BusinessNamelinearLayout" />
-
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/approveGreen"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"></Button>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
