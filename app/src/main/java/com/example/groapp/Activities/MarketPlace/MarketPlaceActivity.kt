@@ -2,6 +2,7 @@ package com.example.groapp.Activities.MarketPlace
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -31,8 +32,8 @@ class MarketPlaceActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
-        var tvLeaderboard : LinearLayout = findViewById(R.id.tvLeaderboard)
-        tvLeaderboard.setOnClickListener{
+        var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvGardens.setOnClickListener{
             val intent = Intent(this, MyGardensActivity::class.java)
             startActivity(intent)
         }
@@ -87,7 +88,7 @@ class MarketPlaceActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.i("Error", error.message)
             }
 
         })

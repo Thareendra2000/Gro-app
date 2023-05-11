@@ -30,5 +30,20 @@ class MyProfileActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
+        var marketplace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        marketplace.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvGardens.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+        var tvProfile : LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

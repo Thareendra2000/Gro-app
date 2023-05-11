@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -21,7 +22,9 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Adapters.CartPendingAdapter
 import com.example.groapp.Models.CartModel
 import com.example.groapp.R
@@ -43,6 +46,16 @@ class CartPendingActivity : AppCompatActivity() {
         var backImg: ImageView = findViewById(R.id.backImg)
         backImg.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvGardens.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+        var tvProfile : LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
         }
         var tvPending: Button = findViewById(R.id.tvPending)
