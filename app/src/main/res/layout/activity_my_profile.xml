@@ -222,12 +222,12 @@
             android:padding="@dimen/eightdp">
 
             <TextView
-                android:id="@+id/Title4"
+                android:id="@+id/volEfforts"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/twelveDP"
                 android:layout_weight="1"
-                android:text="@string/myProfilee"
+                android:text="My Volunteer Efforts"
                 android:textColor="@color/darkGreen"
                 android:textSize="24sp" />
 
@@ -250,12 +250,12 @@
             android:padding="@dimen/eightdp">
 
             <TextView
-                android:id="@+id/Title5"
+                android:id="@+id/volDashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/twelveDP"
                 android:layout_weight="1"
-                android:text="@string/editProfile"
+                android:text="Dashboard"
                 android:textColor="@color/darkGreen"
                 android:textSize="24sp" />
 

@@ -7,6 +7,8 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.groapp.Activities.Product.ManageItemsActivity
+import com.example.groapp.Activities.Volunteer.FetchingActivityOwner
+import com.example.groapp.Activities.Volunteer.InsertionActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 import com.google.firebase.database.FirebaseDatabase
@@ -22,6 +24,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
     private lateinit var gardenDescription: TextView
     private lateinit var gardenPhoneNo: TextView
     private lateinit var productionAddBtn: Button
+    private lateinit var volunteers: Button
     private lateinit var editBtn: ImageButton
     private lateinit var deleteBtn: ImageButton
 
@@ -48,6 +51,22 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
             )
         }
 
+        // Set a click listener on the volunteer button.
+        volunteers.setOnClickListener {
+            volunteers.setOnClickListener {
+                // Create an intent to start the volunteer register activity.
+                val intent = Intent(
+                    this,
+                    FetchingActivityOwner::class.java
+                ) //put registration activity name here
+                // Add the garden ID as an extra to the intent.
+                intent.putExtra("gardenId", gardenId.text.toString())
+                intent.putExtra("gardenName", gardenName.text.toString())
+                // Start the activity with the intent.
+                startActivity(intent)
+            }
+
+        }
 
         val gardenName = intent.getStringExtra("name")
         val gardenId = intent.getStringExtra("gardenId")
@@ -91,6 +110,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         gardenDescription  = findViewById(R.id.gardenDescription)
 
         productionAddBtn = findViewById(R.id.viewProducts)
+        volunteers = findViewById(R.id.volunteers)
         editBtn =findViewById(R.id.btnEdit)
         deleteBtn = findViewById(R.id.btnDelete)
     }
