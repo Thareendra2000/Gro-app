@@ -27,11 +27,6 @@ class HomeActivity : AppCompatActivity() {
             UserSingleton.uid = it.uid
         }
 
-        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
-        tvMarketPlace.setOnClickListener{
-            val intent = Intent(this, MarketPlaceActivity::class.java)
-            startActivity(intent)
-        }
         var tvCart : ImageView = findViewById(R.id.tvCart)
         tvCart.setOnClickListener{
             val intent = Intent(this, CartPendingActivity::class.java)
@@ -44,11 +39,6 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
-        accountBtn.setOnClickListener{
-            val intent = Intent(this, MyProfileActivity::class.java)
-            startActivity(intent)
-        }
 
 
         var volunteerfun : Button = findViewById(R.id.volunteer)
@@ -65,14 +55,26 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, ProfileMain::class.java)
             startActivity(intent)
         }
-        //var volunteerfun : Button = findViewById(R.id.volunteer)
-//        garden.setOnClickListener {
-//            val intent = Intent(this, GardenActivity::class.java)
-//            startActivity(intent)
-//        }
-        var gardenList : LinearLayout = findViewById(R.id.gardenList)
+
+        //Bottom nav bar intents
+        var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
+        accountBtn.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
+        var gardenList : LinearLayout = findViewById(R.id.tvLeaderboard)
         gardenList.setOnClickListener {
             val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        tvMarketPlace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
+        var homeBtn : LinearLayout = findViewById(R.id.tvHome)
+        homeBtn.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
