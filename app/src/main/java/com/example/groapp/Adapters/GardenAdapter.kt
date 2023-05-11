@@ -1,5 +1,4 @@
 package com.example.groapp.Adapters
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +28,7 @@ class GardenAdapter(private val gardenList: ArrayList<GardenModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentGarden = gardenList[position]
         holder.gardenName.text = currentGarden.name
-        holder.gardenArea.text = currentGarden.area
+        holder.gardenArea.text = currentGarden.area + " acre"
         holder.gardenAddress.text = currentGarden.address
     }
 

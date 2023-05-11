@@ -131,6 +131,13 @@
         </Button>
 
         <!--bottom nav Bar-->
+        <TextView
+            android:id="@+id/gardenId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:visibility="invisible"/>
+
         <LinearLayout
             android:id="@+id/BottomNavBar"
             android:layout_width="match_parent"

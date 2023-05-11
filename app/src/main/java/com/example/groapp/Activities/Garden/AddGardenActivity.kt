@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -68,8 +69,9 @@ class AddGardenActivity : AppCompatActivity() {
 
 
         val gardenId = dbRef.push().key!!
+        val userId = UserSingleton.uid
 
-        val garden = GardenModel(gardenId,gardenName,gardenAddress,gardenPhoneNo,gardenLocation,gardenArea,gardenDescription)
+        val garden = GardenModel(userId,gardenId,gardenName,gardenAddress,gardenPhoneNo,gardenLocation,gardenArea,gardenDescription)
 
         dbRef.child(gardenId).setValue(garden)
             .addOnCompleteListener {

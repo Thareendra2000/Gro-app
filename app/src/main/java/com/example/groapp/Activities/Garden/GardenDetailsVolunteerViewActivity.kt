@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.groapp.Activities.Volunteer.InsertionActivity
 import com.example.groapp.R
 
 class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
     // Declare variables for the UI elements.
+    private lateinit var gardenId: TextView
     private lateinit var gardenName: TextView
     private lateinit var gardenAddress: TextView
     private lateinit var gardenArea: TextView
@@ -17,7 +19,7 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
     private lateinit var gardenPhoneNo: TextView
     private lateinit var volunteerBtn: Button
 
-    private var gardenId: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,18 +31,24 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
 
         // Set a click listener on the volunteer button.
         volunteerBtn.setOnClickListener {
-            // Create an intent to start the volunteer register activity.
-            //val intent = Intent(this, VolunteerRegisterActivity::class.java) //put registration activity name here
-            // Add the garden ID as an extra to the intent.
-            intent.putExtra("gardenId", gardenId)
-            // Start the activity with the intent.
-            startActivity(intent)
-        }
+            volunteerBtn.setOnClickListener {
+                // Create an intent to start the volunteer register activity.
+                val intent = Intent(
+                    this,
+                    InsertionActivity::class.java
+                ) //put registration activity name here
+                // Add the garden ID as an extra to the intent.
+                intent.putExtra("gardenId", gardenId.text.toString())
+                intent.putExtra("gardenName", gardenName.text.toString())
+                // Start the activity with the intent.
+                startActivity(intent)
+            }
 
+        }
     }
     // Initialize the UI elements by finding them in the layout file.
     private fun initView() {
-
+        gardenId = findViewById(R.id.gardenId)
         gardenName = findViewById(R.id.gardenName)
         gardenAddress = findViewById(R.id.gardenAddress)
         gardenArea = findViewById(R.id.gardenArea)
@@ -54,7 +62,7 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
     // Set the values of the UI elements with data passed from the previous activity.
     private fun setValuesToViews() {
 
-        gardenId = intent.getIntExtra("gardenId", 0)
+        gardenId.text = intent.getStringExtra("gardenId")
         gardenName.text = intent.getStringExtra("gardenName")
         gardenAddress.text = intent.getStringExtra("gardenAddress")
         gardenArea.text = intent.getStringExtra("gardenArea")

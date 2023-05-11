@@ -1,5 +1,4 @@
 package com.example.groapp.Activities.Garden
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,15 +11,18 @@ import com.example.groapp.Adapters.GardenAdapter
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MyGardensActivity : AppCompatActivity() {
 
     private lateinit var gardenRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var gardenList: ArrayList<GardenModel>
+    private lateinit var filteredGardenList: ArrayList<GardenModel>
     private lateinit var dbRef: DatabaseReference
 
-
+    private lateinit var searchView: androidx.appcompat.widget.SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,7 @@ class MyGardensActivity : AppCompatActivity() {
         tvLoadingData = findViewById(R.id.tvMyGardensLoadingData)
 
         gardenList = arrayListOf<GardenModel>()
+        filteredGardenList = arrayListOf<GardenModel>()
 
         val plusBtn = findViewById<View>(R.id.plusBtn)
         plusBtn.setOnClickListener {
@@ -39,11 +42,19 @@ class MyGardensActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val backBtn = findViewById<View>(R.id.backBtn)
-        backBtn.setOnClickListener {
-            val intent = Intent(this, MyProfileActivity::class.java)
-            startActivity(intent)
-        }
+        searchView = findViewById(R.id.search)
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    filter(newText.trim())
+                }
+                return true
+            }
+        })
 
         getGardensData()
     }
@@ -63,7 +74,8 @@ class MyGardensActivity : AppCompatActivity() {
                         val empData = empSnap.getValue(GardenModel::class.java)
                         gardenList.add(empData!!)
                     }
-                    val mAdapter = GardenAdapter(gardenList)
+                    filteredGardenList.addAll(gardenList)
+                    val mAdapter = GardenAdapter(filteredGardenList)
                     gardenRecyclerView.adapter = mAdapter
 
                     mAdapter.setOnItemClickListener(object : GardenAdapter.onItemClickListener{
@@ -72,12 +84,13 @@ class MyGardensActivity : AppCompatActivity() {
                             val intent = Intent(this@MyGardensActivity,  GardenDetailsOwnerViewActivity::class.java)
 
                             //put extras
-                            intent.putExtra("gardenId", gardenList[position].gardenId)
-                            intent.putExtra("name", gardenList[position].name)
-                            intent.putExtra("area", gardenList[position].area)
-                            intent.putExtra("address", gardenList[position].address)
-                            intent.putExtra("description", gardenList[position].description)
-                            intent.putExtra("phoneNo", gardenList[position].phoneNo)
+                            intent.putExtra("gardenId", filteredGardenList[position].gardenId)
+                            intent.putExtra("name", filteredGardenList[position].name)
+                            intent.putExtra("area", filteredGardenList[position].area)
+                            intent.putExtra("address", filteredGardenList[position].address)
+                            intent.putExtra("location",filteredGardenList[position].location)
+                            intent.putExtra("description", filteredGardenList[position].description)
+                            intent.putExtra("phoneNo", filteredGardenList[position].phoneNo)
                             startActivity(intent)
                         }
 
@@ -89,9 +102,23 @@ class MyGardensActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                TODO()
             }
 
         })
     }
+
+    private fun filter(query: String) {
+        filteredGardenList.clear()
+        for (garden in gardenList) {
+            if (garden.name?.lowercase(Locale.ROOT)?.contains(query.lowercase(Locale.ROOT)) == true ||
+                garden.address?.lowercase(Locale.ROOT)?.contains(query.lowercase(Locale.ROOT)) == true ||
+                garden.area?.lowercase(Locale.ROOT)?.contains(query.lowercase(Locale.ROOT)) == true
+            ) {
+                filteredGardenList.add(garden)
+            }
+        }
+        gardenRecyclerView.adapter?.notifyDataSetChanged()
     }
+
+}

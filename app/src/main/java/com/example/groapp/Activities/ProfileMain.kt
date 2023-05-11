@@ -57,7 +57,7 @@ class ProfileMain : AppCompatActivity() {
 
 
     if ( UserSingleton.name != null){
-        btnUpdate.visibility = View.GONE
+        btnUpdate.visibility = View.VISIBLE
     }
 
             userName.text = UserSingleton.name;
@@ -68,9 +68,6 @@ class ProfileMain : AppCompatActivity() {
             }
 
     }
-
-
-
 
     private fun openUpdateDialog() {
         val mDialog = AlertDialog.Builder(this)
