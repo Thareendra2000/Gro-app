@@ -16,16 +16,23 @@ import com.example.groapp.Adapters.CategoryAdapter
 import com.example.groapp.Models.CategoryModel
 import com.example.groapp.R
 import com.google.firebase.database.*
+import java.util.Locale
 
 class MarketPlaceActivity : AppCompatActivity() {
     private lateinit var catRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var catList: ArrayList<CategoryModel>
     private lateinit var dbRef: DatabaseReference
+    private lateinit var search: androidx.appcompat.widget.SearchView
+    private lateinit var filterMarketCategory: ArrayList<CategoryModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_market_place)
+
+        filterMarketCategory = arrayListOf<CategoryModel>()
+        catList = arrayListOf<CategoryModel>()
+
 
         var tvHome : LinearLayout = findViewById(R.id.tvHome)
         tvHome.setOnClickListener{
@@ -48,7 +55,21 @@ class MarketPlaceActivity : AppCompatActivity() {
         catRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        catList = arrayListOf<CategoryModel>()
+
+        // search category
+        search = findViewById(R.id.searchMarket)
+        search.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    filter(newText.trim())
+                }
+                return true
+            }
+        })
 
         getCategoryData()
     }
@@ -65,10 +86,11 @@ class MarketPlaceActivity : AppCompatActivity() {
                 catList.clear()
                 if (snapshot.exists()) {
                     for (empSnap in snapshot.children) {
-                        val catData = empSnap.getValue(CategoryModel::class.java)
-                        catList.add(catData!!)
+                        val data = empSnap.getValue(CategoryModel::class.java)
+                        catList.add(data!!)
                     }
-                    val mAdapter = CategoryAdapter(catList)
+                    filterMarketCategory.addAll(catList)
+                    val mAdapter = CategoryAdapter(filterMarketCategory)
                     catRecyclerView.adapter = mAdapter
 
                     mAdapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListener {
@@ -92,5 +114,25 @@ class MarketPlaceActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+//    var id: String ?= null,
+//    var name: String ?= null,
+//    var description : String ?= null,
+//    var image : String ?= null
+
+    private fun filter(query: String) {
+        filterMarketCategory.clear()
+        for (cat in catList) {
+            if (
+                cat.id?.lowercase(Locale.ROOT)?.contains(query.lowercase(Locale.ROOT)) == true ||
+                cat.name?.lowercase(Locale.ROOT)?.contains(query.lowercase(Locale.ROOT)) == true ||
+                cat.description?.lowercase(Locale.ROOT)?.contains(query.lowercase(Locale.ROOT)) == true ||
+                cat.image?.lowercase(Locale.ROOT)?.contains(query.lowercase(Locale.ROOT)) == true
+            ) {
+                filterMarketCategory.add(cat)
+            }
+        }
+        catRecyclerView.adapter?.notifyDataSetChanged()
     }
 }
