@@ -319,7 +319,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <TextView
-                            android:id="@+id/itemBestBefore"
+                            android:id="@+id/itemBestBefore0"
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -407,7 +407,7 @@
                                 android:textSize="24sp" />
                         </LinearLayout>
                         <LinearLayout
-                            android:id="@+id/averageSessionCard"
+                            android:id="@+id/averageSessionCard0"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"

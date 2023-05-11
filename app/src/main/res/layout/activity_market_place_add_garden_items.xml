@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
-                android:id="@+id/averageSessionCard"
+                android:id="@+id/averageSessionCard0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -79,7 +79,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="80dp">
             <LinearLayout
-                android:id="@+id/averageSessionCard"
+                android:id="@+id/averageSessionCard1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -112,7 +112,7 @@
             android:layout_marginTop="50dp"
             android:orientation="horizontal">
             <LinearLayout
-                android:id="@+id/averageSessionCard"
+                android:id="@+id/averageSessionCard2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -150,7 +150,7 @@
                     android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/averageSessionCard"
+                android:id="@+id/averageSessionCard3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageView40"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0"
@@ -256,7 +256,7 @@
                 android:layout_marginBottom="@dimen/fourdp"/>
 
             <LinearLayout
-                android:id="@+id/gardencard"
+                android:id="@+id/gardencard0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/fourdp"
@@ -265,7 +265,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/sixteenDP">
                 <TextView
-                    android:id="@+id/GardenName"
+                    android:id="@+id/GardenName0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/gardenName"
@@ -273,7 +273,7 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/gardenLocation"
+                    android:id="@+id/gardenLocation0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/gardenLocation"
@@ -282,7 +282,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/gardencard"
+                android:id="@+id/gardencard4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/fourdp"
@@ -291,7 +291,7 @@
                 android:layout_marginBottom="@dimen/fourdp"
                 android:padding="@dimen/sixteenDP">
                 <TextView
-                    android:id="@+id/GardenName"
+                    android:id="@+id/GardenName6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/gardenName"
@@ -299,7 +299,7 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/gardenLocation"
+                    android:id="@+id/gardenLocation7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/gardenLocation"

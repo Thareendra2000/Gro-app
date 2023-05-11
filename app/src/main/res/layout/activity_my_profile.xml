@@ -132,7 +132,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/Title"
+            android:id="@+id/Title0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/myAccount"
@@ -181,7 +181,7 @@
 
 
         <TextView
-            android:id="@+id/Title"
+            android:id="@+id/Title1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/twelveDP"
@@ -192,7 +192,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/Title"
+            android:id="@+id/Title2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/twelveDP"
@@ -203,7 +203,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/Title"
+            android:id="@+id/Title3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/twelveDP"
@@ -222,7 +222,7 @@
             android:padding="@dimen/eightdp">
 
             <TextView
-                android:id="@+id/Title"
+                android:id="@+id/Title4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/twelveDP"
@@ -250,7 +250,7 @@
             android:padding="@dimen/eightdp">
 
             <TextView
-                android:id="@+id/Title"
+                android:id="@+id/Title5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/twelveDP"
@@ -279,7 +279,7 @@
             android:padding="@dimen/eightdp">
 
             <TextView
-                android:id="@+id/Title"
+                android:id="@+id/Title6"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/twelveDP"
@@ -308,7 +308,7 @@
             android:padding="@dimen/eightdp">
 
             <TextView
-                android:id="@+id/Title"
+                android:id="@+id/Title7"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/twelveDP"

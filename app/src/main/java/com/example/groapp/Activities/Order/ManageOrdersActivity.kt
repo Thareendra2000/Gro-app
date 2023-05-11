@@ -16,6 +16,7 @@ import com.example.groapp.Adapters.ManageOrdersAdapter
 import com.example.groapp.Adapters.ManagePickUpsAdapter
 import com.example.groapp.Models.OrderModel
 import com.example.groapp.R
+import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,10 +29,13 @@ class ManageOrdersActivity : AppCompatActivity() {
     private lateinit var ordersItemsRv : RecyclerView
     private lateinit var tvLoadingData : TextView
     private lateinit var ordersList : ArrayList<OrderModel>
+    private lateinit var userID : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_orders)
+        userID = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
+        Log.i("Logged User ID", userID)
 
         backBtn = findViewById(R.id.backImg)
         backBtn.setOnClickListener{
@@ -73,7 +77,12 @@ class ManageOrdersActivity : AppCompatActivity() {
                 if (snapshot.exists()){
                     for (dataSnap in snapshot.children){
                         val data = dataSnap.getValue(OrderModel::class.java)
-                        ordersList.add(data!!)
+                        if(data!!.userId == userID){
+                            ordersList.add(data!!)}
+                    }
+
+                    if(!(ordersList.size > 0)){
+                        tvLoadingData.setText("No Orders")
                     }
                     val mAdapter = ManageOrdersAdapter(ordersList)
                     ordersItemsRv.adapter = mAdapter
@@ -86,6 +95,9 @@ class ManageOrdersActivity : AppCompatActivity() {
 
                     ordersItemsRv.visibility = View.VISIBLE
                     tvLoadingData.visibility = View.GONE
+                }
+                else{
+                    tvLoadingData.setText("No Orders")
                 }
             }
 

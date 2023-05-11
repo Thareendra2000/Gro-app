@@ -50,10 +50,6 @@
             android:exported="false"/>
 
         <activity
-            android:name=".Activities.MarketPlace.MarketBrowseGardenActivity"
-            android:exported="false">
-        </activity>
-        <activity
             android:name=".Activities.MarketPlace.MarketBrowseCategoryItemsActivity"
             android:exported="true" >
         </activity>
