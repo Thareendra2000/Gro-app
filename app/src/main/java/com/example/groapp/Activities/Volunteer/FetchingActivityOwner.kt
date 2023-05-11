@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,7 @@ import com.example.groapp.R
 class FetchingActivityOwner : AppCompatActivity() {
 
     private lateinit var volRecyclerView: RecyclerView
-    private lateinit var tvLoadingData: TextView
+    private lateinit var progressBar: ProgressBar
     private lateinit var volList: ArrayList<VolunteeringModel>
     private lateinit var dbRef: DatabaseReference
 
@@ -35,7 +36,7 @@ class FetchingActivityOwner : AppCompatActivity() {
         volRecyclerView = findViewById(R.id.rvVol)
         volRecyclerView.layoutManager = LinearLayoutManager(this)
         volRecyclerView.setHasFixedSize(true)
-        tvLoadingData = findViewById(R.id.tvLoadingData)
+        progressBar = findViewById(R.id.progressBar)
 
         volList = arrayListOf<VolunteeringModel>()
 
@@ -46,8 +47,7 @@ class FetchingActivityOwner : AppCompatActivity() {
     private fun getEmployeesData() {
 
         volRecyclerView.visibility = View.GONE
-        tvLoadingData.visibility = View.VISIBLE
-
+        progressBar.visibility = View.VISIBLE
 
 //        val dbRef = FirebaseDatabase.getInstance().getReference("Employees")
 //        val query = dbRef.orderByChild("empAge").equalTo(25)
@@ -98,7 +98,7 @@ class FetchingActivityOwner : AppCompatActivity() {
                     })
 
                     volRecyclerView.visibility = View.VISIBLE
-                    tvLoadingData.visibility = View.GONE
+                    progressBar.visibility = View.GONE
                 }
             }
 
