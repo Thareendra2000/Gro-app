@@ -1,22 +1,23 @@
 package com.example.groapp.Activities.Product
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
 import com.example.groapp.Repositories.CategoryRespository
 import com.example.groapp.Repositories.ProductRepository
 import com.example.groapp.Utils.ProductValidations
-import com.google.android.play.integrity.internal.l
-import kotlinx.coroutines.channels.ProducerScope
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -38,6 +39,7 @@ class AddItemActivity : AppCompatActivity() {
     private var bestBefore : Date = Date();
     private var description : String = "";
     private var quantity : Double = 0.0;
+    private lateinit var image_url : String
 
     private var gardenId : String = ""
     private var gardenName : String = ""
@@ -45,6 +47,7 @@ class AddItemActivity : AppCompatActivity() {
     val productRepository = ProductRepository(this@AddItemActivity);
     val categoryRepository = CategoryRespository(this@AddItemActivity);
     val productValidations : ProductValidations = ProductValidations();
+    private lateinit var addMedia : TextView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +65,32 @@ class AddItemActivity : AppCompatActivity() {
 
         gardenId = intent.getStringExtra("gardenId").toString()
         gardenName = intent.getStringExtra("name").toString()
+
+        var home : LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var marketplace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        marketplace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
+        var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvGardens.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+        var tvProfile : LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        addMedia = findViewById(R.id.addMedia)
+        addMedia.setOnClickListener {
+            addMediaBtnClick()
+        }
 
         categoryRepository.getAllCategoriesForSpinner(categoryBox) { result ->
             if(!result)
@@ -99,7 +128,42 @@ class AddItemActivity : AppCompatActivity() {
         quantityBox.setOnFocusChangeListener { view, hasFocus ->
             if(!hasFocus) quantityValidation()
         }
+    }
 
+    private fun addMediaBtnClick() {
+        openGallery()
+    }
+    private lateinit var selectedImageUri: Uri
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                selectedImageUri = uri
+                uploadImageToFirebase()
+            }
+        }
+    private lateinit var storage: FirebaseStorage
+    private fun openGallery() {
+        getContent.launch("image/*")
+    }
+
+    private fun uploadImageToFirebase() {
+        storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+        val imagesRef = storageRef.child("images/${selectedImageUri.lastPathSegment}")
+
+        val uploadTask = imagesRef.putFile(selectedImageUri)
+        uploadTask
+            .addOnSuccessListener {
+                imagesRef.downloadUrl.addOnSuccessListener { downloadUrl : Uri ->
+                    val imageUrl = downloadUrl.toString()
+                    Log.i("Image Url", imageUrl)
+                    addMedia.setText("Image Added")
+                    image_url = imageUrl
+                }
+            }
+            .addOnFailureListener { exception : Exception ->
+                Log.w("Error", exception.message.toString())
+            }
     }
 
     private fun handleAddItemBtnClick() {
@@ -131,7 +195,8 @@ class AddItemActivity : AppCompatActivity() {
                 productName,
                 quantity.toString(),
                 unit,
-                unitPrice.toString()
+                unitPrice.toString(),
+                image_url
             )
 
             Log.i("productInfo", productInfo.garden_name.toString())

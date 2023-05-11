@@ -195,6 +195,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <!--
+
         <LinearLayout
             android:id="@+id/tvHome"
             android:layout_width="wrap_content"
@@ -291,5 +293,6 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        -->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

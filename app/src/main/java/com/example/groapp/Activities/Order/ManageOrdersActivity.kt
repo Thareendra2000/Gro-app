@@ -64,7 +64,8 @@ class ManageOrdersActivity : AppCompatActivity() {
         ordersItemsRv.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("PENDING")
+        val dbRef = FirebaseDatabase.getInstance().getReference("order")
+            .orderByChild("status").equalTo("PENDING")
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
