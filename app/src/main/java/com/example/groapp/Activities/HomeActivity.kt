@@ -26,6 +26,11 @@ class HomeActivity : AppCompatActivity() {
             UserSingleton.uid = it.uid
         }
 
+        val reload : ImageView = findViewById(R.id.reload)
+        reload.setOnClickListener{
+            println(UserSingleton.uid)
+        }
+
         var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
         tvMarketPlace.setOnClickListener{
             val intent = Intent(this, MarketPlaceActivity::class.java)
@@ -69,5 +74,6 @@ class HomeActivity : AppCompatActivity() {
 //            val intent = Intent(this, GardenActivity::class.java)
 //            startActivity(intent)
 //        }
+        println(UserSingleton.uid.toString())
     }
 }

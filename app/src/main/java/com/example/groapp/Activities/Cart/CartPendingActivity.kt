@@ -25,6 +25,7 @@ import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Adapters.CartPendingAdapter
 import com.example.groapp.Models.CartModel
 import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.*
 
 class CartPendingActivity : AppCompatActivity() {
@@ -32,7 +33,6 @@ class CartPendingActivity : AppCompatActivity() {
     private lateinit var cartPendingRecycleView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var pendingList: ArrayList<CartModel>
-    private lateinit var dbRef: DatabaseReference
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,8 +78,9 @@ class CartPendingActivity : AppCompatActivity() {
         cartPendingRecycleView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("cart")
-            .orderByChild("status").equalTo("PENDING")
+        val userId = UserSingleton.uid.toString()
+
+        val dbRef = FirebaseDatabase.getInstance().getReference("cart").orderByChild("userId").equalTo(userId)
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -87,7 +88,9 @@ class CartPendingActivity : AppCompatActivity() {
                 if (snapshot.exists()) {
                     for (cartSnap in snapshot.children) {
                         val data = cartSnap.getValue(CartModel::class.java)
-                        pendingList.add(data!!)
+                        if (data?.status.toString() == "PENDING") { // only add data with PENDING status
+                            pendingList.add(data!!)
+                        }
                     }
                     val mAdapter = CartPendingAdapter(pendingList)
                     cartPendingRecycleView.adapter = mAdapter
@@ -118,7 +121,4 @@ class CartPendingActivity : AppCompatActivity() {
             }
         })
     }
-
-
-
 }
