@@ -1,6 +1,7 @@
 package com.example.groapp.Models
 
 data class GardenModel(
+    var userId: String? = null,
     var gardenId: String? = null,
     var name: String? = null,
     var address: String? = null,

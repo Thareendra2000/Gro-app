@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.example.groapp.Activities.Cart.CartPendingActivity
+import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
 import com.example.groapp.Activities.Volunteer.VolunteerMain
 import com.example.groapp.R
@@ -69,5 +70,10 @@ class HomeActivity : AppCompatActivity() {
 //            val intent = Intent(this, GardenActivity::class.java)
 //            startActivity(intent)
 //        }
+        var gardenList : LinearLayout = findViewById(R.id.gardenList)
+        gardenList.setOnClickListener {
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
