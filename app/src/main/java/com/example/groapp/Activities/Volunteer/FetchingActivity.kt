@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,11 +13,14 @@ import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.*
 import com.example.groapp.Models.VolunteeringModel
 import com.example.groapp.R
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class FetchingActivity : AppCompatActivity() {
 
     private lateinit var volRecyclerView: RecyclerView
-    private lateinit var tvLoadingData: TextView
+//    private lateinit var tvLoadingData: TextView
+    //private lateinit var circularProgressIndicator: CircularProgressIndicator
+    private lateinit var progressBar: ProgressBar
     private lateinit var volList: ArrayList<VolunteeringModel>
     private lateinit var dbRef: DatabaseReference
 
@@ -35,10 +39,11 @@ class FetchingActivity : AppCompatActivity() {
         volRecyclerView = findViewById(R.id.rvVol)
         volRecyclerView.layoutManager = LinearLayoutManager(this)
         volRecyclerView.setHasFixedSize(true)
-        tvLoadingData = findViewById(R.id.tvLoadingData)
+        //tvLoadingData = findViewById(R.id.tvLoadingData)
+        //circularProgressIndicator = findViewById(R.id.circularProgressIndicator)
+        progressBar = findViewById(R.id.progressBar)
 
         volList = arrayListOf<VolunteeringModel>()
-
         getEmployeesData()
 
     }
@@ -46,8 +51,8 @@ class FetchingActivity : AppCompatActivity() {
     private fun getEmployeesData() {
 
         volRecyclerView.visibility = View.GONE
-        tvLoadingData.visibility = View.VISIBLE
-
+        //circularProgressIndicator.visibility = View.VISIBLE
+        progressBar.visibility = View.VISIBLE
 
 //        val dbRef = FirebaseDatabase.getInstance().getReference("Employees")
 //        val query = dbRef.orderByChild("empAge").equalTo(25)
@@ -98,7 +103,9 @@ class FetchingActivity : AppCompatActivity() {
                     })
 
                     volRecyclerView.visibility = View.VISIBLE
-                    tvLoadingData.visibility = View.GONE
+                    //tvLoadingData.visibility = View.GONE
+                    //circularProgressIndicator.visibility = View.GONE
+                    progressBar.visibility = View.GONE
                 }
             }
 

@@ -1,27 +1,38 @@
 package com.example.groapp.Activities.Volunteer
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.DatePickerDialog
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import com.example.groapp.Models.VolunteeringModel
+import com.example.groapp.R
 import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.example.groapp.Models.VolunteeringModel
-import com.example.groapp.R
+import java.util.*
+import java.text.SimpleDateFormat
+import android.widget.Button
+import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.Toast
+
+
 
 class InsertionActivity : AppCompatActivity() {
 
 
     private var userId = UserSingleton.uid
     private var userName = UserSingleton.name
+
     private lateinit var gardenId : String
     private lateinit var gardenName : String
 
+    private lateinit var calendar: Calendar
+
     private lateinit var etHours: EditText
     private lateinit var etDate: EditText
+
+
     private lateinit var etGardenName: TextView
 
     private lateinit var btnSaveData: Button
@@ -41,8 +52,6 @@ class InsertionActivity : AppCompatActivity() {
         actionbar.setDisplayHomeAsUpEnabled(true)
 
 
-
-
         etHours = findViewById(R.id.etHours)
         etDate = findViewById(R.id.etDate)
         etGardenName = findViewById(R.id.etGardenName)
@@ -54,6 +63,19 @@ class InsertionActivity : AppCompatActivity() {
         btnSaveData.setOnClickListener {
             saveEmployeeData()
         }
+
+
+        calendar = Calendar.getInstance()
+
+        //date pickers
+        etDate.setOnClickListener {
+
+            DatePickerDialog(this, startDateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -69,7 +91,6 @@ class InsertionActivity : AppCompatActivity() {
 
         gardenId = intent.getStringExtra("gardenId").toString()
         gardenName = intent.getStringExtra("gardenName").toString()
-//        val empSalary = etEmpSalary.text.toString()
 
         if (hours.isEmpty()) {
             etHours.error = "Please Enter the Amount of Hours"
@@ -97,4 +118,18 @@ class InsertionActivity : AppCompatActivity() {
 
     }
 
+    private val startDateSetListener =
+        DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, monthOfYear)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val myFormat = "dd/MM/yyyy"
+            val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+
+            etDate.setText(sdf.format(calendar.time))
+
+
+
+        }
 }
