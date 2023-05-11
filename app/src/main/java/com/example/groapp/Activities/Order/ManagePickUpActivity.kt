@@ -15,6 +15,7 @@ import com.example.groapp.Adapters.CartPickUpAdapter
 import com.example.groapp.Adapters.ManagePickUpsAdapter
 import com.example.groapp.Models.OrderModel
 import com.example.groapp.R
+import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,9 +28,13 @@ class ManagePickUpActivity : AppCompatActivity() {
     private lateinit var pickupsItemsRV : RecyclerView
     private lateinit var tvLoadingData : TextView
     private lateinit var pickUpList : ArrayList<OrderModel>
+    private lateinit var userID : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_pick_up)
+        userID = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
+        Log.i("Logged User ID", userID)
 
         backBtn = findViewById(R.id.backImg)
         backBtn.setOnClickListener{
@@ -63,7 +68,8 @@ class ManagePickUpActivity : AppCompatActivity() {
         pickupsItemsRV.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("ACCEPTED")
+        val dbRef = FirebaseDatabase.getInstance().getReference("order")
+            .orderByChild("status").equalTo("ACCEPTED")
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -71,7 +77,13 @@ class ManagePickUpActivity : AppCompatActivity() {
                 if (snapshot.exists()){
                     for (dataSnap in snapshot.children){
                         val data = dataSnap.getValue(OrderModel::class.java)
-                        pickUpList.add(data!!)
+
+                        if(data!!.userId == userID)
+                            pickUpList.add(data!!)
+                    }
+
+                    if(!(pickUpList.size > 0)){
+                        tvLoadingData.setText("No Orders")
                     }
                     val mAdapter = ManagePickUpsAdapter(pickUpList)
                     pickupsItemsRV.adapter = mAdapter
@@ -84,6 +96,9 @@ class ManagePickUpActivity : AppCompatActivity() {
 
                     pickupsItemsRV.visibility = View.VISIBLE
                     tvLoadingData.visibility = View.GONE
+                }
+                else{
+                    tvLoadingData.setText("No Orders")
                 }
             }
 
