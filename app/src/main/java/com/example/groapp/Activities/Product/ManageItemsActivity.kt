@@ -103,11 +103,6 @@ class ManageItemsActivity : AppCompatActivity() {
         }
 
         getProducts()
-//        categoryRespository.getAllCategoriesForSpinner(categoriesSpinner){ result ->
-//            if(result){
-//                getProducts()
-//            }
-//        }
     }
 
 
