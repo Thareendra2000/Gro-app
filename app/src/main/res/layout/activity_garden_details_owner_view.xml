@@ -119,6 +119,8 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <!--bottom nav Bar-->
+
         <Button
             android:id="@+id/viewProducts"
             android:layout_width="wrap_content"
@@ -128,11 +130,25 @@
             android:textAllCaps="false"
             app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.165"
             app:layout_constraintStart_toStartOf="parent">
 
         </Button>
 
-        <!--bottom nav Bar-->
+        <Button
+            android:id="@+id/volunteers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/darkGreen"
+            android:text="Volunteers"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.819"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </Button>
+
         <LinearLayout
             android:id="@+id/BottomNavBar"
             android:layout_width="match_parent"

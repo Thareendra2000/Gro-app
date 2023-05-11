@@ -1,17 +1,17 @@
 package com.example.groapp.Activities.Volunteer
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.FirebaseDatabase
 import com.example.groapp.Models.VolunteeringModel
 import com.example.groapp.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 class VolunteeringDetailsActivity : AppCompatActivity() {
 
@@ -22,6 +22,7 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
     private lateinit var tvStatus: TextView
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
+    private lateinit var calendar: Calendar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,7 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
                 intent.getStringExtra("volId").toString()
             )
         }
+
 
     }
 
@@ -127,6 +129,34 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
         val alertDialog = mDialog.create()
         alertDialog.show()
 
+        calendar = Calendar.getInstance()
+
+
+         val startDateSetListener =
+            DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, monthOfYear)
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                val myFormat = "dd/MM/yyyy"
+                val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+
+                etDate.setText(sdf.format(calendar.time))
+
+
+
+            }
+        //date pickers
+        etDate.setOnClickListener {
+
+            DatePickerDialog(this, startDateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+
+
         btnUpdateData.setOnClickListener {
             updateEmpData(
                 volId,
@@ -162,5 +192,7 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
         val volInfo = VolunteeringModel(volId,userId,userName, hours, gardenId,gardenName,date,status)
         dbRef.setValue(volInfo)
     }
+
+
 
 }

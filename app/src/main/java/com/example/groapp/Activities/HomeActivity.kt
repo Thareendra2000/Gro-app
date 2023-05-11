@@ -51,20 +51,20 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-        var volunteerfun : Button = findViewById(R.id.volunteer)
-        volunteerfun.setOnClickListener {
-            val intent = Intent(this, VolunteerMain::class.java)
-            startActivity(intent)
-        }
-        var signout : Button = findViewById(R.id.signout)
-        signout.setOnClickListener {
-            Firebase.auth.signOut()
-        }
-        var profile : Button = findViewById(R.id.profile)
-        profile.setOnClickListener {
-            val intent = Intent(this, ProfileMain::class.java)
-            startActivity(intent)
-        }
+//        var volunteerfun : Button = findViewById(R.id.volunteer)
+//        volunteerfun.setOnClickListener {
+//            val intent = Intent(this, VolunteerMain::class.java)
+//            startActivity(intent)
+//        }
+//        var signout : Button = findViewById(R.id.signout)
+//        signout.setOnClickListener {
+//            Firebase.auth.signOut()
+//        }
+//        var profile : Button = findViewById(R.id.profile)
+//        profile.setOnClickListener {
+//            val intent = Intent(this, ProfileMain::class.java)
+//            startActivity(intent)
+//        }
         //var volunteerfun : Button = findViewById(R.id.volunteer)
 //        garden.setOnClickListener {
 //            val intent = Intent(this, GardenActivity::class.java)
