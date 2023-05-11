@@ -23,6 +23,7 @@ import com.example.groapp.Enums.OrderStatus
 import com.example.groapp.Models.*
 import com.example.groapp.R
 import com.example.groapp.Services.NotificationService
+import com.example.groapp.Services.UserSingleton
 import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.*
 import java.util.*
@@ -30,7 +31,6 @@ import kotlin.random.Random
 
 class CartPendingCheckoutActivity : AppCompatActivity() {
     private lateinit var cartId : String
-    private lateinit var userId : String
     private lateinit var gardenId : String
     private lateinit var productId : String
     private lateinit var price : String
@@ -57,7 +57,6 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
 
         val extras = intent.extras
         cartId = extras?.getString("cartId").toString()
-        userId = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
         gardenId = extras?.getString("gardenId").toString()
         productId = extras?.getString("productId").toString()
         price = extras?.getString("price").toString()
@@ -179,7 +178,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
         val id = dbRef.push().key!!
         val order = OrderModel(
             id = id,
-            userId = userId,
+            userId = UserSingleton.uid,
             gardenId = gardenId,
             productId = productId,
             cartId = cartId,

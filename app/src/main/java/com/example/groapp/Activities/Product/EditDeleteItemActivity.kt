@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import com.example.groapp.Activities.Garden.MyGardensActivity
+import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
 import com.example.groapp.Repositories.CategoryRespository
@@ -47,6 +50,26 @@ class EditDeleteItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_delete_item)
 
+        var home : LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var marketplace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        marketplace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
+        var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        tvGardens.setOnClickListener{
+            val intent = Intent(this, MyGardensActivity::class.java)
+            startActivity(intent)
+        }
+        var tvProfile : LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
         gardenName = intent.getStringExtra("name").toString()
         gardenId = intent.getStringExtra("gardenId").toString()
 

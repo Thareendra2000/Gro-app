@@ -135,8 +135,8 @@
     <string name="addtoTheStock">Add item to the Stock</string>
     <string name="deleteItem">Delete</string>
     <string name="updateItem">Update</string>
-    <string name="uploadMedia">Add Media</string>
-    <string name="editMedia">Edit Media</string>
+    <string name="uploadMedia">Add Image</string>
+    <string name="editMedia">Edit Image</string>
 
     <!--Completed Orders-->
     <string name="rateBtn">Rate</string>

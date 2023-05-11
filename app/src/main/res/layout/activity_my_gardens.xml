@@ -79,10 +79,9 @@
 
         <TextView
             android:id="@+id/tvMyGardensLoadingData"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Loading Data....."
-            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No data to show!"
             android:textSize="28sp"
             android:textColor="@color/black"
             android:textStyle="bold"

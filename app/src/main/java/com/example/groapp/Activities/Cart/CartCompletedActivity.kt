@@ -15,14 +15,16 @@ import com.example.groapp.Adapters.CartCompletedAdapter
 import com.example.groapp.Models.EmployeeModel
 import com.example.groapp.Models.OrderModel
 import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 
 class CartCompletedActivity : AppCompatActivity() {
     // initialize the UI elements
     private lateinit var completedRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var completedList: ArrayList<OrderModel>
-    private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +71,7 @@ class CartCompletedActivity : AppCompatActivity() {
         tvLoadingData.visibility = View.VISIBLE
 
         // db
-        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("status").equalTo("COMPLETED")
+        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("userId").equalTo(UserSingleton.uid)
 
         // pass values to RateItem page
         dbRef.addValueEventListener(object : ValueEventListener {
@@ -78,7 +80,9 @@ class CartCompletedActivity : AppCompatActivity() {
                 if (snapshot.exists()){
                     for (dataSnap in snapshot.children){
                         val data = dataSnap.getValue(OrderModel::class.java)
-                        completedList.add(data!!)
+                        if(data?.status.toString() == "ACCEPTED") {
+                            completedList.add(data!!)
+                        }
                     }
                     val mAdapter = CartCompletedAdapter(completedList)
                     completedRecyclerView.adapter = mAdapter
