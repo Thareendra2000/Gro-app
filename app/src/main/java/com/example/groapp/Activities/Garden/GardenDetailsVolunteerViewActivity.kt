@@ -4,7 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
+import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Activities.Volunteer.InsertionActivity
 import com.example.groapp.R
 
@@ -45,6 +49,28 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
             }
 
         }
+        //nav bar intents
+        var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
+        accountBtn.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
+        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        tvMarketPlace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
+        var gardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        gardens.setOnClickListener {
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var home : LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     // Initialize the UI elements by finding them in the layout file.
     private fun initView() {

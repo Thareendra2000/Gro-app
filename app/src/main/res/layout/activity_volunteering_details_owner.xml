@@ -10,11 +10,22 @@
         android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Approve"
+        android:layout_marginTop="36dp"
         android:backgroundTint="@color/approveGreen"
+        android:text="Confirm"
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnApprove"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    <Button
+        android:id="@+id/btnApprove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/approveGreen"
+        android:text="Approve"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
@@ -22,12 +33,11 @@
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Decline"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="40dp"
         android:backgroundTint="@color/deleteRed"
+        android:text="Decline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnUpdate"
         app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
     <LinearLayout

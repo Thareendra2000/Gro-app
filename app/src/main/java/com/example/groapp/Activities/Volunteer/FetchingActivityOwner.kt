@@ -92,6 +92,7 @@ class FetchingActivityOwner : AppCompatActivity() {
                             intent.putExtra("hours", volList[position].hours)
                             intent.putExtra("date", volList[position].date)
                             intent.putExtra("garden", volList[position].gardenName)
+                            intent.putExtra("gardenId", volList[position].gardenId)
                             intent.putExtra("status", volList[position].status)
                             startActivity(intent)
                         }
