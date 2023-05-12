@@ -29,14 +29,7 @@ class MyProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
-
-//        val user = FirebaseAuth.getInstance().currentUser
-//        val newUsername = "Dinal"
-//
-//        val profileUpdates = UserProfileChangeRequest.Builder()
-//            .setDisplayName(newUsername)
-//            .build()
-
+        
         btnUpdate = findViewById(R.id.btnUpdate)
         userName = findViewById(R.id.userName)
         userEmail = findViewById(R.id.userEmail)
