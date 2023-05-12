@@ -1,6 +1,14 @@
 package com.example.groapp.Activities.Volunteer
 
+import android.Manifest
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +23,14 @@ import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.example.groapp.Activities.NotificationActivity
+import com.example.groapp.Services.NotificationService
 import com.example.groapp.Utils.VolunteerValidations
+import kotlin.random.Random
 
 
 class InsertionActivity : AppCompatActivity() {
@@ -84,6 +99,7 @@ class InsertionActivity : AppCompatActivity() {
         return true
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveEmployeeData() {
 
         //getting values
@@ -118,7 +134,9 @@ class InsertionActivity : AppCompatActivity() {
         dbRef.child(volunteeringId).setValue(employee)
             .addOnCompleteListener {
                 Toast.makeText(this, "Volunteering Record Added!", Toast.LENGTH_LONG).show()
-
+                val notificationService = NotificationService()
+                notificationService.saveNotifications("Volunteering Record Added", "Volunteering Record has been Added")
+                sendNotification("Volunteering Record Added", "Volunteering Record has been Added")
                 etHours.text.clear()
                 etDate.text.clear()
 
@@ -142,4 +160,39 @@ class InsertionActivity : AppCompatActivity() {
 
 
         }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun sendNotification(title: String, message: String) {
+        val name = getString(R.string.channel_name)
+        val descriptionText = getString(R.string.channel_description)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel("test_channel_id", name, importance).apply {
+            description = descriptionText
+        }
+
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+
+        val intent = Intent(this, NotificationActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        val builder = NotificationCompat.Builder(this, "test_channel_id")
+            .setSmallIcon(R.drawable.notification_icon)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+
+        with(NotificationManagerCompat.from(this)) {
+            if (ActivityCompat.checkSelfPermission( this@InsertionActivity, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED ) {
+                return
+            }
+            notify(Random.nextInt(1200), builder.build())
+        }
+    }
 }
