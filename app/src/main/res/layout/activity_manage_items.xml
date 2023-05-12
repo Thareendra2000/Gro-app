@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundWhite"
+    tools:context=".Activities.Order.ManageOrdersActivity">
+
+    <!--bottom nav Bar-->
+    <LinearLayout
+        android:id="@+id/BottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/fourdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/tvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/home_icon" />
+
+            <TextView
+                android:id="@+id/homeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/home"
+                android:textAlignment="center"
+                android:textColor="@color/darkGreen"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tvMarketPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_shopping_cart_24" />
+
+            <TextView
+                android:id="@+id/cartText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/market"
+                android:textAlignment="center"
+                android:textColor="@color/darkGreen"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tvLeaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/leaderboard_icon" />
+
+            <TextView
+                android:id="@+id/leaderboardText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/leaderboard"
+                android:textAlignment="center"
+                android:textColor="@color/darkGreen"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tvProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/account_icon" />
+
+            <TextView
+                android:id="@+id/accountText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:textAlignment="center"
+                android:textColor="@color/darkGreen"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--Back & Title-->
+    <LinearLayout
+        android:id="@+id/BackAndTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:text="@string/gardenName"
+            android:textAlignment="center"
+            android:textColor="@color/darkGreen"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <!--Switch Panel Buttons
+    <LinearLayout
+        android:id="@+id/SwappingButtonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fourdp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonborder"
+            android:text="@string/items"
+            android:textAllCaps="false"
+            android:textColor="@color/lessDarkGreen"
+            app:backgroundTint="@color/darkGreen" />
+
+        <Button
+            android:id="@+id/ordersBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fourdp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonborder"
+            android:text="@string/orders"
+            android:textAllCaps="false"
+            android:textColor="@color/darkGreen"
+            app:backgroundTint="@color/backgroundWhite" />
+
+        <Button
+            android:id="@+id/pickUpsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fourdp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonborder"
+            android:text="@string/pickup"
+            android:textAllCaps="false"
+            android:textColor="@color/darkGreen"
+            app:backgroundTint="@color/backgroundWhite" />
+    </LinearLayout>
+    -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/eightdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BackAndTitle">
+
+<!--        <TextView-->
+<!--            android:id="@+id/itemDescription"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/chooseCategory"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/darkGreen"-->
+<!--            android:padding="@dimen/eightdp"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_weight="4"-->
+<!--            android:background="@drawable/card_bg_unfilled"-->
+<!--            android:padding="@dimen/eightdp">-->
+<!--            <Spinner-->
+<!--                android:id="@+id/categories"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:entries="@array/categories"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/darkGreen"-->
+<!--                android:textSize="18sp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemsRV"
+        android:layout_width="367dp"
+        android:layout_height="545dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:listitem="@layout/product_owner_pov" />
+
+    <TextView
+        android:id="@+id/tvLoadingData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No data to show!"
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Add New Item Button-->
+    <LinearLayout
+        android:id="@+id/addItemBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="@dimen/eightdp"
+        android:background="@drawable/buttonborder"
+        android:orientation="horizontal"
+        android:padding="@dimen/eightdp"
+        app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/plusImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/fourdp"
+            app:srcCompat="@drawable/baseline_add_24" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

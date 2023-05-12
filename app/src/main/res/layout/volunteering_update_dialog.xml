@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundWhite"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+<!--    <EditText-->
+<!--        android:id="@+id/etHours"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:hint="Hours"-->
+<!--        android:inputType="textPersonName" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etDate"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Date" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProductQtyContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+
+        app:counterMaxLength="16"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etGardenName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etHours"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Volunteering Hours: 3h"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="16" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/offerDatesContainer"
+        android:layout_width="381dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/ProductQtyContainer"
+        app:layout_constraintVertical_bias="0.286"
+        tools:layout_editor_absoluteX="0dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/offerStartDateContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:hint="Date"
+            app:helperText=""
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toStartOf="@+id/offerEndDateContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sellerLocationContainer"
+            app:startIconDrawable="@drawable/calendar_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:lines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnUpdateData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Update" />
+</LinearLayout>
+
+
+

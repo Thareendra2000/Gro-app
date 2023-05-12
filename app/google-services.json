@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "626349689935",
+    "firebase_url": "https://gro-app-37a8b-default-rtdb.firebaseio.com",
+    "project_id": "gro-app-37a8b",
+    "storage_bucket": "gro-app-37a8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626349689935:android:70713fa2e5c42567c76e3a",
+        "android_client_info": {
+          "package_name": "com.example.groapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626349689935-1qtnn17kr1gn18gi2oahp4ipcud816b1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbm-xp8LXV6MyDeV1iQZmH0gY5CxG3Mws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626349689935-1qtnn17kr1gn18gi2oahp4ipcud816b1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
