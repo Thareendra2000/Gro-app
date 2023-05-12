@@ -13,6 +13,7 @@ import com.example.groapp.Activities.Volunteer.VolunteerMain
 import com.example.groapp.R
 import com.example.groapp.Services.UserSingleton
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 
 class HomeActivity : AppCompatActivity() {
@@ -26,6 +27,8 @@ class HomeActivity : AppCompatActivity() {
             UserSingleton.email = it.email
             UserSingleton.uid = it.uid
         }
+
+
 
         val reload : ImageView = findViewById(R.id.reload)
         reload.setOnClickListener{
