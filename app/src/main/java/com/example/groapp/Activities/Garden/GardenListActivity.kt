@@ -73,6 +73,7 @@ class GardenListActivity : AppCompatActivity() {
                             intent.putExtra("gardenName", gardenList[position].name)
                             intent.putExtra("gardenArea", gardenList[position].area)
                             intent.putExtra("gardenAddress", gardenList[position].address)
+                            intent.putExtra("gardenLocation", gardenList[position].location)
                             intent.putExtra("gardenDescription", gardenList[position].description)
                             intent.putExtra("gardenPhoneNo", gardenList[position].phoneNo)
                             startActivity(intent)
