@@ -52,6 +52,7 @@ class ManageOrdersAdapter (private val ordersList:  ArrayList<OrderModel>) :
         val productId = currentPickUp.productId
         val gardenId = currentPickUp.gardenId
         val cartId = currentPickUp.cartId
+        var prodOrderQuantity = 0.0
 
         FirebaseDatabase.getInstance().getReference("cart").child(cartId!!)
             .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -60,6 +61,7 @@ class ManageOrdersAdapter (private val ordersList:  ArrayList<OrderModel>) :
                         val cart = dataSnapshot.getValue(CartModel::class.java)
                         if (cart != null) {
                             holder.tvOrderPrice.text = cart.totalPrice
+                            prodOrderQuantity = cart.quantity.toString().toDouble()
                         }
                     } else {
                         println("data not exists")
@@ -120,8 +122,10 @@ class ManageOrdersAdapter (private val ordersList:  ArrayList<OrderModel>) :
             order.status = OrderStatus.ACCEPTED;
             FirebaseDatabase.getInstance().getReference("order").child(currentPickUp.id!!).setValue(order)
                 .addOnSuccessListener{
-                    Log.i("Success" , "Order ${order.status}")
-                    Toast.makeText(holder.itemView.context, "Order ${order.status}", Toast.LENGTH_LONG).show()
+                    Log.i("Success" , "Order ${order.status.toString().toLowerCase()}")
+                    Toast.makeText(holder.itemView.context, "Order ${order.status.toString().toLowerCase()}", Toast.LENGTH_LONG).show()
+                    holder.rejectOrderBtn.visibility = View.GONE
+                    holder.confirmOrderBtn.setText("Confirmed")
                 }
                 .addOnFailureListener{ err ->
                     Log.w("Error" , err.message.toString())
@@ -134,8 +138,11 @@ class ManageOrdersAdapter (private val ordersList:  ArrayList<OrderModel>) :
             order.status = OrderStatus.REJECTED;
             FirebaseDatabase.getInstance().getReference("order").child(currentPickUp.id!!).setValue(order)
                 .addOnSuccessListener{
-                    Log.i("Success" , "Order ${order.status}")
-                    Toast.makeText(holder.itemView.context, "Order ${order.status}", Toast.LENGTH_LONG).show()
+                    Log.i("Success" , "Order ${order.status.toString().toLowerCase()}")
+                    Toast.makeText(holder.itemView.context, "Order ${order.status.toString().toLowerCase()}", Toast.LENGTH_LONG).show()
+                     updateProductQuantity(order.productId.toString(), prodOrderQuantity.toInt())
+                    holder.confirmOrderBtn.visibility = View.GONE
+                    holder.rejectOrderBtn.setText("Rejected")
                 }
                 .addOnFailureListener{ err ->
                     Log.w("Error" , err.message.toString())
@@ -144,7 +151,38 @@ class ManageOrdersAdapter (private val ordersList:  ArrayList<OrderModel>) :
         }
 
     }
+    fun updateProductQuantity(productId: String, newQuantity: Int) {
+        val dbRef = FirebaseDatabase.getInstance().getReference("products").child(productId)
 
+        dbRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val product = dataSnapshot.getValue(ProductModel::class.java)
+
+                    // Get the existing quantity and add the new quantity
+                    var existingQuantity = product?.quantity?.toInt()
+                    val updatedQuantity = existingQuantity?.plus(newQuantity)
+
+                    // Update the quantity in the database
+                    dbRef.child("quantity").setValue(updatedQuantity.toString())
+                        .addOnSuccessListener {
+                            // Quantity updated successfully
+                            println("Product quantity updated successfully.")
+                        }.addOnFailureListener { error ->
+                            // Error updating the quantity
+                            println("Error updating product quantity: ${error.message}")
+                        }
+                } else {
+                    // Product does not exist
+                    println("Product does not exist.")
+                }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle the error case here
+                println("Error retrieving product data: ${databaseError.message}")
+            }
+        })
+    }
     class ViewHolder(itemView: View, clickListener: ManageOrdersAdapter.onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
         val tvItemName : TextView = itemView.findViewById(R.id.tvItemName)

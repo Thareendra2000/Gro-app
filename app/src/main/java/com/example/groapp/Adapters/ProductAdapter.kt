@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.groapp.Activities.Product.EditDeleteItemActivity
+import com.example.groapp.Activities.Product.ManageItemsActivity
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
 import com.google.firebase.database.FirebaseDatabase
@@ -43,7 +44,13 @@ class ProductAdapter(private val prodList:  ArrayList<ProductModel>) :
         val currentProd= prodList[position]
         holder.tvProdName.text = currentProd.name
         holder.tvProdDescription.text = currentProd.description
-        holder.tvProdBestBefore.text = currentProd.best_before!!.toLocaleString().toString()
+
+        val inputDateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy")
+        val outputDateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val date = inputDateFormat.parse(currentProd.best_before.toString())
+        val formattedDate = outputDateFormat.format(date)
+        holder.tvProdBestBefore.text = formattedDate
+
         Glide.with(holder.itemView.context)
             .load(currentProd.img_url)
             .into(holder.tvProdImage)
@@ -74,6 +81,11 @@ class ProductAdapter(private val prodList:  ArrayList<ProductModel>) :
                 FirebaseDatabase.getInstance().reference.child("products").child(currentProd.production_id!!).removeValue()
                     .addOnSuccessListener{
                         Toast.makeText(holder.itemView.context, "Product Deleted", Toast.LENGTH_LONG).show()
+                        val intent = Intent(holder.itemView.context, ManageItemsActivity::class.java)
+                        intent.putExtra("name", currentProd.garden_name)
+                        intent.putExtra("gardenId", currentProd.garden_id)
+                        holder.itemView.context.startActivity(intent)
+
                     }
                     .addOnFailureListener{ err ->
                         Toast.makeText(holder.itemView.context, "Deleting Err ${err.message}", Toast.LENGTH_LONG).show()

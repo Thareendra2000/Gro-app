@@ -157,6 +157,7 @@ class EditDeleteItemActivity : AppCompatActivity() {
         }
     }
     private fun handleEditImageBtn() {
+        editBtn.isEnabled = false;
         openGallery()
     }
     private lateinit var selectedImageUri: Uri
@@ -190,6 +191,7 @@ class EditDeleteItemActivity : AppCompatActivity() {
             .addOnFailureListener { exception : Exception ->
                 Log.w("Error", exception.message.toString())
             }
+        editBtn.isEnabled = false;
     }
     private fun handleUpdateBtnClick() {
         updateBtn.isEnabled = false;
