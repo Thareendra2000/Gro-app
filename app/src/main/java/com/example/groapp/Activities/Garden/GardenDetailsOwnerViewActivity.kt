@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Activities.Product.ManageItemsActivity
 import com.example.groapp.Activities.Volunteer.FetchingActivityOwner
 import com.example.groapp.Activities.Volunteer.InsertionActivity
@@ -77,6 +80,28 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
             }
 
         }
+        //nav bar intents
+        var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
+        accountBtn.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
+        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        tvMarketPlace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
+        var gardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        gardens.setOnClickListener {
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var home : LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val gardenName = intent.getStringExtra("name")
         val Title = intent.getStringExtra("name")

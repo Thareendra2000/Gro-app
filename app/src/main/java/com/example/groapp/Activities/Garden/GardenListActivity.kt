@@ -64,7 +64,7 @@ class GardenListActivity : AppCompatActivity() {
             startActivity(intent)
         }
         var home : LinearLayout = findViewById(R.id.tvHome)
-        gardens.setOnClickListener {
+        home.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
