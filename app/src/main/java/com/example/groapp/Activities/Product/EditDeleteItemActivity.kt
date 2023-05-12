@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
@@ -68,7 +69,7 @@ class EditDeleteItemActivity : AppCompatActivity() {
         }
         var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
         tvGardens.setOnClickListener{
-            val intent = Intent(this, MyGardensActivity::class.java)
+            val intent = Intent(this, GardenListActivity::class.java)
             startActivity(intent)
         }
         var tvProfile : LinearLayout = findViewById(R.id.tvProfile)

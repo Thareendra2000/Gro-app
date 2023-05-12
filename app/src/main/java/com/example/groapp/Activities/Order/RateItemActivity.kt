@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.groapp.Activities.Cart.CartCompletedActivity
 import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
 import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.Models.ProductModel
@@ -52,7 +53,7 @@ class RateItemActivity : AppCompatActivity() {
         }
         var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
         marketplace.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, MarketPlaceActivity::class.java)
             startActivity(intent)
         }
         var home: LinearLayout = findViewById(R.id.tvHome)

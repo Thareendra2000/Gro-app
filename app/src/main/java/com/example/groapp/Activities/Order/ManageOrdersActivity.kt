@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.Activities.Garden.GardenDetailsOwnerViewActivity
 import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
 import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Adapters.ManageOrdersAdapter
 import com.example.groapp.Adapters.ManagePickUpsAdapter
@@ -49,7 +50,7 @@ class ManageOrdersActivity : AppCompatActivity() {
         }
         var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
         marketplace.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, MarketPlaceActivity::class.java)
             startActivity(intent)
         }
         var home: LinearLayout = findViewById(R.id.tvHome)
