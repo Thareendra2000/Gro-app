@@ -15,7 +15,7 @@ import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
-
+import com.example.groapp.Utils.VolunteerValidations
 
 
 class InsertionActivity : AppCompatActivity() {
@@ -38,6 +38,7 @@ class InsertionActivity : AppCompatActivity() {
     private lateinit var btnSaveData: Button
 
     private lateinit var dbRef: DatabaseReference
+    var volunteerValidations = VolunteerValidations()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,8 +97,17 @@ class InsertionActivity : AppCompatActivity() {
             etHours.error = "Please Enter the Amount of Hours"
             return
         }
+        if ( !volunteerValidations.isValidHours(hours)){
+            etHours.error = "Please Enter a Valid Amount of Hours (1 - 7)"
+            return
+        }
         if (date.isEmpty()) {
             etDate.error = "Please Enter the Date"
+            return
+        }
+
+        if ( !volunteerValidations.isValidYear(date)){
+            etDate.error = "Please Enter a Valid Date ( 30 Days )"
             return
         }
 

@@ -62,6 +62,8 @@ class ProductAdapter(private val prodList:  ArrayList<ProductModel>) :
             intent.putExtra("bestBefore", currentProd.best_before.toString())
             intent.putExtra("description", currentProd.description)
             intent.putExtra("quantity", currentProd.quantity.toString().toDouble())
+            intent.putExtra("image_url", currentProd.img_url)
+            intent.putExtra("rating", currentProd.rating.toString().toDouble())
 
             holder.itemView.context.startActivity(intent)
         }

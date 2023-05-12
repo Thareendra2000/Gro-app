@@ -16,6 +16,7 @@ import com.example.groapp.Adapters.ManageOrdersAdapter
 import com.example.groapp.Adapters.ManagePickUpsAdapter
 import com.example.groapp.Models.OrderModel
 import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
 import com.example.groapp.Utils.PseudoCookie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -34,7 +35,7 @@ class ManageOrdersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_orders)
-        userID = PseudoCookie.getPseudoCookie().getCookieValue("logged_user_id")
+        userID = UserSingleton.uid.toString()
         Log.i("Logged User ID", userID)
 
         backBtn = findViewById(R.id.backImg)
