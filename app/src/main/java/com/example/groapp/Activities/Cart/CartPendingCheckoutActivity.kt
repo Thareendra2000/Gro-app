@@ -36,6 +36,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
     private lateinit var price : String
     private lateinit var note : String
     private lateinit var dbRef : DatabaseReference
+    private lateinit var itemName : String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +70,7 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
                     if (dataSnapshot.exists()) {
                         val product = dataSnapshot.getValue(ProductModel::class.java)
                         // Do something with the retrieved garden data
-                        val itemName = product?.name
+                        itemName = product?.name.toString()
                         tvItemName.text = itemName
                     } else {
                         // Handle the case where the garden data does not exist
@@ -164,8 +165,8 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
             val dbRef = FirebaseDatabase.getInstance().getReference("cart").child(cartId)
             dbRef.child("status").setValue(CartStatus.ORDERED).addOnSuccessListener {
                 val notificationService = NotificationService()
-                notificationService.saveNotifications("Item added to the cart", "Item has been added to the cart")
-                sendNotification("Added to cart" , "Item has been added to the cart")
+                notificationService.saveNotifications("$itemName added!", "$itemName has been added to the cart")
+                sendNotification("$itemName added!" , "$itemName has been added to the cart")
 
             }.addOnFailureListener { error ->
                 println("Error updating cart status: ${error.message}")

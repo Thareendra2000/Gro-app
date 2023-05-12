@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.groapp.Activities.HomeActivity
@@ -22,6 +23,7 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
     private lateinit var gardenDescription: TextView
     private lateinit var gardenPhoneNo: TextView
     private lateinit var volunteerBtn: Button
+    private lateinit var backBtn: ImageView
 
 
 
@@ -32,6 +34,11 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
 
         initView()
         setValuesToViews()
+
+        backBtn.setOnClickListener{
+            val intent = Intent( this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
 
         // Set a click listener on the volunteer button.
         volunteerBtn.setOnClickListener {
@@ -83,6 +90,7 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
         gardenDescription  = findViewById(R.id.gardenDescription)
 
         volunteerBtn = findViewById(R.id.volunteerBtn)
+        backBtn = findViewById(R.id.backBtn)
     }
 
     // Set the values of the UI elements with data passed from the previous activity.

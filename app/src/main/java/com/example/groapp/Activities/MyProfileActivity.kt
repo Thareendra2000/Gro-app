@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.*
 import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.Garden.MyGardensActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
 import com.example.groapp.Activities.Order.ManageOrdersActivity
 import com.example.groapp.Activities.Volunteer.FetchingActivity
 import com.example.groapp.Activities.Volunteer.VolunteerDashboard
@@ -67,7 +68,7 @@ class MyProfileActivity : AppCompatActivity() {
         }
         var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
         marketplace.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, MarketPlaceActivity::class.java)
             startActivity(intent)
         }
         var home: LinearLayout = findViewById(R.id.tvHome)

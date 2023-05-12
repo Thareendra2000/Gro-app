@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.R
@@ -43,7 +44,7 @@ class MarketBrowseCategoryItemsActivity : AppCompatActivity() {
         }
         var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
         tvGardens.setOnClickListener{
-            val intent = Intent(this, MyGardensActivity::class.java)
+            val intent = Intent(this, GardenListActivity::class.java)
             startActivity(intent)
         }
         var tvProfile : LinearLayout = findViewById(R.id.tvProfile)

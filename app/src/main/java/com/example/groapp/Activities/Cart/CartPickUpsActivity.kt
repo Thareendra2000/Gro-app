@@ -109,6 +109,7 @@ class CartPickUpsActivity : AppCompatActivity() {
                 }
                 else{
                     tvLoadingData.setText("No data to show")
+                    tvLoadingData.visibility = View.VISIBLE
                 }
             }
 

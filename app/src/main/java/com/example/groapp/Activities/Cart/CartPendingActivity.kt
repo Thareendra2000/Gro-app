@@ -22,8 +22,10 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
 import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Adapters.CartPendingAdapter
 import com.example.groapp.Models.CartModel
@@ -50,7 +52,12 @@ class CartPendingActivity : AppCompatActivity() {
         }
         var tvGardens : LinearLayout = findViewById(R.id.tvLeaderboard)
         tvGardens.setOnClickListener{
-            val intent = Intent(this, MyGardensActivity::class.java)
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        tvMarketPlace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
             startActivity(intent)
         }
         var tvProfile : LinearLayout = findViewById(R.id.tvProfile)

@@ -123,7 +123,7 @@ class MarketPlaceAddItemToCartActivity : AppCompatActivity() {
                 productsRef.child(productId).updateChildren(productUpdates)
 
                 val notificationService = NotificationService()
-                notificationService.saveNotifications("Item added to the cart", "test item has been added to the cart")
+                notificationService.saveNotifications("$name added!", "$name has been added to the cart")
 
                 Handler().postDelayed({
                     val intent = Intent(this, MarketPlaceActivity::class.java)
