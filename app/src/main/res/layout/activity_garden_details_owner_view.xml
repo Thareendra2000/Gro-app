@@ -6,30 +6,265 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Garden.GardenDetailsOwnerViewActivity">
 
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Garden Profile"
-        app:layout_constraintBottom_toTopOf="@+id/leftSide"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AComGarden"
+        tools:layout_editor_absoluteX="-167dp"
+        tools:layout_editor_absoluteY="16dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/RightSide"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Title">
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <!--bottom nav Bar-->
+
+        <TextView
+            android:id="@+id/addYourBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/darkGreen"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.042" />
+
+
+        <TextView
+            android:id="@+id/gardenName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/gardenNameEx"
+            android:textAlignment="center"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addYourBusiness" />
+
+        <TextView
+            android:id="@+id/gardenAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/cgAddressEx"
+            android:textAlignment="center"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gardenName" />
+
+        <TextView
+            android:id="@+id/gardenArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 acre"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/gardenLocation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gardenAddress"
+            app:layout_constraintVertical_bias="0.285" />
+
+        <TextView
+            android:id="@+id/gardenLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:text="@string/Locationlink"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/gardenPhoneNo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.479"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/gardenPhoneNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:text="@string/cgPhoneNumberEx"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/gardenDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/gardenDescription"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/DescriptionEx"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/viewProducts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!--bottom nav Bar-->
+
+        <Button
+            android:id="@+id/viewProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/darkGreen"
+            android:text="View Products"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.165"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </Button>
+
+        <Button
+            android:id="@+id/volunteers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/darkGreen"
+            android:text="Volunteers"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.819"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </Button>
+
+        <LinearLayout
+            android:id="@+id/BottomNavBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/fourdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/tvHome"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/home_icon" />
+
+                <TextView
+                    android:id="@+id/homeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tvMarketPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/baseline_shopping_cart_24" />
+
+                <TextView
+                    android:id="@+id/cartText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/market"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tvLeaderboard"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/leaderboard_icon" />
+
+                <TextView
+                    android:id="@+id/leaderboardText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/leaderboard"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tvProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/account_icon" />
+
+                <TextView
+                    android:id="@+id/accountText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/btnDelete"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="60dp"
             app:layout_constraintBottom_toTopOf="@+id/textView11"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,307 +272,28 @@
             app:srcCompat="@drawable/baseline_delete" />
 
         <ImageButton
-            android:id="@+id/btnshare"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView11"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.708"
-            app:srcCompat="@drawable/baseline_share"/>
-
-        <ImageButton
             android:id="@+id/btnEdit"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginStart="348dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView11"
+            app:layout_constraintEnd_toStartOf="@+id/imageView8"
+            app:layout_constraintHorizontal_bias="0.996"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.708"
             app:srcCompat="@drawable/baseline_mode_edit" />
-    </LinearLayout>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/RightSide"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_weight="1"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/gardenId"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
+            android:text="TextView"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="37dp"
+            android:visibility="invisible"/>
 
-            <TextView
-                android:id="@+id/gardenName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="TextView"
-                android:textColor="@color/darkGreen" />
-
-            <TextView
-                android:id="@+id/gardenAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="TextView"
-                android:textColor="@color/darkGreen" />
-
-            <TextView
-                android:id="@+id/gardenArea"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="TextView"
-                android:textColor="@color/darkGreen" />
-
-            <TextView
-                android:id="@+id/gardenLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="TextView"
-                android:textColor="@color/darkGreen" />
-
-            <TextView
-                android:id="@+id/gardenPhoneNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="TextView"
-                android:textColor="@color/darkGreen" />
-
-            <TextView
-                android:id="@+id/gardenDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="TextView"
-                android:textColor="@color/darkGreen" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/leftSide"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/lessDarkGreen"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="Garden name:"
-                android:textAlignment="textEnd"
-                android:textColor="@color/darkGreen"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="Address:"
-                android:textAlignment="textEnd"
-                android:textColor="@color/darkGreen"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="Area:"
-                android:textAlignment="textEnd"
-                android:textColor="@color/darkGreen"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="Location link:"
-                android:textAlignment="textEnd"
-                android:textColor="@color/darkGreen"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="Phone number:"
-                android:textAlignment="textEnd"
-                android:textColor="@color/darkGreen"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="Description:"
-                android:textAlignment="textEnd"
-                android:textColor="@color/darkGreen"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/viewProducts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:backgroundTint="@color/darkGreen"
-        android:text="Add Production"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RightSide">
-
-    </Button>
-
-    <!--bottom nav Bar-->
-    <LinearLayout
-        android:id="@+id/BottomNavBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/fourdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/tvHome"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/home_icon" />
-
-            <TextView
-                android:id="@+id/homeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/home"
-                android:textAlignment="center"
-                android:textColor="@color/darkGreen"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tvMarketPlace"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/baseline_shopping_cart_24" />
-
-            <TextView
-                android:id="@+id/cartText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/market"
-                android:textAlignment="center"
-                android:textColor="@color/darkGreen"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tvLeaderboard"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/leaderboard_icon" />
-
-            <TextView
-                android:id="@+id/leaderboardText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/leaderboard"
-                android:textAlignment="center"
-                android:textColor="@color/darkGreen"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tvProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/account_icon" />
-
-            <TextView
-                android:id="@+id/accountText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/account"
-                android:textAlignment="center"
-                android:textColor="@color/darkGreen"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-    </LinearLayout>
-    <TextView
-        android:id="@+id/gardenId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="37dp"
-        android:visibility="invisible"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

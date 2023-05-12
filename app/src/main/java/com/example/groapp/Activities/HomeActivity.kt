@@ -75,10 +75,6 @@ class HomeActivity : AppCompatActivity() {
 //            val intent = Intent(this, GardenActivity::class.java)
 //            startActivity(intent)
 //        }
-        var gardenList : LinearLayout = findViewById(R.id.gardenList)
-        gardenList.setOnClickListener {
-            val intent = Intent(this, GardenListActivity::class.java)
-            startActivity(intent)
-        }
+
     }
 }
