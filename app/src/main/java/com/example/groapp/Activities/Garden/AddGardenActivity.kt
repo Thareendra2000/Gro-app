@@ -1,10 +1,15 @@
 package com.example.groapp.Activities.Garden
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MarketPlace.MarketPlaceActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
 import com.example.groapp.Services.UserSingleton
@@ -99,6 +104,27 @@ class AddGardenActivity : AppCompatActivity() {
                 }
         } else {
             Toast.makeText(this, "Please correct the errors and try again", Toast.LENGTH_LONG).show()
+        }
+        //nav bar intents
+        var accountBtn : LinearLayout = findViewById(R.id.tvProfile)
+        accountBtn.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
+        var tvMarketPlace : LinearLayout = findViewById(R.id.tvMarketPlace)
+        tvMarketPlace.setOnClickListener{
+            val intent = Intent(this, MarketPlaceActivity::class.java)
+            startActivity(intent)
+        }
+        var gardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+        gardens.setOnClickListener {
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var home : LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 
