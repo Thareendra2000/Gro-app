@@ -7,9 +7,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.groapp.Activities.Garden.GardenListActivity
+import com.example.groapp.Activities.HomeActivity
 import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Adapters.CartPickUpAdapter
 import com.example.groapp.Adapters.ManagePickUpsAdapter
@@ -36,6 +39,28 @@ class ManagePickUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_manage_pick_up)
         userID = UserSingleton.uid.toString()
         Log.i("Logged User ID", userID)
+
+        var gardens: LinearLayout = findViewById(R.id.tvLeaderboard)
+        gardens.setOnClickListener {
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
+        marketplace.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var home: LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        var tvProfile: LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener {
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         backBtn = findViewById(R.id.backImg)
         backBtn.setOnClickListener{

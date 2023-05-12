@@ -4,12 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.groapp.Activities.Cart.CartCompletedActivity
+import com.example.groapp.Activities.Garden.GardenListActivity
+import com.example.groapp.Activities.HomeActivity
+import com.example.groapp.Activities.MyProfileActivity
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.Models.RatingModel
@@ -44,6 +44,28 @@ class RateItemActivity : AppCompatActivity() {
         setContentView(R.layout.activity_rate_item)
 
         var ratingCount = 1
+
+        var gardens: LinearLayout = findViewById(R.id.tvLeaderboard)
+        gardens.setOnClickListener {
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
+        marketplace.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var home: LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        var tvProfile: LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener {
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         val productId = intent.getStringExtra("productId")
         val cartId = intent.getStringExtra("cartId")
