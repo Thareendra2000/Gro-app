@@ -101,6 +101,8 @@ class AddGardenActivity : AppCompatActivity() {
             Toast.makeText(this, "Please correct the errors and try again", Toast.LENGTH_LONG).show()
         }
     }
+
+
 }
 
 
