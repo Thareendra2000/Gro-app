@@ -21,114 +21,174 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_arrow_back_24" />
 
-        <!--bottom nav Bar-->
 
-        <TextView
-            android:id="@+id/addYourBusiness"
-            android:layout_width="wrap_content"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/RightSide"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/darkGreen"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="150dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/gardenName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="TextView"
+                    android:textColor="@color/darkGreen" />
+
+                <TextView
+                    android:id="@+id/gardenAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="TextView"
+                    android:textColor="@color/darkGreen" />
+
+                <TextView
+                    android:id="@+id/gardenArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="TextView"
+                    android:textColor="@color/darkGreen" />
+
+                <TextView
+                    android:id="@+id/gardenLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="TextView"
+                    android:textColor="@color/darkGreen" />
+
+                <TextView
+                    android:id="@+id/gardenPhoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="TextView"
+                    android:textColor="@color/darkGreen" />
+
+                <TextView
+                    android:id="@+id/gardenDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="TextView"
+                    android:textColor="@color/darkGreen" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/leftSide"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/lessDarkGreen"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.042" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/gardenName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/gardenNameEx"
-            android:textAlignment="center"
-            android:textSize="28dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addYourBusiness" />
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="Garden name:"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/darkGreen"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/gardenAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/cgAddressEx"
-            android:textAlignment="center"
-            android:textSize="22dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gardenName" />
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="Address:"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/darkGreen"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/gardenArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2 acre"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/gardenLocation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gardenAddress"
-            app:layout_constraintVertical_bias="0.285" />
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="Area:"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/darkGreen"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/gardenLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:text="@string/Locationlink"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toTopOf="@+id/gardenPhoneNo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.479"
-            app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="Location link:"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/darkGreen"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/gardenPhoneNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
-            android:text="@string/cgPhoneNumberEx"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/gardenDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="Phone number:"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/darkGreen"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/gardenDescription"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/DescriptionEx"
-            android:textAlignment="center"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/volunteerBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="Description:"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/darkGreen"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/volunteerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="108dp"
             android:backgroundTint="@color/darkGreen"
-            android:text="@string/volunteerbtn"
+            android:text="Add Production"
             android:textAllCaps="false"
             app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RightSide">
 
         </Button>
+
+
 
         <!--bottom nav Bar-->
         <TextView

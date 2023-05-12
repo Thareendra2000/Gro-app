@@ -35,6 +35,12 @@ class GardenListActivity : AppCompatActivity() {
             val intent = Intent(this, AddGardenActivity::class.java)
             startActivity(intent)
         }
+        //garden_dashboard intent
+        val garden_dashboard_Btn = findViewById<View>(R.id.garden_dashboard)
+        garden_dashboard_Btn.setOnClickListener {
+            val intent = Intent(this, GardenDashboardActivity::class.java)
+            startActivity(intent)
+        }
 
         getGardensData()
     }
