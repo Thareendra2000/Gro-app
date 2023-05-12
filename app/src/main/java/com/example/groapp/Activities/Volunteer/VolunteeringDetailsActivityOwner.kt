@@ -21,6 +21,7 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
     private lateinit var tvGarden: TextView
     private lateinit var tvStatus: TextView
     private lateinit var btnUpdate: Button
+    private lateinit var btnApprove: Button
     private lateinit var btnDelete: Button
 
 
@@ -47,6 +48,17 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
             )
         }
 
+        btnApprove.setOnClickListener {
+            updateEmpData(
+                tvVolId.text.toString(),
+                tvHours.text.toString(),
+                tvDate.text.toString(),
+                intent.getStringExtra("gardenId").toString() ,
+                intent.getStringExtra("garden").toString(),
+                "Approved"
+            )
+        }
+
         btnDelete.setOnClickListener {
             deleteRecord(
                 intent.getStringExtra("volId").toString()
@@ -63,6 +75,7 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
         tvStatus = findViewById(R.id.tvStatus)
 
         btnUpdate = findViewById(R.id.btnUpdate)
+        btnApprove = findViewById(R.id.btnApprove)
         btnDelete = findViewById(R.id.btnDelete)
     }
 
@@ -130,32 +143,34 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
 
         etHours.setText(intent.getStringExtra("hours").toString())
         etDate.setText(intent.getStringExtra("date").toString())
-        var Status = intent.getStringExtra("status").toString()
-        var indexStatus : Int = 0;
-        val spinner = findViewById<Spinner>(R.id.etStatus)
-
-        if ( Status == "Pending"){
-            indexStatus = 0
-        }else if (Status == "Approved"){
-            indexStatus = 1
-        } else if (Status == "Confirmed"){
-            indexStatus = 2
-        }
-        Log.d(TAG, "The index status is: $indexStatus")
-
-        spinner?.setSelection(indexStatus) // Set the initial selected item to the third item (index 2)
-        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedItem = parent.getItemAtPosition(position) as String
-                // Do something with the selected item
-                hdStatus = selectedItem
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Do nothing when nothing is selected
-            }
-        }
+        var hdGardenId : String = intent.getStringExtra("gardenId").toString()
+        var hdGardenName : String = intent.getStringExtra("garden").toString()
+//        var Status = intent.getStringExtra("status").toString()
+//        var indexStatus : Int = 0;
+//        val spinner = findViewById<Spinner>(R.id.etStatus)
+//
+//        if ( Status == "Pending"){
+//            indexStatus = 0
+//        }else if (Status == "Approved"){
+//            indexStatus = 1
+//        } else if (Status == "Confirmed"){
+//            indexStatus = 2
+//        }
+//        Log.d(TAG, "The index status is: $indexStatus")
+//
+//        spinner?.setSelection(indexStatus) // Set the initial selected item to the third item (index 2)
+//        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+//                val selectedItem = parent.getItemAtPosition(position) as String
+//                // Do something with the selected item
+//                hdStatus = selectedItem
+//
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>) {
+//                // Do nothing when nothing is selected
+//            }
+//        }
 
         mDialog.setTitle("Updating Volunteer Record")
 
@@ -167,7 +182,9 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
                 volId,
                 etHours.text.toString(),
                 etDate.text.toString(),
-                hdStatus
+                hdGardenId,
+                hdGardenName,
+                "Confirmed"
             )
 
             Toast.makeText(applicationContext, "Volunteering Record Updated!", Toast.LENGTH_LONG).show()
@@ -181,18 +198,22 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
         }
     }
 
+
+
+
+
     private fun updateEmpData(
         volId: String,
         hours: String,
         date: String,
+        gardenId: String,
+        gardenName: String,
         status:String
-
     ) {
 
          var userId = UserSingleton.uid
          var userName= UserSingleton.name
-         var gardenId: String = "101"
-         var gardenName: String = "Suwapetha"
+
 
         val dbRef = FirebaseDatabase.getInstance().getReference("Volunteering").child(volId)
         val volInfo = VolunteeringModel(volId,userId,userName, hours, gardenId,gardenName,date,status)
