@@ -71,7 +71,8 @@ class CartCompletedActivity : AppCompatActivity() {
         tvLoadingData.visibility = View.VISIBLE
 
         // db
-        val dbRef = FirebaseDatabase.getInstance().getReference("order").orderByChild("userId").equalTo(UserSingleton.uid)
+        val dbRef = FirebaseDatabase.getInstance().getReference("order")
+            .orderByChild("userId").equalTo(UserSingleton.uid)
 
         // pass values to RateItem page
         dbRef.addValueEventListener(object : ValueEventListener {
@@ -80,10 +81,13 @@ class CartCompletedActivity : AppCompatActivity() {
                 if (snapshot.exists()){
                     for (dataSnap in snapshot.children){
                         val data = dataSnap.getValue(OrderModel::class.java)
-                        if(data?.status.toString() == "ACCEPTED") {
+                        if(data?.status.toString() == "COMPLETED") {
                             completedList.add(data!!)
                         }
                     }
+                    if(completedList.size == 0)
+                        tvLoadingData.setText("No Completed Orders")
+
                     val mAdapter = CartCompletedAdapter(completedList)
                     completedRecyclerView.adapter = mAdapter
 
@@ -100,6 +104,9 @@ class CartCompletedActivity : AppCompatActivity() {
 
                     completedRecyclerView.visibility = View.VISIBLE
                     tvLoadingData.visibility = View.GONE
+                }
+                else{
+                    tvLoadingData.setText("No Completed Orders")
                 }
             }
 

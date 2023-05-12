@@ -78,6 +78,21 @@ class HomeActivity : AppCompatActivity() {
 //            val intent = Intent(this, GardenActivity::class.java)
 //            startActivity(intent)
 //        }
+        var gardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+       gardens.setOnClickListener {
+           val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+       }
 
+        var signoutBtn: Button = findViewById(R.id.signout)
+
+        signoutBtn.setOnClickListener {
+            Firebase.auth.signOut()
+            val intent = Intent(this, SignInActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
     }
+
 }

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.example.groapp.Activities.Garden.GardenListActivity
 import com.example.groapp.Activities.Garden.MyGardensActivity
 import com.example.groapp.Activities.Order.ManageOrdersActivity
 import com.example.groapp.Activities.Volunteer.FetchingActivity
@@ -25,6 +26,7 @@ private lateinit var volDashboard: TextView
 private lateinit var userName: TextView
 private lateinit var btnUpdate: TextView
 private lateinit var userEmail: TextView
+
 class MyProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class MyProfileActivity : AppCompatActivity() {
         btnUpdate = findViewById(R.id.btnUpdate)
         userName = findViewById(R.id.userName)
         userEmail = findViewById(R.id.userEmail)
+
 
         var myGardensBtn: LinearLayout = findViewById(R.id.myGardensBtn)
         myGardensBtn.setOnClickListener {
@@ -46,13 +49,6 @@ class MyProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        var home: LinearLayout = findViewById(R.id.tvHome)
-        home.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
-
-
         volEfforts = findViewById(R.id.volEfforts)
         volEfforts.setOnClickListener {
             val intent = Intent(this, FetchingActivity::class.java)
@@ -64,20 +60,26 @@ class MyProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-            var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
-            marketplace.setOnClickListener {
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-            }
-            var tvGardens: LinearLayout = findViewById(R.id.tvLeaderboard)
-            tvGardens.setOnClickListener {
-                val intent = Intent(this, MyGardensActivity::class.java)
-                startActivity(intent)
-            }
-            var tvProfile: LinearLayout = findViewById(R.id.tvProfile)
-            tvProfile.setOnClickListener {
-                val intent = Intent(this, MyProfileActivity::class.java)
-                startActivity(intent)
+        var gardens: LinearLayout = findViewById(R.id.tvLeaderboard)
+        gardens.setOnClickListener {
+            val intent = Intent(this, GardenListActivity::class.java)
+            startActivity(intent)
+        }
+        var marketplace: LinearLayout = findViewById(R.id.tvMarketPlace)
+        marketplace.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        var home: LinearLayout = findViewById(R.id.tvHome)
+        home.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        var tvProfile: LinearLayout = findViewById(R.id.tvProfile)
+        tvProfile.setOnClickListener {
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
         }
 
 //        if ( UserSingleton.name != null){
@@ -88,7 +90,8 @@ class MyProfileActivity : AppCompatActivity() {
         userEmail.text = UserSingleton.email;
 
         btnUpdate.setOnClickListener {
-            openUpdateDialog() }
+            openUpdateDialog()
+        }
 
     }
 
@@ -121,7 +124,7 @@ class MyProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUserName(userName: String, ) {
+    private fun updateUserName(userName: String) {
         val user = Firebase.auth.currentUser
         val profileUpdates = userProfileChangeRequest {
             displayName = userName

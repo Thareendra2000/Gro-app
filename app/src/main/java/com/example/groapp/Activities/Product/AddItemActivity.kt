@@ -131,6 +131,7 @@ class AddItemActivity : AppCompatActivity() {
     }
 
     private fun addMediaBtnClick() {
+        addItemBtn.isEnabled = false;
         openGallery()
     }
     private lateinit var selectedImageUri: Uri
@@ -164,6 +165,7 @@ class AddItemActivity : AppCompatActivity() {
             .addOnFailureListener { exception : Exception ->
                 Log.w("Error", exception.message.toString())
             }
+        addItemBtn.isEnabled = true;
     }
 
     private fun handleAddItemBtnClick() {
@@ -176,6 +178,7 @@ class AddItemActivity : AppCompatActivity() {
             && unitPriceValidation()
             && bestBeforeValidation()
             && descriptionValidation()
+            && image_url != null
         ){
             category = categoryBox.selectedItem!!.toString()
             productName = productNameBox.text!!.toString()
@@ -220,6 +223,8 @@ class AddItemActivity : AppCompatActivity() {
                 Toast.makeText(this, "Cannot add item without category", Toast.LENGTH_LONG).show()
             else if( unitBox.selectedItem.toString() == "Select")
                 Toast.makeText(this, "Cannot add item without unit", Toast.LENGTH_LONG).show()
+            else if(image_url == null)
+                Toast.makeText(this, "Cannot add item without image", Toast.LENGTH_LONG).show()
         }
         addItemBtn.isEnabled = true;
     }

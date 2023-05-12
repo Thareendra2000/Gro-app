@@ -42,7 +42,7 @@ class AddGardenActivity : AppCompatActivity() {
 
     }
 
-    private fun saveGardenData(){
+    private fun saveGardenData() {
         //getting values
         val gardenName = name.text.toString()
         val gardenAddress = address.text.toString()
@@ -51,37 +51,57 @@ class AddGardenActivity : AppCompatActivity() {
         val gardenDescription = description.text.toString()
         val gardenLocation = location.text.toString()
 
+        var isValid = true
+
         if (gardenName.isEmpty()) {
             name.error = "Please enter the garden name"
+            isValid = false
+        }
+        else if (!gardenName.matches("[a-zA-Z]+".toRegex())) {
+            name.error = "Garden name can only contain letters"
         }
         if (gardenAddress.isEmpty()) {
             address.error = "Please enter address"
+            isValid = false
         }
         if (gardenArea.isEmpty()) {
             area.error = "Please enter area"
+            isValid = false
         }
         if (gardenLocation.isEmpty()) {
             location.error = "Please enter the location URL"
+            isValid = false
         }
         if (gardenPhoneNo.isEmpty()) {
             phoneNo.error = "Please enter phone No"
+            isValid = false
+        } else if (!gardenPhoneNo.matches(Regex("[0-9]+"))) {
+            phoneNo.error = "Phone number cannot contain characters"
+            isValid = false
+        }else if (gardenPhoneNo.length != 10) {
+            phoneNo.error = "Phone number must be 10 digits"
+            isValid = false
         }
 
+        if (isValid) {
+            val gardenId = dbRef.push().key!!
+            val userId = UserSingleton.uid
 
-        val gardenId = dbRef.push().key!!
-        val userId = UserSingleton.uid
-
-        val garden = GardenModel(userId,gardenId,gardenName,gardenAddress,gardenPhoneNo,gardenLocation,gardenArea,gardenDescription)
-
-        dbRef.child(gardenId).setValue(garden)
-            .addOnCompleteListener {
-                Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
+            val garden = GardenModel(userId,gardenId,gardenName,gardenAddress,gardenPhoneNo,gardenLocation,gardenArea,gardenDescription)
 
 
+            dbRef.child(gardenId).setValue(garden)
+                .addOnCompleteListener {
+                    Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
 
-            }.addOnFailureListener { err ->
-                Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
-            }
-
+                }.addOnFailureListener { err ->
+                    Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+                }
+        } else {
+            Toast.makeText(this, "Please correct the errors and try again", Toast.LENGTH_LONG).show()
+        }
     }
 }
+
+
+

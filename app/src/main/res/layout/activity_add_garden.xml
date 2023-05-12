@@ -24,6 +24,7 @@
         android:text="@string/addGarden"
         android:textColor="@color/darkGreen"
         android:textSize="24sp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,6 +65,7 @@
         android:paddingRight="4dp"
         android:text="Garden Name"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addYourBusiness" />
@@ -103,6 +105,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgAddress"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BusinessNamelinearLayout" />
@@ -143,6 +146,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgArea"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/businessOwnerLinearLayout" />
@@ -168,7 +172,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="link"
+            android:hint="link"
             android:textColor="@color/darkGreen" />
     </LinearLayout>
 
@@ -184,6 +188,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgLocationLink"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/businessLocationLinearLayout" />
@@ -226,6 +231,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgPhoneNumber"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ContactNolinearLayout" />
@@ -248,11 +254,13 @@
         <EditText
             android:id="@+id/gardenDescription"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="84dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:gravity="start|top"
             android:hint="@string/cgDescriptionEx"
-            android:textColor="@color/darkGreen" />
+            android:inputType="textMultiLine" />
+
+
     </LinearLayout>
 
     <TextView
@@ -267,6 +275,7 @@
         android:paddingRight="4dp"
         android:text="@string/cgDescription"
         android:textColor="@color/darkGreen"
+        android:backgroundTint="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLinearLayout" />

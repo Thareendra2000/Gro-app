@@ -87,10 +87,14 @@ class CartPickUpsActivity : AppCompatActivity() {
                 if (snapshot.exists()){
                     for (dataSnap in snapshot.children){
                         val data = dataSnap.getValue(OrderModel::class.java)
-                        if (data?.status.toString() == "PENDING") { // Filter by status
+                        if (data?.status.toString() == "ACCEPTED") { // Filter by status
                             pickUpList.add(data!!)
                         }
                     }
+
+
+                    if(pickUpList.size == 0)
+                        tvLoadingData.setText("No data to show")
                     val mAdapter = CartPickUpAdapter(pickUpList)
                     pickUpRecycleView.adapter = mAdapter
 
@@ -102,6 +106,9 @@ class CartPickUpsActivity : AppCompatActivity() {
 
                     pickUpRecycleView.visibility = View.VISIBLE
                     tvLoadingData.visibility = View.GONE
+                }
+                else{
+                    tvLoadingData.setText("No data to show")
                 }
             }
 
