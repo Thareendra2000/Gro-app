@@ -99,6 +99,7 @@ class InsertionActivity : AppCompatActivity() {
         return true
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveEmployeeData() {
 
         //getting values
@@ -135,6 +136,7 @@ class InsertionActivity : AppCompatActivity() {
                 Toast.makeText(this, "Volunteering Record Added!", Toast.LENGTH_LONG).show()
                 val notificationService = NotificationService()
                 notificationService.saveNotifications("Volunteering Record Added", "Volunteering Record has been Added")
+                sendNotification("Volunteering Record Added", "Volunteering Record has been Added")
                 etHours.text.clear()
                 etDate.text.clear()
 
@@ -175,7 +177,7 @@ class InsertionActivity : AppCompatActivity() {
         val intent = Intent(this, NotificationActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val builder = NotificationCompat.Builder(this, "test_channel_id")
             .setSmallIcon(R.drawable.notification_icon)
