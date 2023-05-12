@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             app:srcCompat="@drawable/notification_icon" />
+
     </LinearLayout>
 
     <!--bottom nav Bar-->
@@ -338,6 +339,13 @@
 
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/signout"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="100dp"
+            android:layout_height="wrap_content"
+            android:text="signout" />
 
 
     </LinearLayout>

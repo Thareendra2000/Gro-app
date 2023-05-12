@@ -70,8 +70,6 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
         gardenDescription.text = intent.getStringExtra("gardenDescription")
         gardenLocation.text = intent.getStringExtra("gardenLocation")
 
-
-
     }
 
 
