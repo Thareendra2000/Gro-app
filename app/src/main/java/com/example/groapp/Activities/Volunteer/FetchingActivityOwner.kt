@@ -66,9 +66,10 @@ class FetchingActivityOwner : AppCompatActivity() {
 //            }
 //        })
 
+        val gardenIdIn =  intent.getStringExtra("gardenId").toString()
 
         dbRef = FirebaseDatabase.getInstance().getReference("Volunteering")
-        val query = dbRef.orderByChild("gardenId").equalTo("-NUkAv0dxuexFf-vL5I8")
+        val query = dbRef.orderByChild("gardenId").equalTo(gardenIdIn)
 
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

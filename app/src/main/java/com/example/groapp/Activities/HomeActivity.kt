@@ -13,6 +13,7 @@ import com.example.groapp.Activities.Volunteer.VolunteerMain
 import com.example.groapp.R
 import com.example.groapp.Services.UserSingleton
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 
 class HomeActivity : AppCompatActivity() {
@@ -26,6 +27,8 @@ class HomeActivity : AppCompatActivity() {
             UserSingleton.email = it.email
             UserSingleton.uid = it.uid
         }
+
+
 
         val reload : ImageView = findViewById(R.id.reload)
         reload.setOnClickListener{
@@ -75,10 +78,10 @@ class HomeActivity : AppCompatActivity() {
 //            val intent = Intent(this, GardenActivity::class.java)
 //            startActivity(intent)
 //        }
-        var gardenList : LinearLayout = findViewById(R.id.gardenList)
-        gardenList.setOnClickListener {
-            val intent = Intent(this, GardenListActivity::class.java)
+        var gardens : LinearLayout = findViewById(R.id.tvLeaderboard)
+       gardens.setOnClickListener {
+           val intent = Intent(this, GardenListActivity::class.java)
             startActivity(intent)
-        }
+       }
     }
 }

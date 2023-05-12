@@ -105,7 +105,7 @@
 
 
             <ImageButton
-                android:id="@+id/imageView9"
+                android:id="@+id/garden_dashboard"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"

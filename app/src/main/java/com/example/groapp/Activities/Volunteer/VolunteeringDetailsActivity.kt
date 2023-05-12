@@ -122,7 +122,9 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
 
         etHours.setText(intent.getStringExtra("hours").toString())
         etDate.setText(intent.getStringExtra("date").toString())
-
+        var hdGardenId : String = intent.getStringExtra("gardenId").toString()
+        var hdGardenName : String = intent.getStringExtra("garden").toString()
+        var hdStatus : String = intent.getStringExtra("status").toString()
 
         mDialog.setTitle("Updating Volunteer Record")
 
@@ -162,6 +164,9 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
                 volId,
                 etHours.text.toString(),
                 etDate.text.toString(),
+                hdGardenId,
+                hdGardenName,
+                hdStatus
             )
 
             Toast.makeText(applicationContext, "Volunteering Record Updated!", Toast.LENGTH_LONG).show()
@@ -179,14 +184,13 @@ class VolunteeringDetailsActivity : AppCompatActivity() {
         volId: String,
         hours: String,
         date: String,
-
+        gardenId: String,
+        gardenName: String,
+        status: String
     ) {
 
          var userId = UserSingleton.uid
          var userName= UserSingleton.name
-         var gardenId: String = "101"
-         var gardenName: String = "Suwapetha"
-         var status : String = "Pending"
 
         val dbRef = FirebaseDatabase.getInstance().getReference("Volunteering").child(volId)
         val volInfo = VolunteeringModel(volId,userId,userName, hours, gardenId,gardenName,date,status)

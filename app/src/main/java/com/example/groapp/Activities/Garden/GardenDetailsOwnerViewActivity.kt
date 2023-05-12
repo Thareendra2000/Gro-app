@@ -17,6 +17,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
 
     // Declare variables for the UI elements.
     private lateinit var gardenName: TextView
+    private lateinit var Title: TextView
     private lateinit var gardenId: TextView
     private lateinit var gardenAddress: TextView
     private lateinit var gardenArea: TextView
@@ -25,6 +26,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
     private lateinit var gardenPhoneNo: TextView
     private lateinit var productionAddBtn: Button
     private lateinit var volunteers: Button
+    private lateinit var shareBtn: ImageButton
     private lateinit var editBtn: ImageButton
     private lateinit var deleteBtn: ImageButton
 
@@ -50,6 +52,14 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
                 intent.getStringExtra("gardenId").toString()
             )
         }
+        // Set a click listener on the share button.
+        shareBtn.setOnClickListener {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this garden")
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Name: ${gardenName.text}\nAddress: ${gardenAddress.text}\nArea: ${gardenArea.text}\nLocation: ${gardenLocation.text}\nPhone number: ${gardenPhoneNo.text}\nDescription: ${gardenDescription.text}")
+            startActivity(Intent.createChooser(shareIntent, "Share via"))
+        }
 
         // Set a click listener on the volunteer button.
         volunteers.setOnClickListener {
@@ -69,6 +79,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         }
 
         val gardenName = intent.getStringExtra("name")
+        val Title = intent.getStringExtra("name")
         val gardenId = intent.getStringExtra("gardenId")
         val area = intent.getStringExtra("area")
         val address = intent.getStringExtra("address")
@@ -102,6 +113,7 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
     // Initialize the UI elements by finding them in the layout file.
     private fun initView() {
         gardenId = findViewById(R.id.gardenId)
+        Title = findViewById(R.id.Title)
         gardenName = findViewById(R.id.gardenName)
         gardenAddress = findViewById(R.id.gardenAddress)
         gardenArea = findViewById(R.id.gardenArea)
@@ -113,15 +125,17 @@ class GardenDetailsOwnerViewActivity : AppCompatActivity() {
         volunteers = findViewById(R.id.volunteers)
         editBtn =findViewById(R.id.btnEdit)
         deleteBtn = findViewById(R.id.btnDelete)
+        shareBtn = findViewById(R.id.btnshare)
     }
 
     // Set the values of the UI elements with data passed from the previous activity.
     private fun setValuesToViews() {
 
         gardenId.text = intent.getStringExtra("gardenId")
+        Title.text = intent.getStringExtra("name")
         gardenName.text = intent.getStringExtra("name")
         gardenAddress.text = intent.getStringExtra("address")
-        gardenArea.text = intent.getStringExtra("area")
+        gardenArea.text = intent.getStringExtra("area")+ " acre"
         gardenPhoneNo.text = intent.getStringExtra("phoneNo")
         gardenDescription.text = intent.getStringExtra("description")
         gardenLocation.text = intent.getStringExtra("location")

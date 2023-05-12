@@ -214,6 +214,12 @@
     <string name="channel_name">GroApp</string>
     <string name="channel_description">For The Future</string>
 
+<!--    Volunteer -->
+    <string-array name="my_spinner_items">
+        <item>Pending</item>
+        <item>Approved</item>
+        <item>Confirmed</item>
+    </string-array>
 </resources>
 
 

@@ -65,7 +65,7 @@ class GardenDetailsVolunteerViewActivity : AppCompatActivity() {
         gardenId.text = intent.getStringExtra("gardenId")
         gardenName.text = intent.getStringExtra("gardenName")
         gardenAddress.text = intent.getStringExtra("gardenAddress")
-        gardenArea.text = intent.getStringExtra("gardenArea")
+        gardenArea.text = intent.getStringExtra("gardenArea")+" acre"
         gardenPhoneNo.text = intent.getStringExtra("gardenPhoneNo")
         gardenDescription.text = intent.getStringExtra("gardenDescription")
         gardenLocation.text = intent.getStringExtra("gardenLocation")

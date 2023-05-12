@@ -35,6 +35,12 @@ class GardenListActivity : AppCompatActivity() {
             val intent = Intent(this, AddGardenActivity::class.java)
             startActivity(intent)
         }
+        //garden_dashboard intent
+        val garden_dashboard_Btn = findViewById<View>(R.id.garden_dashboard)
+        garden_dashboard_Btn.setOnClickListener {
+            val intent = Intent(this, GardenDashboardActivity::class.java)
+            startActivity(intent)
+        }
 
         getGardensData()
     }
@@ -67,6 +73,7 @@ class GardenListActivity : AppCompatActivity() {
                             intent.putExtra("gardenName", gardenList[position].name)
                             intent.putExtra("gardenArea", gardenList[position].area)
                             intent.putExtra("gardenAddress", gardenList[position].address)
+                            intent.putExtra("gardenLocation", gardenList[position].location)
                             intent.putExtra("gardenDescription", gardenList[position].description)
                             intent.putExtra("gardenPhoneNo", gardenList[position].phoneNo)
                             startActivity(intent)

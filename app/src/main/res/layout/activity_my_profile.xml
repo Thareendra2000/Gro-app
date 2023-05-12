@@ -181,7 +181,7 @@
 
 
         <TextView
-            android:id="@+id/Title1"
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/twelveDP"
@@ -192,7 +192,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/Title2"
+            android:id="@+id/userEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/twelveDP"
@@ -203,11 +203,12 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/Title3"
+            android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/twelveDP"
             android:layout_weight="1"
+            android:text="Edit 📝"
             android:textAlignment="center"
             android:textColor="@color/darkGreen"
             android:textSize="24sp" />
