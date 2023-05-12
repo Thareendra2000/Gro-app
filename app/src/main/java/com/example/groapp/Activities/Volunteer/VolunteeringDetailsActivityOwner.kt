@@ -1,13 +1,13 @@
 package com.example.groapp.Activities.Volunteer
 
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.util.Log
+import android.view.View
+import android.widget.*
 import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.FirebaseDatabase
 import com.example.groapp.Models.VolunteeringModel
@@ -124,14 +124,38 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
 
         val etHours = mDialogView.findViewById<EditText>(R.id.etHours)
         val etDate = mDialogView.findViewById<EditText>(R.id.etDate)
-        val etStatus = mDialogView.findViewById<EditText>(R.id.etStatus)
-
+        //val etStatus = mDialogView.findViewById<EditText>(R.id.etStatus)
+        var hdStatus : String = "Pending"
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         etHours.setText(intent.getStringExtra("hours").toString())
         etDate.setText(intent.getStringExtra("date").toString())
-        etStatus.setText(intent.getStringExtra("status").toString())
+        var Status = intent.getStringExtra("status").toString()
+        var indexStatus : Int = 0;
+        val spinner = findViewById<Spinner>(R.id.etStatus)
 
+        if ( Status == "Pending"){
+            indexStatus = 0
+        }else if (Status == "Approved"){
+            indexStatus = 1
+        } else if (Status == "Confirmed"){
+            indexStatus = 2
+        }
+        Log.d(TAG, "The index status is: $indexStatus")
+
+        spinner?.setSelection(indexStatus) // Set the initial selected item to the third item (index 2)
+        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedItem = parent.getItemAtPosition(position) as String
+                // Do something with the selected item
+                hdStatus = selectedItem
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Do nothing when nothing is selected
+            }
+        }
 
         mDialog.setTitle("Updating Volunteer Record")
 
@@ -143,7 +167,7 @@ class VolunteeringDetailsActivityOwner : AppCompatActivity() {
                 volId,
                 etHours.text.toString(),
                 etDate.text.toString(),
-                etStatus.text.toString()
+                hdStatus
             )
 
             Toast.makeText(applicationContext, "Volunteering Record Updated!", Toast.LENGTH_LONG).show()

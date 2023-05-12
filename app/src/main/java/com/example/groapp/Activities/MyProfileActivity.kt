@@ -14,6 +14,8 @@ import com.example.groapp.Activities.Volunteer.VolunteerDashboard
 import com.example.groapp.R
 import com.example.groapp.Services.UserSingleton
 import com.example.groapp.Services.volHours
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
@@ -27,6 +29,13 @@ class MyProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
+
+//        val user = FirebaseAuth.getInstance().currentUser
+//        val newUsername = "Dinal"
+//
+//        val profileUpdates = UserProfileChangeRequest.Builder()
+//            .setDisplayName(newUsername)
+//            .build()
 
         btnUpdate = findViewById(R.id.btnUpdate)
         userName = findViewById(R.id.userName)
@@ -114,8 +123,6 @@ class MyProfileActivity : AppCompatActivity() {
 
             //we are setting updated data to our textviews
             userName.text = etUserName.text.toString()
-
-
 
             alertDialog.dismiss()
         }
