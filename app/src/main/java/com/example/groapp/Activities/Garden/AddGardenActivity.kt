@@ -89,6 +89,7 @@ class AddGardenActivity : AppCompatActivity() {
 
             val garden = GardenModel(userId,gardenId,gardenName,gardenAddress,gardenPhoneNo,gardenLocation,gardenArea,gardenDescription)
 
+
             dbRef.child(gardenId).setValue(garden)
                 .addOnCompleteListener {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
@@ -101,5 +102,6 @@ class AddGardenActivity : AppCompatActivity() {
         }
     }
 }
+
 
 

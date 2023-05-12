@@ -9,11 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.groapp.Activities.Order.RateItemActivity
 import com.example.groapp.Models.CartModel
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.Models.OrderModel
 import com.example.groapp.Models.ProductModel
 import com.example.groapp.R
+import com.example.groapp.Services.UserSingleton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -44,6 +46,14 @@ class CartCompletedAdapter(private val completedList: ArrayList<OrderModel>) :
         var productId = data.productId
         var gardenId = data.gardenId
         var cartId = data.cartId
+        holder.btnRate.setOnClickListener {
+            var  intent = Intent(holder.itemView.context, RateItemActivity::class.java)
+            intent.putExtra("productId", productId)
+            intent.putExtra("cartId", cartId)
+            intent.putExtra("gardenId", gardenId)
+            intent.putExtra("userId", UserSingleton.uid)
+            holder.itemView.context.startActivity(intent)
+        }
 
         cartId?.let { FirebaseDatabase.getInstance().getReference("cart").child(it) }
             ?.addListenerForSingleValueEvent(object : ValueEventListener {

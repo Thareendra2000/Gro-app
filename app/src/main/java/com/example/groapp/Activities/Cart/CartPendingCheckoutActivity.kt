@@ -112,6 +112,75 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun sendNotification(title: String, message: String) {
+        val name = getString(R.string.channel_name)
+        val descriptionText = getString(R.string.channel_description)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel("test_channel_id", name, importance).apply {
+            description = descriptionText
+        }
+
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+
+        val intent = Intent(this, NotificationActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val builder = NotificationCompat.Builder(this, "test_channel_id")
+            .setSmallIcon(R.drawable.notification_icon)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+
+        with(NotificationManagerCompat.from(this)) {
+            if (ActivityCompat.checkSelfPermission( this@CartPendingCheckoutActivity, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED ) {
+                return
+            }
+            notify(Random.nextInt(1200), builder.build())
+        }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun saveOrderData() {
+        dbRef = FirebaseDatabase.getInstance().getReference("order")
+        val id = dbRef.push().key!!
+        val order = OrderModel(
+            id = id,
+            userId = UserSingleton.uid,
+            gardenId = gardenId,
+            productId = productId,
+            cartId = cartId,
+            note = note,
+            timestamp = Date(),
+            status = OrderStatus.PENDING
+        )
+        dbRef.child(id).setValue(order).addOnSuccessListener {
+            val dbRef = FirebaseDatabase.getInstance().getReference("cart").child(cartId)
+            dbRef.child("status").setValue(CartStatus.ORDERED).addOnSuccessListener {
+                val notificationService = NotificationService()
+                notificationService.saveNotifications("Item added to the cart", "Item has been added to the cart")
+                sendNotification("Added to cart" , "Item has been added to the cart")
+
+            }.addOnFailureListener { error ->
+                println("Error updating cart status: ${error.message}")
+            }
+
+            Handler().postDelayed({
+                val intent = Intent(this, CartPendingCheckoutSuccessActivity::class.java)
+                startActivity(intent)
+            }, 1000)
+        }.addOnFailureListener { error ->
+            Toast.makeText(this, "Error ${error.message}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+
     private fun deleteCartItem(){
         // reset the quantity in product
         // get the quantity from cart
@@ -136,77 +205,6 @@ class CartPendingCheckoutActivity : AppCompatActivity() {
 
         // delete the cart item
     }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun sendNotification(title: String, message: String) {
-        val name = getString(R.string.channel_name)
-        val descriptionText = getString(R.string.channel_description)
-        val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel("test_channel_id", name, importance).apply {
-            description = descriptionText
-        }
-
-        val notificationManager: NotificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
-
-        val intent = Intent(this, NotificationActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
-
-        val builder = NotificationCompat.Builder(this, "test_channel_id")
-            .setSmallIcon(R.drawable.notification_icon)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-
-        with(NotificationManagerCompat.from(this)) {
-            if (ActivityCompat.checkSelfPermission( this@CartPendingCheckoutActivity, Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED ) {
-                return
-            }
-            notify(Random.nextInt(1200), builder.build())
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun saveOrderData() {
-        dbRef = FirebaseDatabase.getInstance().getReference("order")
-        val id = dbRef.push().key!!
-        val order = OrderModel(
-            id = id,
-            userId = UserSingleton.uid,
-            gardenId = gardenId,
-            productId = productId,
-            cartId = cartId,
-            note = note,
-            timestamp = Date(),
-            status = OrderStatus.PENDING
-        )
-        dbRef.child(id).setValue(order).addOnSuccessListener {
-            val dbRef = FirebaseDatabase.getInstance().getReference("cart").child(cartId)
-            dbRef.child("status").setValue(CartStatus.ORDERED).addOnSuccessListener {
-                val notificationService = NotificationService()
-                notificationService.saveNotifications("Item added to the cart", "Item has been added to the cart")
-
-//                sendNotification("Added to cart" , "Item has been added to the cart")
-
-            }.addOnFailureListener { error ->
-                println("Error updating cart status: ${error.message}")
-            }
-
-            Handler().postDelayed({
-                val intent = Intent(this, CartPendingCheckoutSuccessActivity::class.java)
-                startActivity(intent)
-            }, 1000)
-        }.addOnFailureListener { error ->
-            Toast.makeText(this, "Error ${error.message}", Toast.LENGTH_LONG).show()
-        }
-    }
-
     fun updateProductQuantity(productId: String, newQuantity: Int) {
         val dbRef = FirebaseDatabase.getInstance().getReference("products").child(productId)
 

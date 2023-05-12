@@ -3,10 +3,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groapp.Activities.MyProfileActivity
+import com.example.groapp.Activities.Product.ManageItemsActivity
 import com.example.groapp.Adapters.GardenAdapter
 import com.example.groapp.Models.GardenModel
 import com.example.groapp.R
@@ -35,6 +37,12 @@ class MyGardensActivity : AppCompatActivity() {
 
         gardenList = arrayListOf<GardenModel>()
         filteredGardenList = arrayListOf<GardenModel>()
+
+        var backBtn : ImageView = findViewById(R.id.backBtn)
+        backBtn.setOnClickListener{
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         val plusBtn = findViewById<View>(R.id.plusBtn)
         plusBtn.setOnClickListener {

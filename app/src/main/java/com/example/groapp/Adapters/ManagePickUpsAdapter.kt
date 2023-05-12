@@ -1,5 +1,8 @@
 package com.example.groapp.Adapters
 
+import android.content.Intent
+import android.os.Handler
+import android.transition.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.groapp.Activities.Cart.CartPendingCheckoutSuccessActivity
+import com.example.groapp.Activities.Order.ManagePickUpActivity
 import com.example.groapp.Enums.OrderStatus
 import com.example.groapp.Models.CartModel
 import com.example.groapp.Models.GardenModel
@@ -120,8 +125,8 @@ class ManagePickUpsAdapter (private val pickUpOrdersList:  ArrayList<OrderModel>
             order.status = OrderStatus.COMPLETED;
             FirebaseDatabase.getInstance().getReference("order").child(currentPickUp.id!!).setValue(order)
                 .addOnSuccessListener{
-                    Log.i("Success" , "Order updated to ${order.status}")
-                    Toast.makeText(holder.itemView.context, "Order updated to ${order.status}", Toast.LENGTH_LONG).show()
+                    Log.i("Success" , "Order updated to ${order.status.toString().toLowerCase()}")
+                    Toast.makeText(holder.itemView.context, "Order updated to ${order.status.toString().toLowerCase()}", Toast.LENGTH_LONG).show()
                 }
                 .addOnFailureListener{ err ->
                     Log.w("Error" , err.message.toString())
@@ -131,6 +136,7 @@ class ManagePickUpsAdapter (private val pickUpOrdersList:  ArrayList<OrderModel>
 
         holder.putBackBtn.setOnClickListener {
             Toast.makeText(holder.itemView.context, "Order stock restocked", Toast.LENGTH_LONG).show()
+
         }
 
     }
